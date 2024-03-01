@@ -26,7 +26,8 @@ EOF
 
 move_existing_path() {
     local path=$1
-    local backup_path="${path}_backup"
+    local current_time=$(date +"%Y-%m-%d_%H-%M-%S")
+    local backup_path="${path}_backup_${current_time}"
     if [ -d "$path" ]; then
         echo "Moving existing path to backup location: $backup_path"
         mv "$path" "$backup_path"
