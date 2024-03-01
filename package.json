@@ -1,0 +1,12 @@
+{
+  "name": "nvim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "changelog": "git cliff -o CHANGELOG.md"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
