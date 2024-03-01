@@ -40,7 +40,9 @@ pkgs.stdenv.mkDerivation {
   version = "0.0.0";
   src = builtins.fetchGit {
     url = "https://github.com/ahkohd/nvim.git";
-    rev = "77ffa179dc808f5bf8ff2e258dbb65a097f95562";
+    rev = "pick a commit hash";
+    # for example:
+    # ref = "895701f62118fc7078d323ace49934428d50e0a8"
   };
 
   installPhase = ''
