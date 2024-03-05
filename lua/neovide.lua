@@ -1,6 +1,4 @@
--- vim.o.guifont = "BerkeleyMono Nerd Font Plus Font Awesome Plus Octicons Plus Codicons Plus Material Design Icons:h14"
-
-vim.o.guifont = "Bitstream Vera Sans Mono:h16"
+vim.o.guifont = "BitstromWera Nerd Font:h15:#e-subpixelantialias"
 
 vim.g.neovide_refresh_rate = 120
 
