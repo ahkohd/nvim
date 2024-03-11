@@ -87,7 +87,7 @@ return {
 		local opts = {
 			options = {
 				icons_enabled = true,
-				theme = "mellow",
+				theme = "auto",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = disable,

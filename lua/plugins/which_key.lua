@@ -14,6 +14,7 @@ return {
 			["<space>"] = {
 				w = { "<cmd>w<cr>", "Save" },
 				Q = { "<cmd>qa!<cr>", "Quit" },
+				v = { "<cmd>Themery<cr>", "Quit" },
 			},
 			["<space>s"] = {
 				name = "Find and Replace",
