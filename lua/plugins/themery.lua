@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"mellow-theme/mellow.nvim",
 		"maxmx03/solarized.nvim",
+		"kepano/flexoki-neovim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -29,6 +30,14 @@ return {
 				{
 					name = "Mellow",
 					colorscheme = "mellow",
+				},
+				{
+					name = "Felxoki Dark",
+					colorscheme = "flexoki-dark",
+				},
+				{
+					name = "Felxoki Light",
+					colorscheme = "flexoki-light",
 				},
 			},
 		})
