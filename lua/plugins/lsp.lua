@@ -178,6 +178,8 @@ return {
 				"taplo",
 				"tsserver",
 				"vimls",
+				"astro",
+				"mdx_analyzer",
 			},
 		})
 

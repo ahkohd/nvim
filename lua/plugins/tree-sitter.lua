@@ -35,6 +35,7 @@ return {
 				"markdown",
 				"markdown_inline",
 				"nix",
+				"astro",
 			},
 			autotag = {
 				enable = true,
@@ -72,7 +73,13 @@ return {
 				lint_events = { "BufWrite", "CursorHold" },
 			},
 		})
+
+		vim.filetype.add({ extension = { mdx = "markdown.mdx" } })
+
+		vim.treesitter.language.register("markdown", "markdown.mdx")
+
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
 		parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 	end,
 }
