@@ -6,6 +6,10 @@ return {
 		"mellow-theme/mellow.nvim",
 		"maxmx03/solarized.nvim",
 		"kepano/flexoki-neovim",
+		"aktersnurra/no-clown-fiesta.nvim",
+		"embark-theme/vim",
+		"folke/tokyonight.nvim",
+		"Verf/deepwhite.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -38,6 +42,34 @@ return {
 				{
 					name = "Felxoki Light",
 					colorscheme = "flexoki-light",
+				},
+				{
+					name = "No Clown Fiesta",
+					colorscheme = "no-clown-fiesta",
+				},
+				{
+					name = "Embark",
+					colorscheme = "embark",
+				},
+				{
+					name = "Tokyo Night / Night",
+					colorscheme = "tokyonight-night",
+				},
+				{
+					name = "Tokyo Night / Storm",
+					colorscheme = "tokyonight-storm",
+				},
+				{
+					name = "Tokyo Night / Day",
+					colorscheme = "tokyonight-day",
+				},
+				{
+					name = "Tokyo Night / Moon",
+					colorscheme = "tokyonight-moon",
+				},
+				{
+					name = "DeepWhite",
+					colorscheme = "deepwhite",
 				},
 			},
 		})
