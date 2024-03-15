@@ -10,6 +10,8 @@ return {
 		"embark-theme/vim",
 		"folke/tokyonight.nvim",
 		"Verf/deepwhite.nvim",
+		"pineapplegiant/spaceduck",
+		"nyngwang/nvimgelion",
 	},
 	lazy = false,
 	priority = 1000,
@@ -70,6 +72,11 @@ return {
 				{
 					name = "DeepWhite",
 					colorscheme = "deepwhite",
+				},
+				{ name = "SpaceDuck", colorscheme = "spaceduck" },
+				{
+					name = "Nvimgelion",
+					colorscheme = "nvimgelion",
 				},
 			},
 		})
