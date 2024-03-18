@@ -12,6 +12,7 @@ return {
 		"Verf/deepwhite.nvim",
 		"pineapplegiant/spaceduck",
 		"nyngwang/nvimgelion",
+		"yorickpeterse/vim-paper",
 	},
 	lazy = false,
 	priority = 1000,
@@ -77,6 +78,10 @@ return {
 				{
 					name = "Nvimgelion",
 					colorscheme = "nvimgelion",
+				},
+				{
+					name = "Vim Paper",
+					colorscheme = "paper",
 				},
 			},
 		})
