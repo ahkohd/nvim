@@ -13,6 +13,7 @@ return {
 		"pineapplegiant/spaceduck",
 		"nyngwang/nvimgelion",
 		"yorickpeterse/vim-paper",
+		"cseelus/vim-colors-lucid",
 	},
 	lazy = false,
 	priority = 1000,
@@ -82,6 +83,10 @@ return {
 				{
 					name = "Vim Paper",
 					colorscheme = "paper",
+				},
+				{
+					name = "Lucid",
+					colorscheme = "lucid",
 				},
 			},
 		})
