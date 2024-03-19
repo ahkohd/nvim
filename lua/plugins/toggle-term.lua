@@ -5,7 +5,13 @@ return {
 	event = "VeryLazy",
 	version = "*",
 	keys = {
-		{ "<space><tab>", desc = "Open Terminal" },
+		{
+			"<space><tab>",
+			function()
+				_zsh_toggle()
+			end,
+			desc = "Open Terminal",
+		},
 		{
 			"<space>q",
 			function()
@@ -18,7 +24,6 @@ return {
 		local toggleterm = require("toggleterm")
 
 		toggleterm.setup({
-			open_mapping = [[<space><tab>]],
 			direction = "float",
 			size = 80,
 			start_in_insert = false,
@@ -30,6 +35,29 @@ return {
 
 		local Terminal = require("toggleterm.terminal").Terminal
 
+		local zsh = Terminal:new({
+			cmd = "zsh",
+			direction = "float",
+			on_open = function(term)
+				vim.cmd("startinsert!")
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space><tab>",
+					"<cmd>lua _zsh_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
+			end,
+			on_close = function()
+				vim.cmd("startinsert!")
+			end,
+		})
+
+		function _zsh_toggle()
+			zsh:toggle()
+		end
+
 		local mprocs = Terminal:new({
 			cmd = "mprocs",
 			direction = "float",
@@ -40,11 +68,11 @@ return {
 					term.bufnr,
 					"t",
 					"<space>q",
-					"<cmd>close<CR>",
+					"<cmd>lua _mprocs_toggle()<CR>",
 					{ noremap = true, silent = true }
 				)
 			end,
-			on_close = function(term)
+			on_close = function()
 				vim.cmd("startinsert!")
 			end,
 		})
