@@ -19,6 +19,13 @@ return {
 			end,
 			desc = "Toggle mprocs",
 		},
+		{
+			"<space>1",
+			function()
+				_btop_toggle()
+			end,
+			desc = "Toggle btop",
+		},
 	},
 	config = function()
 		local toggleterm = require("toggleterm")
@@ -79,6 +86,29 @@ return {
 
 		function _mprocs_toggle()
 			mprocs:toggle()
+		end
+
+		local btop = Terminal:new({
+			cmd = "btop",
+			direction = "float",
+			on_open = function(term)
+				vim.cmd("startinsert!")
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space>1",
+					"<cmd>lua _btop_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
+			end,
+			on_close = function()
+				vim.cmd("startinsert!")
+			end,
+		})
+
+		function _btop_toggle()
+			btop:toggle()
 		end
 	end,
 }
