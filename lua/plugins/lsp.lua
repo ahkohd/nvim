@@ -65,6 +65,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"mfussenegger/nvim-dap",
 		"jay-babu/mason-nvim-dap.nvim",
+		"nvim-neotest/nvim-nio",
 		{
 			"mrcjkb/rustaceanvim",
 			version = "^3",
