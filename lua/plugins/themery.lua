@@ -14,6 +14,7 @@ return {
 		"nyngwang/nvimgelion",
 		"yorickpeterse/vim-paper",
 		"cseelus/vim-colors-lucid",
+		"ribru17/bamboo.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -87,6 +88,10 @@ return {
 				{
 					name = "Lucid",
 					colorscheme = "lucid",
+				},
+				{
+					name = "Bamboo",
+					colorscheme = "bamboo",
 				},
 			},
 		})
