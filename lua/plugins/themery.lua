@@ -3,6 +3,7 @@
 return {
 	"zaldih/themery.nvim",
 	dependencies = {
+		"rktjmp/lush.nvim",
 		"mellow-theme/mellow.nvim",
 		"maxmx03/solarized.nvim",
 		"kepano/flexoki-neovim",
