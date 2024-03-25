@@ -15,6 +15,7 @@ return {
 		"yorickpeterse/vim-paper",
 		"cseelus/vim-colors-lucid",
 		"ribru17/bamboo.nvim",
+		"rockyzhang24/arctic.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -92,6 +93,10 @@ return {
 				{
 					name = "Bamboo",
 					colorscheme = "bamboo",
+				},
+				{
+					name = "Arctic",
+					colorscheme = "arctic",
 				},
 			},
 		})
