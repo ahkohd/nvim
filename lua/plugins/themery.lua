@@ -17,6 +17,7 @@ return {
 		"cseelus/vim-colors-lucid",
 		"ribru17/bamboo.nvim",
 		"rockyzhang24/arctic.nvim",
+		"miikanissi/modus-themes.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -98,6 +99,14 @@ return {
 				{
 					name = "Arctic",
 					colorscheme = "arctic",
+				},
+				{
+					name = "Modus Operandi",
+					colorscheme = "modus_operandi",
+				},
+				{
+					name = "Modus Vivendi",
+					colorscheme = "modus_vivendi",
 				},
 			},
 		})
