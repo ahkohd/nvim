@@ -61,7 +61,6 @@ return {
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer" },
-				{ name = "copilot" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
