@@ -113,6 +113,10 @@ return {
 					name = "Oceanic next",
 					colorscheme = "OceanicNext",
 				},
+				{
+					name = "Oceanic next Light",
+					colorscheme = "OceanicNextLight",
+				},
 			},
 		})
 
