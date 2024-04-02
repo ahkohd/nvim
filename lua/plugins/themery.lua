@@ -111,7 +111,7 @@ return {
 				},
 				{
 					name = "Oceanic next",
-					colorscheme = "oceanicnext",
+					colorscheme = "OceanicNext",
 				},
 			},
 		})
