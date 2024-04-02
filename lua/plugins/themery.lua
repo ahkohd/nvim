@@ -18,6 +18,7 @@ return {
 		"ribru17/bamboo.nvim",
 		"rockyzhang24/arctic.nvim",
 		"miikanissi/modus-themes.nvim",
+		"mhartington/oceanic-next",
 	},
 	lazy = false,
 	priority = 1000,
@@ -107,6 +108,10 @@ return {
 				{
 					name = "Modus Vivendi",
 					colorscheme = "modus_vivendi",
+				},
+				{
+					name = "Oceanic next",
+					colorscheme = "oceanicnext",
 				},
 			},
 		})
