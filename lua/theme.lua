@@ -2,8 +2,6 @@
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.opt.background = "light"
-
-vim.cmd("colorscheme solarized")
-vim.g.theme_id = 2
+vim.cmd("colorscheme OceanicNext")
+vim.g.theme_id = 21
 -- end themery block
