@@ -19,6 +19,7 @@ return {
 		"rockyzhang24/arctic.nvim",
 		"miikanissi/modus-themes.nvim",
 		"mhartington/oceanic-next",
+		"whatyouhide/vim-gotham",
 	},
 	lazy = false,
 	priority = 1000,
@@ -116,6 +117,10 @@ return {
 				{
 					name = "Oceanic next Light",
 					colorscheme = "OceanicNextLight",
+				},
+				{
+					name = "I'm Batman",
+					colorscheme = "gotham",
 				},
 			},
 		})
