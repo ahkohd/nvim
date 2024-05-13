@@ -20,6 +20,7 @@ return {
 		"miikanissi/modus-themes.nvim",
 		"mhartington/oceanic-next",
 		"whatyouhide/vim-gotham",
+		"AlexvZyl/nordic.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -121,6 +122,10 @@ return {
 				{
 					name = "I'm Batman",
 					colorscheme = "gotham",
+				},
+				{
+					name = "nordic.nvim",
+					colorscheme = "nordic",
 				},
 			},
 		})
