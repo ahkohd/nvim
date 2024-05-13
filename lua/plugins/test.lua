@@ -24,7 +24,7 @@ return {
 		},
 		{
 			"<space>tv",
-			"<dm>TestVisit<cr>",
+			"<cmd>TestVisit<cr>",
 			desc = "Open the last test in current buffer",
 		},
 		{

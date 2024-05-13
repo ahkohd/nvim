@@ -26,6 +26,41 @@ return {
 			end,
 			desc = "Toggle btop",
 		},
+		{
+			"<space>t1",
+			"<cmd>ToggleTerm<cr>",
+			desc = "Toggle Terminal #1",
+		},
+		{
+			"<space>t2",
+			"<cmd>2ToggleTerm<cr>",
+			desc = "Toggle Terminal #2",
+		},
+		{
+			"<space>t3",
+			"<cmd>3ToggleTerm<cr>",
+			desc = "Toggle Terminal #2",
+		},
+		{
+			"<space>t4",
+			"<cmd>4ToggleTerm<cr>",
+			desc = "Toggle Terminal #4",
+		},
+		{
+			"<space>t5",
+			"<cmd>5ToggleTerm<cr>",
+			desc = "Toggle Terminal #5",
+		},
+		{
+			"<space>t6",
+			"<cmd>6ToggleTerm<cr>",
+			desc = "Toggle Terminal #6",
+		},
+		{
+			"<space>t0",
+			"<cmd>TermSelect<cr>",
+			desc = "Select Terminal",
+		},
 	},
 	config = function()
 		local toggleterm = require("toggleterm")
