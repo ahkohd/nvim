@@ -28,33 +28,17 @@ return {
 		},
 		{
 			"<space>t1",
-			"<cmd>ToggleTerm<cr>",
+			function()
+				_zsh_toggle()
+			end,
 			desc = "Toggle Terminal #1",
 		},
 		{
 			"<space>t2",
-			"<cmd>2ToggleTerm<cr>",
+			function()
+				_zsh2_toggle()
+			end,
 			desc = "Toggle Terminal #2",
-		},
-		{
-			"<space>t3",
-			"<cmd>3ToggleTerm<cr>",
-			desc = "Toggle Terminal #2",
-		},
-		{
-			"<space>t4",
-			"<cmd>4ToggleTerm<cr>",
-			desc = "Toggle Terminal #4",
-		},
-		{
-			"<space>t5",
-			"<cmd>5ToggleTerm<cr>",
-			desc = "Toggle Terminal #5",
-		},
-		{
-			"<space>t6",
-			"<cmd>6ToggleTerm<cr>",
-			desc = "Toggle Terminal #6",
 		},
 		{
 			"<space>t0",
@@ -90,6 +74,14 @@ return {
 					"<cmd>lua _zsh_toggle()<CR>",
 					{ noremap = true, silent = true }
 				)
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space>t1",
+					"<cmd>lua _zsh_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
 			end,
 			on_close = function()
 				vim.cmd("startinsert!")
@@ -98,6 +90,29 @@ return {
 
 		function _zsh_toggle()
 			zsh:toggle()
+		end
+
+		local zsh2 = Terminal:new({
+			cmd = "zsh",
+			direction = "float",
+			on_open = function(term)
+				vim.cmd("startinsert!")
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space>t2",
+					"<cmd>lua _zsh2_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
+			end,
+			on_close = function()
+				vim.cmd("startinsert!")
+			end,
+		})
+
+		function _zsh2_toggle()
+			zsh2:toggle()
 		end
 
 		local mprocs = Terminal:new({
