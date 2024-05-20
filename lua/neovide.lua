@@ -7,9 +7,9 @@ vim.g.neovide_confirm_quit = false
 
 vim.g.neovide_cursor_vfx_mode = "sonicboom"
 
-vim.g.neovide_cursor_trail_size = 0.05
+vim.g.neovide_cursor_trail_size = 0.0
 
-vim.g.neovide_cursor_animation_length = 0.0
+vim.g.neovide_cursor_animation_length = 0.025
 
 vim.g.neovide_remember_window_size = true
 
