@@ -1,5 +1,5 @@
 vim.o.guifont =
-	"BerkeleyMono Nerd Font Plus Font Awesome Plus Octicons Plus Codicons Plus Material Design Icons:h15:#e-subpixelantialias"
+	"BerkeleyMono Nerd Font Plus Font Awesome Plus Octicons Plus Codicons Plus Material Design Icons:h11:#e-subpixelantialias"
 
 vim.g.neovide_refresh_rate = 120
 
@@ -9,7 +9,7 @@ vim.g.neovide_cursor_vfx_mode = "sonicboom"
 
 vim.g.neovide_cursor_trail_size = 0.0
 
-vim.g.neovide_cursor_animation_length = 0.15
+vim.g.neovide_cursor_animation_length = 0.0
 
 vim.g.neovide_remember_window_size = true
 
