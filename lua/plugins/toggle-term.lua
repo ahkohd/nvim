@@ -82,6 +82,14 @@ return {
 					"<cmd>lua _zsh_toggle()<CR>",
 					{ noremap = true, silent = true }
 				)
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space>t2",
+					"<cmd>lua _zsh2_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
 			end,
 			on_close = function()
 				vim.cmd("startinsert!")
@@ -97,6 +105,22 @@ return {
 			direction = "float",
 			on_open = function(term)
 				vim.cmd("startinsert!")
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space><tab>",
+					"<cmd>lua _zsh_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
+
+				vim.api.nvim_buf_set_keymap(
+					term.bufnr,
+					"t",
+					"<space>t1",
+					"<cmd>lua _zsh_toggle()<CR>",
+					{ noremap = true, silent = true }
+				)
 
 				vim.api.nvim_buf_set_keymap(
 					term.bufnr,
