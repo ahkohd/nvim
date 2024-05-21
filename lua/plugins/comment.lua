@@ -1,5 +1,8 @@
+-- luacheck: globals vim
+
 return {
-    'numToStr/Comment.nvim',
-    opts = {},
-    event = "BufRead"
+	"folke/ts-comments.nvim",
+	opts = {},
+	event = "VeryLazy",
+	enabled = vim.fn.has("nvim-0.10.0") == 1,
 }
