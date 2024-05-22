@@ -8,12 +8,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<space>h",
-			"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-			desc = "Harpoon",
-		},
-		{
-			"<space>hh",
+			"<space>hw",
 			"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
 			desc = "Menu",
 		},

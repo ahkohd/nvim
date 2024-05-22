@@ -19,9 +19,6 @@ return {
 			["<space>s"] = {
 				name = "Find and Replace",
 			},
-			["<space>h"] = {
-				name = "Harpoon",
-			},
 			["<space>d"] = {
 				name = "Diagnostics",
 			},
