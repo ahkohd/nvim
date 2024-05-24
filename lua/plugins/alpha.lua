@@ -82,7 +82,7 @@ return {
 					{
 						type = "group",
 						val = {
-							dashboard.button("x", " Recent sessions", "<cmd>Telescope persisted<CR>"),
+							dashboard.button("f", " Telescope", "<cmd>Telescope<CR>"),
 							dashboard.button(
 								"o",
 								" Take notes",
