@@ -18,6 +18,9 @@ vim.o.shell = "zsh"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Don't redraw while executing macros (good performance config)
 -- vim.o.lazyredraw = true
 
@@ -60,7 +63,7 @@ vim.wo.relativenumber = true
 
 -- Conceal
 vim.o.conceallevel = 2
-vim.g['pencil#conceallevel'] = 2
+vim.g["pencil#conceallevel"] = 2
 
 -- register command that calls a lua function
 vim.cmd("command! -nargs=0 ProjectRoot lua require('core.utils.project').cwd_to_root_dir_of_current_buffer()")
