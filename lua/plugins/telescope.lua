@@ -2,7 +2,6 @@
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.6",
 	keys = {
 		{
 			"<space>f",
@@ -45,6 +44,7 @@ return {
 				},
 			},
 			defaults = {
+				sorting_strategy = "descending",
 				file_ignore_patterns = {
 					".git/.*",
 					"node_modules/.*",
