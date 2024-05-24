@@ -2,7 +2,7 @@
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.x",
+	tag = "0.1.6",
 	keys = {
 		{
 			"<space>f",
@@ -45,15 +45,15 @@ return {
 			},
 			defaults = {
 				file_ignore_patterns = {
-					".git/.*",
-					"node_modules/.*",
-					"vendor/.*",
-					".next/.*",
-					"target/debug/.*",
-					"target/release/.*",
-					"src-tauri/target/.*",
-					"**/dist/**",
-					"*.min.js",
+					-- ".git/.*",
+					-- "node_modules/.*",
+					-- "vendor/.*",
+					-- ".next/.*",
+					-- "target/debug/.*",
+					-- "target/release/.*",
+					-- "src-tauri/target/.*",
+					-- "**/dist/**",
+					-- "*.min.js",
 				},
 				mappings = {
 					n = {
@@ -71,18 +71,10 @@ return {
 					"--smart-case",
 				},
 				initial_mode = "insert",
-				selection_strategy = "reset",
-				sorting_strategy = "descending",
-				file_sorter = require("telescope.sorters").get_fuzzy_file,
-				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				path_display = { "truncate" },
 				winblend = 0,
 				color_devicons = true,
-				set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-				file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-				grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-				qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+				set_env = { ["COLORTERM"] = "truecolor" },
 			},
 		})
 	end,
