@@ -9,7 +9,7 @@ return {
 			local headers = require("core.ui.alpha.headers")
 			local quotes = require("core.ui.alpha.quotes")
 			local theme = require("alpha.themes.theta")
-			local path_ok, plenary_path = pcall(require, "plenary.path")
+			local path_ok = pcall(require, "plenary.path")
 			if not path_ok then
 				return
 			end
@@ -82,7 +82,6 @@ return {
 					{
 						type = "group",
 						val = {
-							dashboard.button("p", " Open project", "<cmd>Telescope project<CR>"),
 							dashboard.button("x", " Recent sessions", "<cmd>Telescope persisted<CR>"),
 							dashboard.button(
 								"o",
@@ -113,81 +112,12 @@ return {
 				return { type = "group", val = tbl, opts = {} }
 			end
 
-			-- Projects
-			local function get_projects(max_shown)
-				local alphabet = "abcdefgnqrsuvwxyz"
-
-				local tbl = {
-					{ type = "text", val = "Recent Projects", opts = { hl = "SpecialComment", position = "center" } },
-				}
-
-				local project_list = require("telescope._extensions.project.utils").get_projects("recent")
-				for i, project in ipairs(project_list) do
-					if i > max_shown then
-						break
-					end
-
-					local icon = " "
-
-					-- create shortened path for display
-					local target_width = 32
-					local display_path = project.path
-					if #display_path > target_width then
-						display_path = plenary_path.new(display_path):shorten(1, { -2, -1 })
-						if #display_path > target_width then
-							display_path = plenary_path.new(display_path):shorten(1, { -1 })
-						end
-					end
-
-					-- Get semantic letter for project
-					local letter
-					local project_name = display_path:match("[^/\\]+$") -- Gets the last part after a slash or backslash
-					if not project_name or project_name == "" then
-						project_name = display_path -- Fallback to using the entire display_path
-					end
-					project_name = project_name:gsub("[^%w]", "") -- Remove non-alphanumeric characters
-					letter = project_name:sub(1, 1):lower()
-
-					-- Check if the letter is in the alphabet and get alternate letter if not available
-					if not letter:match("^[%w]$") or not alphabet:find(letter, 1, true) then -- True for plain search
-						letter = alphabet:sub(1, 1)
-					end
-
-					-- Remove the selected letter from the alphabet
-					alphabet = alphabet:gsub(letter, "", 1) -- Replace only the first occurrences
-
-					-- create button element
-					local file_button_el = dashboard.button(
-						letter,
-						icon .. display_path,
-						"<cmd>lua require('core.utils.project').open_project('"
-							.. project.path:gsub("\\", "/")
-							.. "')<cr>"
-					)
-
-					-- create hl group for the start of the path
-					local fb_hl = {}
-					table.insert(fb_hl, { "Comment", 0, #icon + #display_path - #project_name })
-					file_button_el.opts.hl = fb_hl
-
-					table.insert(tbl, file_button_el)
-				end
-
-				return {
-					type = "group",
-					val = tbl,
-					opts = {},
-				}
-			end
-
 			-- Layout
 			theme.config.layout = {
 				{ type = "padding", val = 4 },
 				get_header({ headers.neovim, headers.opa, headers.cat }),
 				{ type = "padding", val = 1 },
 				get_tools(),
-				{ type = "padding", val = 2 },
-				get_projects(4),
 				{ type = "padding", val = 2 },
 				get_mru(4),
 				{ type = "padding", val = 3 },

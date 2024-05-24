@@ -13,20 +13,17 @@ return {
 		{ "<space>j", "<cmd>lua require('telescope.builtin').jumplist()<cr>", desc = "Search jumplist" },
 		{ "<space>\\", "<cmd>Telescope buffers<cr>", desc = "Search buffers" },
 		{ "<space><space>", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-		{ "<space>0", "<cmd>lua require('telescope').extensions.project.project()<cr>", desc = "List projects" },
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
 		"ThePrimeagen/harpoon",
-		"nvim-telescope/telescope-project.nvim",
 	},
 	event = "VeryLazy",
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 
-		telescope.load_extension("project")
 		telescope.load_extension("ui-select")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("harpoon")
