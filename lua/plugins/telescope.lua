@@ -37,6 +37,7 @@ return {
 				find_files = {
 					theme = "dropdown",
 					previewer = false,
+					hidden = true,
 				},
 				buffers = {
 					theme = "dropdown",
@@ -45,15 +46,15 @@ return {
 			},
 			defaults = {
 				file_ignore_patterns = {
-					-- ".git/.*",
-					-- "node_modules/.*",
-					-- "vendor/.*",
-					-- ".next/.*",
-					-- "target/debug/.*",
-					-- "target/release/.*",
-					-- "src-tauri/target/.*",
-					-- "**/dist/**",
-					-- "*.min.js",
+					".git/.*",
+					"node_modules/.*",
+					"vendor/.*",
+					".next/.*",
+					"target/debug/.*",
+					"target/release/.*",
+					"src-tauri/target/.*",
+					"**/dist/**",
+					"*.min.js",
 				},
 				mappings = {
 					n = {
