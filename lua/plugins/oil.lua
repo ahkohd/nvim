@@ -4,7 +4,7 @@ return {
 	name = "oil",
 	lazy = false,
 	keys = {
-		{ "<space>o", "<cmd>lua require('oil').open()<cr>", desc = "Open Oil" },
+		{ "<space>.", "<cmd>lua require('oil').open()<cr>", desc = "Open Oil" },
 	},
 	opts = {},
 }

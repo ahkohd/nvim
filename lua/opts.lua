@@ -18,9 +18,6 @@ vim.o.shell = "zsh"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Don't redraw while executing macros (good performance config)
 -- vim.o.lazyredraw = true
 
