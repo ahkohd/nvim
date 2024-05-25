@@ -126,6 +126,12 @@ return {
 				{
 					name = "nordic.nvim",
 					colorscheme = "nordic",
+					before = [[
+            require("nordic").setup({
+               transparent_bg = true,
+               bright_border = true
+            })
+          ]],
 				},
 			},
 		})

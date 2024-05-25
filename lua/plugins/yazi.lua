@@ -24,6 +24,6 @@ return {
 	},
 	opts = {
 		open_for_directories = false,
-		yazi_floating_window_border = "none",
+		yazi_floating_window_border = "rounded",
 	},
 }
