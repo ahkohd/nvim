@@ -54,5 +54,8 @@ return {
 			"luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'",
 			{ expr = true, noremap = true, silent = true }
 		)
+
+		-- Add my snippets
+		require("core.snippets").load()
 	end,
 }
