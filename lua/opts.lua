@@ -17,6 +17,7 @@ vim.o.expandtab = true
 vim.o.shell = "zsh"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
+vim.opt.swapfile = false
 
 -- Don't redraw while executing macros (good performance config)
 -- vim.o.lazyredraw = true
