@@ -10,8 +10,6 @@ return {
 	},
 	event = "VeryLazy",
 	config = function()
-		require("luasnip.loaders.from_vscode").lazy_load()
-
 		require("cmp_luasnip")
 
 		-- press <Tab> to expand or jump in a snippet. These can also be mapped separately
