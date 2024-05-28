@@ -9,7 +9,21 @@ return {
 			desc = "Find files",
 		},
 		{ "<space>r", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Live grep" },
-		{ "<space>m", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "Search marks" },
+		{
+			"<space>ml",
+			"<cmd>lua require('telescope.builtin').marks({mark_type = 'local'})<cr>",
+			desc = "Search local marks",
+		},
+		{
+			"<space>mg",
+			"<cmd>lua require('telescope.builtin').marks({mark_type = 'global'})<cr>",
+			desc = "Search global marks",
+		},
+		{
+			"<space>ma",
+			"<cmd>lua require('telescope.builtin').marks({mark_type = 'all'})<cr>",
+			desc = "Search all marks",
+		},
 		{ "<space>j", "<cmd>lua require('telescope.builtin').jumplist()<cr>", desc = "Search jumplist" },
 		{ "<space>\\", "<cmd>Telescope buffers<cr>", desc = "Search buffers" },
 		{ "<space><space>", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
