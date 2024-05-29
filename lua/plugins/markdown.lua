@@ -1,10 +1,9 @@
 -- luacheck: globals vim
 
 return {
-	"iamcco/markdown-preview.nvim",
-	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	ft = { "markdown" },
-	build = function()
-		vim.fn["mkdp#util#install"]()
+	"henriklovhaug/Preview.nvim",
+	cmd = { "Preview" },
+	config = function()
+		require("preview").setup()
 	end,
 }
