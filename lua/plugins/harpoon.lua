@@ -9,8 +9,8 @@ return {
 	keys = {
 		{
 			"<space>hw",
-			"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-			desc = "Menu",
+			"<cmd>Telescope harpoon marks<cr>",
+			desc = "Show Harpoon picker",
 		},
 		{
 			"<space>ha",
