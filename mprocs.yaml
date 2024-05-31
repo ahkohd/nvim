@@ -1,0 +1,3 @@
+procs:
+  shell: nix develop -c zsh
+  changelog: nix develop -c npm run changelog
