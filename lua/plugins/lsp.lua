@@ -59,7 +59,6 @@ return {
 	name = "lspconfig",
 	event = "VeryLazy",
 	dependencies = {
-		"folke/neodev.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
@@ -92,10 +91,6 @@ return {
 				spacing = 4,
 				prefix = "",
 			},
-		})
-
-		require("neodev").setup({
-			library = { plugins = { "nvim-dap-ui" }, types = true },
 		})
 
 		local lsp = require("lspconfig")
