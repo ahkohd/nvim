@@ -17,8 +17,8 @@ return {
 					colorscheme = "nordic",
 					before = [[
             require("nordic").setup({
-               transparent_bg = true,
-               bright_border = true
+               transparent_bg = false,
+               bright_border = false
             })
           ]],
 				},
