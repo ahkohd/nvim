@@ -4,6 +4,7 @@ return {
 	"zaldih/themery.nvim",
 	dependencies = {
 		"AlexvZyl/nordic.nvim",
+		"rmehri01/onenord.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -18,6 +19,19 @@ return {
             require("nordic").setup({
                transparent_bg = true,
                bright_border = true
+            })
+          ]],
+				},
+				{
+					name = "onenord.nvim",
+					colorscheme = "onenord",
+					before = [[
+            require("onenord").setup({
+               disable = {
+                background = true,
+                float_background = true,
+                cursorline = true
+               },
             })
           ]],
 				},
