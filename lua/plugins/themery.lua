@@ -3,6 +3,7 @@
 return {
 	"zaldih/themery.nvim",
 	dependencies = {
+		"gbprod/nord.nvim",
 		"AlexvZyl/nordic.nvim",
 		"rmehri01/onenord.nvim",
 	},
@@ -12,6 +13,15 @@ return {
 		require("themery").setup({
 			themeConfigFile = "~/.config/nvim/lua/theme.lua",
 			themes = {
+				{
+					name = "nord.nvim",
+					colorscheme = "nord",
+					before = [[
+            require("nord").setup({
+               transparent = true
+            })
+          ]],
+				},
 				{
 					name = "nordic.nvim",
 					colorscheme = "nordic",
