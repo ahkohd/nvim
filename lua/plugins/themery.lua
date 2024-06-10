@@ -28,7 +28,7 @@ return {
 					before = [[
             require("nordic").setup({
                transparent_bg = true,
-               bright_border = true
+               bright_border = false
             })
           ]],
 				},
