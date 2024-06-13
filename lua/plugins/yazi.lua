@@ -8,7 +8,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<space>.",
+			"<space>o",
 			function()
 				require("yazi").yazi()
 			end,
