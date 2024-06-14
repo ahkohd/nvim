@@ -30,7 +30,6 @@ return {
 			function()
 				vim.cmd("TwilightEnable")
 				vim.cmd("PencilSoft")
-				vim.cmd("ZenMode")
 			end,
 			desc = "Toggle Writer mode",
 		},
