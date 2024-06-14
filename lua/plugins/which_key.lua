@@ -33,6 +33,14 @@ return {
 			l = {
 				name = "Pencil",
 			},
+			["."] = {
+				function()
+					vim.o.number = not vim.o.number
+
+					vim.o.relativenumber = not vim.o.relativenumber
+				end,
+				"Toggle line number",
+			},
 		}, { prefix = "<space>" })
 	end,
 }
