@@ -36,7 +36,7 @@ return {
 				javascriptreact = pick_web_formatter(),
 				typescriptreact = pick_web_formatter(),
 				markdown = pick_web_formatter(),
-				yaml = { "yamlfmt" },
+				-- yaml = { "yamlfmt" },
 				toml = { "taplo" },
 				lua = { "stylua" },
 				nix = { "nixfmt" },
