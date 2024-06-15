@@ -16,11 +16,6 @@ local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-	-- inlay hints
-	-- if client.server_capabilities.inlayHintProvider then
-	-- 	vim.lsp.inlay_hint(bufnr, true)
-	-- end
-
 	-- set up completion kind icons
 	local ok, protocol = pcall(require, "vim.lsp.protocol")
 	if ok then
