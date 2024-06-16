@@ -41,6 +41,12 @@ return {
 				end,
 				"Toggle line number",
 			},
+			["<tab>"] = {
+				function()
+					vim.cmd([[tab split]])
+				end,
+				"Make buffer full-screen",
+			},
 		}, { prefix = "<space>" })
 	end,
 }
