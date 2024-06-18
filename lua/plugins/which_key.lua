@@ -12,7 +12,7 @@ return {
 		wk.setup()
 		wk.register({
 			w = { "<cmd>w<cr>", "Save" },
-			Q = {
+			q = {
 				name = "+Quit",
 				q = { "<cmd>qa!<cr>", "Quit Neovim" },
 				b = {
