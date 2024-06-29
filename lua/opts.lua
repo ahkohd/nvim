@@ -10,6 +10,7 @@ vim.o.title = true
 vim.o.autoindent = true
 vim.o.hlsearch = true
 vim.o.showcmd = true
+vim.o.mouse = ""
 -- vim.o.cmdheight = 1
 vim.o.laststatus = 2
 vim.wo.scrolloff = 10
