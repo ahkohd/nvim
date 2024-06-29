@@ -18,7 +18,7 @@ return {
 					colorscheme = "nord",
 					before = [[
             require("nord").setup({
-               transparent = true
+               transparent = false
             })
           ]],
 				},
@@ -27,7 +27,7 @@ return {
 					colorscheme = "nordic",
 					before = [[
             require("nordic").setup({
-               transparent_bg = true,
+               transparent_bg = false,
                bright_border = false
             })
           ]],
@@ -40,7 +40,7 @@ return {
                disable = {
                 background = true,
                 float_background = true,
-                cursorline = true
+                cursorline = false
                },
             })
           ]],
