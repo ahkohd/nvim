@@ -38,8 +38,8 @@ return {
 					before = [[
             require("onenord").setup({
                disable = {
-                background = true,
-                float_background = true,
+                background = false,
+                float_background = false,
                 cursorline = false
                },
             })
