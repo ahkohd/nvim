@@ -1,5 +1,4 @@
-vim.o.guifont =
-	"BerkeleyMono Nerd Font Plus Font Awesome Plus Octicons Plus Codicons Plus Material Design Icons:h11:#e-subpixelantialias"
+vim.o.guifont = "GeistMono Nerd Font"
 
 vim.g.neovide_refresh_rate = 120
 
