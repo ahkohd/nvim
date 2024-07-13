@@ -62,8 +62,8 @@ return {
 		"nvim-neotest/nvim-nio",
 		{
 			"mrcjkb/rustaceanvim",
-			version = "^3",
-			ft = { "rust" },
+			version = "^4",
+			lazy = false,
 		},
 	},
 	config = function()
@@ -129,6 +129,11 @@ return {
 			tsserver = {
 				on_attach,
 			},
+			rust_analyzer = {
+				disabled = function()
+					return true
+				end,
+			},
 		}
 
 		require("mason-lspconfig").setup({
@@ -138,7 +143,6 @@ return {
 				"html",
 				"jsonls",
 				"lua_ls",
-				"rust_analyzer",
 				"tailwindcss",
 				"taplo",
 				"tsserver",
@@ -151,7 +155,9 @@ return {
 		require("mason-lspconfig").setup_handlers({
 			function(name)
 				local config = server_configs[name] or {}
+
 				local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
 				if ok then
 					local orig = vim.lsp.protocol.make_client_capabilities()
 					config.capabilities = cmp_nvim_lsp.default_capabilities(orig)
@@ -201,7 +207,7 @@ return {
 
 		-- configure DAP
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "codelldb" },
+			-- ensure_installed = { "codelldb" },
 			-- automatic_install = true,
 			handlers = {},
 		})

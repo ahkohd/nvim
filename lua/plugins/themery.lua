@@ -45,13 +45,6 @@ return {
             })
           ]],
 				},
-				{
-					name = "shaunsingh/solarized.nvim",
-					colorscheme = "solarized",
-					before = [[
-            require("solarized").set()
-          ]],
-				},
 			},
 		})
 

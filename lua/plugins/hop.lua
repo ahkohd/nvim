@@ -24,7 +24,7 @@ return {
 			desc = "Jump to the character after the target character before cursor",
 		},
 		{
-			"<space>fj",
+			"<space>sj",
 			"<cmd>lua require'hop'.hint_words()<cr>",
 			desc = "Jump to word",
 			mode = { "n", "x", "o" },

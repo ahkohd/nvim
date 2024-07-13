@@ -9,61 +9,106 @@ return {
 	end,
 	config = function()
 		local wk = require("which-key")
-		wk.setup()
-		wk.register({
-			w = { "<cmd>w<cr>", "Save" },
-			q = {
-				name = "+Quit",
-				q = { "<cmd>qa!<cr>", "Quit Neovim" },
-				b = {
-					function()
-						local bufs = vim.api.nvim_list_bufs()
 
-						local current_buf = vim.api.nvim_get_current_buf()
+		wk.add({
+			{ "<space>qq", "<cmd>qa!<cr>", desc = "Quit Neovim" },
 
-						for _, i in ipairs(bufs) do
-							if i ~= current_buf then
-								vim.api.nvim_buf_delete(i, {})
-							end
+			{
+				"<space>qb",
+				function()
+					local bufs = vim.api.nvim_list_bufs()
+
+					local current_buf = vim.api.nvim_get_current_buf()
+
+					for _, i in ipairs(bufs) do
+						if i ~= current_buf then
+							vim.api.nvim_buf_delete(i, {})
 						end
-					end,
-					"Close other buffers",
-				},
+					end
+				end,
+				desc = "Close other buffers",
 			},
-			v = { "<cmd>Themery<cr>", "Quit" },
-			s = {
-				name = "Find and Replace",
+
+			{
+				"<space>v",
+				"<cmd>Themery<cr>",
+				desc = "Change theme",
 			},
-			d = {
-				name = "Diagnostics",
-			},
-			g = { "<cmd>LazyGit<cr>", "LazyGit" },
-			b = {
-				name = "Debug",
-			},
-			t = {
-				name = "Tests",
-			},
-			x = {
-				name = "Sessions",
-			},
-			l = {
-				name = "Pencil",
-			},
-			["."] = {
+
+			{ "<space>s", group = "Find and Replace" },
+
+			{ "<space>d", group = "Diagnostics" },
+
+			{ "<space>b", group = "Debug" },
+
+			{ "<space>t", group = "Tests" },
+
+			{ "<space>l", group = "Pencil" },
+
+			{ "<space>g", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+
+			{
+				"<space>.",
+
 				function()
 					vim.o.number = not vim.o.number
 
 					vim.o.relativenumber = not vim.o.relativenumber
 				end,
-				"Toggle line number",
+
+				desc = "Toggle line number",
 			},
-			["<tab>"] = {
+
+			{
+				"<space><tab>",
+
 				function()
 					vim.cmd([[tab split]])
 				end,
-				"Make buffer full-screen",
+
+				desc = "Make buffer full-screen",
 			},
-		}, { prefix = "<space>" })
+
+			{
+				"<space>ww",
+
+				function()
+					wk.show({
+						keys = "<c-w>",
+						loop = true,
+					})
+				end,
+
+				desc = "Manage Windows",
+			},
+			{
+				"<space>wh",
+
+				"<cmd>wincmd h<cr>",
+
+				desc = "Jump to Left split",
+			},
+			{
+				"<space>wl",
+
+				"<cmd>wincmd l<cr>",
+
+				desc = "Jump to Right split",
+			},
+			{
+				"<space>wk",
+
+				"<cmd>wincmd k<cr>",
+
+				desc = "Jump to Top split",
+			},
+			{
+				"<space>wj",
+
+				"<cmd>wincmd j<cr>",
+
+				desc = "Jump to Bottom split",
+			},
+		})
 	end,
 }
