@@ -11,7 +11,13 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<space>qq", "<cmd>qa!<cr>", desc = "Quit Neovim" },
+			{ "<space>h", group = "Harpoon" },
+
+			{ "<space>m", group = "Marks" },
+
+			{ "<space>q", group = "Close" },
+
+			{ "<space>qq", "<cmd>qa!<cr>", desc = "Close Neovim" },
 
 			{
 				"<space>qb",
@@ -26,13 +32,13 @@ return {
 						end
 					end
 				end,
-				desc = "Close other buffers",
+				desc = "Close other Buffers",
 			},
 
 			{
 				"<space>v",
 				"<cmd>Themery<cr>",
-				desc = "Change theme",
+				desc = "Theme",
 			},
 
 			{ "<space>s", group = "Find and Replace" },
@@ -68,6 +74,8 @@ return {
 
 				desc = "Make buffer full-screen",
 			},
+
+			{ "<space>w", group = "Windows" },
 
 			{
 				"<space>ww",

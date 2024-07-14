@@ -14,12 +14,12 @@ return {
 			desc = "Diagnostics (Trouble)",
 		},
 		{
-			"<space>cs",
+			"<space>ds",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			desc = "Symbols (Trouble)",
 		},
 		{
-			"<space>cl",
+			"<space>dd",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 			desc = "LSP Definitions / references / ... (Trouble)",
 		},

@@ -14,7 +14,8 @@ return {
 		{ "<space>a", "<cmd>Lspsaga code_action<CR>", desc = "Show code action" },
 
 		{ "gr", "<cmd>Lspsaga rename<CR>", desc = "Rename all references" },
-		{ "gh", "<cmd>Lspsaga finder<CR>", desc = "Show references & definitions" },
+		-- { "gh", "<cmd>Lspsaga finder<CR>", desc = "Show references & definitions" },
+		{ "gh", "<cmd>Trouble lsp toggle focus=true win.type=float<cr>", desc = "Show references & definitions" },
 
 		{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
 		{ "<leader>gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
