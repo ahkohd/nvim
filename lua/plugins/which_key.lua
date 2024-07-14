@@ -19,6 +19,8 @@ return {
 
 			{ "<space>qq", "<cmd>qa!<cr>", desc = "Close Neovim" },
 
+			{ "<space>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
+
 			{
 				"<space>qb",
 				function()
