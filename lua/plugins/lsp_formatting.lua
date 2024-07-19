@@ -40,6 +40,7 @@ return {
 				toml = { "taplo" },
 				lua = { "stylua" },
 				nix = { "nixfmt" },
+				zig = { "zig fmt" },
 				["*"] = {},
 				["_"] = { "trim_whitespace" },
 			},

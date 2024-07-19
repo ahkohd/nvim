@@ -134,6 +134,9 @@ return {
 					return true
 				end,
 			},
+			zls = {
+				on_attach,
+			},
 		}
 
 		require("mason-lspconfig").setup({
@@ -149,6 +152,7 @@ return {
 				"vimls",
 				"astro",
 				"mdx_analyzer",
+				"zls",
 			},
 		})
 

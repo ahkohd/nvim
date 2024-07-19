@@ -36,6 +36,7 @@ return {
 				"markdown_inline",
 				"nix",
 				"astro",
+				"zig",
 			},
 			autotag = {
 				enable = true,
