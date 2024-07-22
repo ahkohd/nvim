@@ -17,6 +17,8 @@ return {
 
 			{ "<space>q", group = "Close" },
 
+			{ "<space>x", "<cmd>w!<cr>", desc = "Save File..." },
+
 			{ "<space>qq", "<cmd>qa!<cr>", desc = "Close Neovim" },
 
 			{ "<space>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
