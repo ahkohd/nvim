@@ -214,7 +214,7 @@ return {
 			ensure_installed = { "js", "codelldb" },
 		})
 
-		require("nvim-dap-vscode-js").setup({
+		require("dap-vscode-js").setup({
 			debugger_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/js-debug-adapter",
 			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 		})
