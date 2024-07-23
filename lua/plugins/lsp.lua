@@ -210,7 +210,7 @@ return {
 
 		-- configure DAP
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "js-debug-adapter", "codelldb" },
+			ensure_installed = { "js", "codelldb" },
 		})
 	end,
 }
