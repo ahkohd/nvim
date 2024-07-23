@@ -70,6 +70,16 @@ return {
 			},
 
 			{
+				"<space>,",
+
+				function()
+					vim.o.mouse = vim.o.mouse == "a" and "" or "a"
+				end,
+
+				desc = "Toggle Mouse support",
+			},
+
+			{
 				"<space><tab>",
 
 				function()
