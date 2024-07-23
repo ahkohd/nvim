@@ -59,6 +59,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"mfussenegger/nvim-dap",
 		"jay-babu/mason-nvim-dap.nvim",
+		"mxsdev/nvim-dap-vscode-js",
 		"nvim-neotest/nvim-nio",
 		{
 			"mrcjkb/rustaceanvim",
@@ -211,6 +212,11 @@ return {
 		-- configure DAP
 		require("mason-nvim-dap").setup({
 			ensure_installed = { "js", "codelldb" },
+		})
+
+		require("nvim-dap-vscode-js").setup({
+			debugger_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/js-debug-adapter",
+			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 		})
 	end,
 }
