@@ -178,7 +178,6 @@ return {
 
 		-- configure rustaceanvim
 		local rust_config = function()
-			-- Update this path
 			local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
 			local codelldb_path = extension_path .. "adapter/codelldb"
 			local liblldb_path = extension_path .. "lldb/lib/liblldb"
@@ -211,9 +210,7 @@ return {
 
 		-- configure DAP
 		require("mason-nvim-dap").setup({
-			-- ensure_installed = { "codelldb" },
-			-- automatic_install = true,
-			handlers = {},
+			ensure_installed = { "js-debug-adapter", "codelldb" },
 		})
 	end,
 }
