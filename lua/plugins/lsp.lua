@@ -59,7 +59,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"mfussenegger/nvim-dap",
 		"jay-babu/mason-nvim-dap.nvim",
-		"mxsdev/nvim-dap-vscode-js",
 		"nvim-neotest/nvim-nio",
 		{
 			"mrcjkb/rustaceanvim",
@@ -214,9 +213,115 @@ return {
 			ensure_installed = { "js", "codelldb" },
 		})
 
-		require("dap-vscode-js").setup({
-			debugger_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/js-debug-adapter",
-			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-		})
+		local js_dap_config = function()
+			local dap = require("dap")
+
+			local js_based_languages = { "typescript", "javascript", "typescriptreact" }
+
+			local js_debug_adapter_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+
+			dap.set_log_level("DEBUG")
+
+			for _, adapter in ipairs({ "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }) do
+				dap.adapters[adapter] = {
+					type = "server",
+					host = "localhost",
+					port = "${port}",
+					executable = {
+						command = "node",
+						args = {
+							js_debug_adapter_path .. "/js-debug/src/dapDebugServer.js",
+							"${port}",
+						},
+					},
+				}
+			end
+
+			dap.adapters["pwa-chrome"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					command = "node",
+					args = {
+						js_debug_adapter_path .. "/js-debug/src/dapDebugServer.js",
+						"${port}",
+					},
+				},
+			}
+
+			for _, language in ipairs(js_based_languages) do
+				require("dap").configurations[language] = {
+					{
+						type = "pwa-node",
+						request = "launch",
+						name = "Launch Current File (pwa-node)",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
+						skipFiles = { "<node_internals>/**" },
+						resolveSourceMapLocations = {
+							"${workspaceFolder}/**",
+							"!**/node_modules/**",
+						},
+					},
+					{
+						type = "pwa-node",
+						request = "attach",
+						name = "Attach Program (pwa-node, select pid)",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
+						processId = require("dap.utils").pick_process,
+						skipFiles = { "<node_internals>/**" },
+						resolveSourceMapLocations = {
+							"${workspaceFolder}/**",
+							"!**/node_modules/**",
+						},
+					},
+					{
+						type = "pwa-chrome",
+						request = "attach",
+						name = "Attach Program (pwa-chrome, select port)",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
+						sourceMaps = true,
+						protocol = "inspector",
+						port = function()
+							return vim.fn.input("Select port: ", 9222)
+						end,
+						webRoot = "${workspaceFolder}",
+					},
+					{
+						type = "pwa-chrome",
+						request = "launch",
+						name = 'Launch Chrome with "localhost"',
+						url = function()
+							local co = coroutine.running()
+							return coroutine.create(function()
+								vim.ui.input(
+									{ prompt = "Enter URL: ", default = "http://localhost:5173" },
+									function(url)
+										if url == nil or url == "" then
+											return
+										else
+											coroutine.resume(co, url)
+										end
+									end
+								)
+							end)
+						end,
+						webRoot = "${workspaceFolder}",
+						protocol = "inspector",
+						sourceMaps = true,
+						userDataDir = false,
+						resolveSourceMapLocations = {
+							"${workspaceFolder}/**",
+							"!**/node_modules/**",
+						},
+					},
+				}
+			end
+		end
+
+		js_dap_config()
 	end,
 }
