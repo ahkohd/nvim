@@ -17,10 +17,10 @@ return {
 		-- { "gh", "<cmd>Lspsaga finder<CR>", desc = "Show references & definitions" },
 		{ "gh", "<cmd>Trouble lsp toggle focus=true win.type=float<cr>", desc = "Show references & definitions" },
 
-		{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
-		{ "gdd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
-		{ "gt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition" },
-		{ "gtt", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go-to type definition" },
+		{ "gdd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
+		{ "gdg", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
+		{ "gtt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition" },
+		{ "gtg", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go-to type definition" },
 	},
 	config = function()
 		local saga = require("lspsaga")
