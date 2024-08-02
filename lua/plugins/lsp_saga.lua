@@ -18,9 +18,9 @@ return {
 		{ "gh", "<cmd>Trouble lsp toggle focus=true win.type=float<cr>", desc = "Show references & definitions" },
 
 		{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
-		{ "<leader>gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
+		{ "gdd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
 		{ "gt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition" },
-		{ "<leader>gt", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go-to type definition" },
+		{ "gtt", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go-to type definition" },
 	},
 	config = function()
 		local saga = require("lspsaga")
