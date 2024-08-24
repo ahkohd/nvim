@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"gbprod/nord.nvim",
 		"atmosuwiryo/vim-winteriscoming",
+		"craftzdog/solarized-osaka.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -26,8 +27,13 @@ return {
 					colorscheme = "WinterIsComing-dark-blue-color-no-italics-theme",
 				},
 				{
-					name = "winter is coming (light)",
-					colorscheme = "WinterIsComing-light-color-no-italics-theme",
+					name = "solarized-osaka",
+					colorscheme = "solarized-osaka",
+					before = [[
+            require("solarized-osaka").setup({
+               transparent = false
+            })
+          ]],
 				},
 			},
 		})
