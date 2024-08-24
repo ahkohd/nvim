@@ -4,8 +4,7 @@ return {
 	"zaldih/themery.nvim",
 	dependencies = {
 		"gbprod/nord.nvim",
-		"AlexvZyl/nordic.nvim",
-		"rmehri01/onenord.nvim",
+		"atmosuwiryo/vim-winteriscoming",
 	},
 	lazy = false,
 	priority = 1000,
@@ -23,27 +22,12 @@ return {
           ]],
 				},
 				{
-					name = "nordic.nvim",
-					colorscheme = "nordic",
-					before = [[
-            require("nordic").setup({
-               transparent_bg = false,
-               bright_border = false
-            })
-          ]],
+					name = "winter is coming (dark blue)",
+					colorscheme = "WinterIsComing-dark-blue-color-no-italics-theme",
 				},
 				{
-					name = "onenord.nvim",
-					colorscheme = "onenord",
-					before = [[
-            require("onenord").setup({
-               disable = {
-                background = false,
-                float_background = false,
-                cursorline = false
-               },
-            })
-          ]],
+					name = "winter is coming (light)",
+					colorscheme = "WinterIsComing-light-color-no-italics-theme",
 				},
 			},
 		})
