@@ -35,6 +35,19 @@ return {
             })
           ]],
 				},
+				{
+					name = "solarized-osaka (transparent)",
+					colorscheme = "solarized-osaka",
+					before = [[
+            require("solarized-osaka").setup({
+               transparent = true
+            })
+          ]],
+				},
+				{
+					name = "solarized-osaka-day",
+					colorscheme = "solarized-osaka-day",
+				},
 			},
 		})
 
