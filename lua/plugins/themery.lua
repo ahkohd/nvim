@@ -4,7 +4,6 @@ return {
 	"zaldih/themery.nvim",
 	dependencies = {
 		"gbprod/nord.nvim",
-		"atmosuwiryo/vim-winteriscoming",
 		"craftzdog/solarized-osaka.nvim",
 	},
 	lazy = false,
@@ -21,10 +20,6 @@ return {
                transparent = false
             })
           ]],
-				},
-				{
-					name = "winter is coming (dark blue)",
-					colorscheme = "WinterIsComing-dark-blue-color-no-italics-theme",
 				},
 				{
 					name = "solarized-osaka",
