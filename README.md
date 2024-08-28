@@ -1,3 +1,7 @@
+<a href="https://dotfyle.com/ahkohd/nvim"><img src="https://dotfyle.com/ahkohd/nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/ahkohd/nvim"><img src="https://dotfyle.com/ahkohd/nvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/ahkohd/nvim"><img src="https://dotfyle.com/ahkohd/nvim/badges/plugin-manager?style=flat" /></a>
+
 # github.com/ahkohd/nvim
 
 Victor Aremu's neovim config.
