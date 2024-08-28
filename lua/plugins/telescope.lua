@@ -31,7 +31,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		"ThePrimeagen/harpoon",
 	},
 	event = "VeryLazy",
 	config = function()
@@ -40,7 +39,6 @@ return {
 
 		telescope.load_extension("ui-select")
 		telescope.load_extension("neoclip")
-		telescope.load_extension("harpoon")
 
 		telescope.setup({
 			pickers = {
