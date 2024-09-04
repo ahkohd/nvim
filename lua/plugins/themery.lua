@@ -10,7 +10,6 @@ return {
 	priority = 1000,
 	config = function()
 		require("themery").setup({
-			themeConfigFile = "~/.config/nvim/lua/theme.lua",
 			themes = {
 				{
 					name = "nord.nvim",
