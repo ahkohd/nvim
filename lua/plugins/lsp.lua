@@ -152,9 +152,7 @@ return {
 					adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
 				},
 				server = {
-					on_attach = function(client, bufnr)
-						on_attach(client, bufnr)
-					end,
+					on_attach,
 				},
 			}
 		end
