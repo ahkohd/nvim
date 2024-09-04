@@ -18,8 +18,6 @@ return {
 		},
 	},
 	config = function()
-		local on_attach = require("core.utils.lsp")
-
 		require("mason").setup({
 			max_concurrent_installers = 12,
 		})
@@ -42,6 +40,8 @@ return {
 		})
 
 		local lsp = require("lspconfig")
+		local on_attach = require("core.utils.lsp").on_attach
+
 		local server_configs = {
 			vimls = {
 				on_attach,
@@ -146,13 +146,14 @@ return {
 			end
 
 			local cfg = require("rustaceanvim.config")
+			local lsp_utils = require("core.utils.lsp")
 
 			return {
 				dap = {
 					adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
 				},
 				server = {
-					on_attach,
+					on_attach = lsp_utils.on_attach,
 				},
 			}
 		end
