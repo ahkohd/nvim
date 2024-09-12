@@ -4,7 +4,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "nvim-treesitter/nvim-treesitter-context" },
+	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	config = function()
 		if not vim.g.loaded_nvim_treesitter then
 			vim.cmd([[echom "Not loaded treesitter"]])
