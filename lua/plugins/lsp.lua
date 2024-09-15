@@ -101,7 +101,7 @@ return {
 				"lua_ls",
 				"tailwindcss",
 				"taplo",
-				"tsserver",
+				"ts_ls",
 				"vimls",
 				"astro",
 				"mdx_analyzer",
