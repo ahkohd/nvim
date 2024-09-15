@@ -11,15 +11,7 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<space>h", group = "Harpoon" },
-
 			{ "<space>m", group = "Marks" },
-
-			{ "<space>q", group = "Close" },
-
-			{ "<space>x", "<cmd>w!<cr>", desc = "Save File..." },
-
-			{ "<space>qq", "<cmd>qa!<cr>", desc = "Close Neovim" },
 
 			{ "<space>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
 
@@ -87,49 +79,6 @@ return {
 				end,
 
 				desc = "Make buffer full-screen",
-			},
-
-			{ "<space>w", group = "Windows" },
-
-			{
-				"<space>ww",
-
-				function()
-					wk.show({
-						keys = "<c-w>",
-						loop = true,
-					})
-				end,
-
-				desc = "Manage Windows",
-			},
-			{
-				"<space>wh",
-
-				"<cmd>wincmd h<cr>",
-
-				desc = "Jump to Left split",
-			},
-			{
-				"<space>wl",
-
-				"<cmd>wincmd l<cr>",
-
-				desc = "Jump to Right split",
-			},
-			{
-				"<space>wk",
-
-				"<cmd>wincmd k<cr>",
-
-				desc = "Jump to Top split",
-			},
-			{
-				"<space>wj",
-
-				"<cmd>wincmd j<cr>",
-
-				desc = "Jump to Bottom split",
 			},
 		})
 	end,
