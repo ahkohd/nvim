@@ -11,7 +11,7 @@ return {
 		{ "<space>dj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to Next diagnostic" },
 
 		{ "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Show hover doc" },
-		{ "<space>a", "<cmd>Lspsaga code_action<CR>", desc = "Show code action" },
+		{ "<space>k", "<cmd>Lspsaga code_action<CR>", desc = "Show code action" },
 
 		{ "gr", "<cmd>Lspsaga rename<CR>", desc = "Rename all references" },
 		-- { "gh", "<cmd>Lspsaga finder<CR>", desc = "Show references & definitions" },
