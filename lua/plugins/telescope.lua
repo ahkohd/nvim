@@ -1,32 +1,48 @@
--- luacheck: globals vim
-
 return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
 		{
 			"<space>f",
-			"<cmd>lua require('telescope.builtin').find_files()<cr>",
+			function()
+				require("telescope.builtin").find_files()
+			end,
 			desc = "Find files",
 		},
-		{ "<space>r", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Live grep" },
 		{
-			"<space>ml",
-			"<cmd>lua require('telescope.builtin').marks({mark_type = 'local'})<cr>",
-			desc = "Search local marks",
+			"<space>r",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Live grep",
 		},
 		{
-			"<space>mg",
-			"<cmd>lua require('telescope.builtin').marks({mark_type = 'global'})<cr>",
-			desc = "Search global marks",
-		},
-		{
-			"<space>ma",
-			"<cmd>lua require('telescope.builtin').marks({mark_type = 'all'})<cr>",
+			"<space>m",
+			function()
+				require("telescope.builtin").mark({ mark_type = "all" })
+			end,
 			desc = "Search all marks",
 		},
-		{ "<space>j", "<cmd>lua require('telescope.builtin').jumplist()<cr>", desc = "Search jumplist" },
-		{ "<space>\\", "<cmd>Telescope buffers<cr>", desc = "Search buffers" },
-		{ "<space><space>", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+		{
+			"<space>j",
+			function()
+				require("telescope.builtin").jumplist({
+					initial_mode = "normal",
+				})
+			end,
+			desc = "Search jumplist",
+		},
+		{
+			"<space><space>",
+			function()
+				require("telescope.builtin").buffers({
+					sort_mru = true,
+					sort_lastused = true,
+					initial_mode = "normal",
+				})
+			end,
+			desc = "Search buffers",
+		},
+		{ "<space>\\", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -36,6 +52,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local action_layout = require("telescope.actions.layout")
 
 		telescope.load_extension("ui-select")
 		telescope.load_extension("neoclip")
@@ -46,10 +63,21 @@ return {
 					theme = "dropdown",
 					previewer = false,
 					hidden = true,
+					mappings = {
+						n = {
+							["p"] = action_layout.toggle_preview,
+						},
+					},
 				},
 				buffers = {
 					theme = "dropdown",
 					previewer = false,
+					mappings = {
+						n = {
+							["d"] = actions.delete_buffer + actions.move_to_top,
+							["p"] = action_layout.toggle_preview,
+						},
+					},
 				},
 			},
 			defaults = {
