@@ -20,6 +20,7 @@ return {
 	config = function()
 		require("mason").setup({
 			max_concurrent_installers = 12,
+			PATH = "append",
 		})
 
 		vim.api.nvim_create_user_command("LspConfigShow", function()
