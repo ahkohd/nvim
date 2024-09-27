@@ -11,7 +11,6 @@ return {
 		{ "<space>dj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to Next diagnostic" },
 
 		{ "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Show hover doc" },
-		{ "<space>k", "<cmd>Lspsaga code_action<CR>", desc = "Show code action" },
 
 		{ "gr", "<cmd>Lspsaga rename<CR>", desc = "Rename all references" },
 		-- { "gh", "<cmd>Lspsaga finder<CR>", desc = "Show references & definitions" },
@@ -21,6 +20,7 @@ return {
 		{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Go-to definition" },
 		{ "gt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type definition" },
 		{ "gT", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go-to type definition" },
+		{ "<space>x", "<cmd>Lspsaga outline<CR>", desc = "Show outline" },
 	},
 	config = function()
 		local saga = require("lspsaga")
