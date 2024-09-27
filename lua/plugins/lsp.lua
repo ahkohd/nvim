@@ -90,6 +90,9 @@ return {
 			zls = {
 				on_attach,
 			},
+			marksman = {
+				on_attach,
+			},
 		}
 
 		require("mason-lspconfig").setup({
@@ -106,6 +109,7 @@ return {
 				"astro",
 				"mdx_analyzer",
 				"zls",
+				"marksman",
 			},
 		})
 
