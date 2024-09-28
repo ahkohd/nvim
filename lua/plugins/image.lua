@@ -1,6 +1,6 @@
 return {
 	"3rd/image.nvim",
-	event = "VeryLazy",
+	cmd = "Image",
 	config = function()
 		require("image").setup({
 			backend = "kitty",
@@ -9,7 +9,7 @@ return {
 					enabled = true,
 					clear_in_insert_mode = true,
 					download_remote_images = true,
-					only_render_image_at_cursor = true,
+					only_render_image_at_cursor = false,
 					filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
 				},
 				neorg = {
