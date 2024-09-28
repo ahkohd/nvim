@@ -15,6 +15,10 @@ return {
 		},
 	},
 	config = function()
-		require("tiny-code-action").setup()
+		require("tiny-code-action").setup({
+			telescope_opts = {
+				initial_mode = "normal",
+			},
+		})
 	end,
 }
