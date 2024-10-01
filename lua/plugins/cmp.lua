@@ -11,6 +11,7 @@ return {
 		"hrsh7th/cmp-buffer",
 		"onsails/lspkind-nvim",
 		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
 		if not vim.fn.exists("g:loaded_cmp") then
@@ -85,5 +86,7 @@ return {
 		})
 
 		vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
+
+		require("cmp_luasnip")
 	end,
 }

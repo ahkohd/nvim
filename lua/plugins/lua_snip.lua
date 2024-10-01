@@ -3,14 +3,10 @@
 return {
 	"L3MON4D3/LuaSnip",
 	version = "v2.*",
+	dependencies = { "rafamadriz/friendly-snippets" },
 	build = "make install_jsregexp",
-	dependencies = {
-		"saadparwaiz1/cmp_luasnip",
-	},
 	event = "VeryLazy",
 	config = function()
-		require("cmp_luasnip")
-
 		-- press <Tab> to expand or jump in a snippet. These can also be mapped separately
 		-- via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
 		vim.api.nvim_set_keymap(
@@ -56,5 +52,7 @@ return {
 
 		-- Add my snippets
 		require("core.snippets").load()
+
+		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 }
