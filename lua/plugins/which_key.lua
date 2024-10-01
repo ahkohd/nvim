@@ -43,8 +43,6 @@ return {
 
 			{ "<space>b", group = "Debug" },
 
-			{ "<space>t", group = "Tests" },
-
 			{ "<space>l", group = "Pencil" },
 
 			{ "<space>g", "<cmd>LazyGit<cr>", desc = "LazyGit" },
@@ -79,6 +77,67 @@ return {
 				end,
 
 				desc = "Make buffer full-screen",
+			},
+
+			{ "<space>t", group = "Tests" },
+
+			{
+				"<space>tt",
+				function()
+					require("neotest").run.run()
+				end,
+				desc = "Run the nearest test",
+			},
+			{
+				"<space>tf",
+				function()
+					require("neotest").run.run(vim.fn.expand("%"))
+				end,
+				desc = "Run all tests current file",
+			},
+			{
+				"<space>tT",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				desc = "Debug the nearest test",
+			},
+			{
+				"<space>ts",
+				function()
+					require("neotest").run.stop()
+				end,
+				desc = "Stop the nearest test",
+			},
+			{
+				"<space>ta",
+				function()
+					require("neotest").run.attach()
+				end,
+				desc = "Attach to the nearest test",
+			},
+			{
+				"<leader>tl",
+				function()
+					require("neotest").run.run_last()
+				end,
+				desc = "Run the last test",
+			},
+			{
+				"<leader>tL",
+				function()
+					require("neotest").run.run_last({ strategy = "dap" })
+				end,
+				desc = "Debug the last test",
+			},
+			{
+				"<leader>tw",
+				function()
+					require("neotest").run.run({
+						jestCommand = "jest --watch",
+					})
+				end,
+				desc = "Run Watch (jest)",
 			},
 		})
 	end,

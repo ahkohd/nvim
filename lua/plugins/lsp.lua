@@ -10,12 +10,21 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"mfussenegger/nvim-dap",
 		"jay-babu/mason-nvim-dap.nvim",
-		"nvim-neotest/nvim-nio",
 		{
 			"mrcjkb/rustaceanvim",
-			version = "^4",
+			version = "^5",
 			lazy = false,
 		},
+		-- neotest
+		"nvim-neotest/neotest",
+		"nvim-neotest/nvim-nio",
+		"nvim-lua/plenary.nvim",
+		"antoinemadec/FixCursorHold.nvim",
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-neotest/neotest-vim-test",
+		"nvim-neotest/neotest-jest",
+		"marilari88/neotest-vitest",
+		"lawrence-laz/neotest-zig",
 	},
 	config = function()
 		require("mason").setup({
@@ -280,5 +289,32 @@ return {
 		end
 
 		js_dap_config()
+
+		require("neotest").setup({
+			adapters = {
+				require("neotest-vim-test")({
+					ignore_file_types = { "python", "vim", "lua" },
+				}),
+
+				require("neotest-jest")({
+					jestCommand = "npm test --",
+					jestConfigFile = "custom.jest.config.ts",
+					env = { CI = true },
+					cwd = function()
+						return vim.fn.getcwd()
+					end,
+				}),
+			},
+
+			require("neotest-vitest"),
+
+			require("rustaceanvim.neotest"),
+
+			require("neotest-zig")({
+				dap = {
+					adapter = "codelldb",
+				},
+			}),
+		})
 	end,
 }
