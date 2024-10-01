@@ -5,8 +5,12 @@ return {
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
 		"onsails/lspkind-nvim",
+		"L3MON4D3/LuaSnip",
 	},
 	config = function()
 		if not vim.fn.exists("g:loaded_cmp") then
@@ -57,10 +61,13 @@ return {
 				end),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
 				{ name = "path" },
-				{ name = "buffer" },
+				{ name = "luasnip" },
+				{ name = "nvim_lsp", keyword_length = 1 },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lua", keyword_length = 1 },
+				{ name = "buffer", keyword_length = 2 },
+				{ name = "calc" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
