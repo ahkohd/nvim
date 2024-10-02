@@ -168,6 +168,11 @@ return {
 				},
 				server = {
 					on_attach = lsp_utils.on_attach,
+					default_settings = {
+						["rust-analyzer"] = {
+							checkOnSave = false,
+						},
+					},
 				},
 			}
 		end
