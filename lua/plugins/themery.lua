@@ -3,8 +3,8 @@
 return {
 	"zaldih/themery.nvim",
 	dependencies = {
-		"gbprod/nord.nvim",
 		"craftzdog/solarized-osaka.nvim",
+		"lunacookies/vim-colors-xcode",
 	},
 	lazy = false,
 	priority = 1000,
@@ -12,13 +12,12 @@ return {
 		require("themery").setup({
 			themes = {
 				{
-					name = "nord.nvim",
-					colorscheme = "nord",
-					before = [[
-            require("nord").setup({
-               transparent = false
-            })
-          ]],
+					name = "xcode-dark",
+					colorscheme = "xcodedark",
+				},
+				{
+					name = "xcode-light",
+					colorscheme = "xcodelight",
 				},
 				{
 					name = "solarized-osaka",
