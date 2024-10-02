@@ -1,3 +1,5 @@
+-- luacheck: globals vim
+
 return {
 	"rachartier/tiny-code-action.nvim",
 	dependencies = {
@@ -9,7 +11,13 @@ return {
 		{
 			"<space>k",
 			function()
-				require("tiny-code-action").code_action()
+				local utils = require("core.utils.buffer")
+
+				if utils.filetype() == "rust" then
+					vim.cmd.RustLsp("codeAction")
+				else
+					require("tiny-code-action").code_action()
+				end
 			end,
 			desc = "Show code action",
 		},

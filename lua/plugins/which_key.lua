@@ -117,27 +117,120 @@ return {
 				desc = "Attach to the nearest test",
 			},
 			{
-				"<leader>tl",
+				"<space>tl",
 				function()
 					require("neotest").run.run_last()
 				end,
 				desc = "Run the last test",
 			},
 			{
-				"<leader>tL",
+				"<space>tL",
 				function()
 					require("neotest").run.run_last({ strategy = "dap" })
 				end,
 				desc = "Debug the last test",
 			},
 			{
-				"<leader>tw",
+				"<space>tw",
 				function()
 					require("neotest").run.run({
 						jestCommand = "jest --watch",
 					})
 				end,
 				desc = "Run Watch (jest)",
+			},
+
+			{
+				"<space>i",
+				group = "Rust",
+			},
+
+			{
+				"<space>if",
+				function()
+					vim.cmd.RustLsp("flyCheck")
+				end,
+				desc = "Run fly check",
+			},
+
+			{
+				"<space>iF",
+				function()
+					vim.cmd.RustLsp("flyCheck", "clear")
+				end,
+				desc = "Clear fly check",
+			},
+
+			{
+				"<space>ix",
+				function()
+					vim.cmd.RustLsp("flyCheck", "cancel")
+				end,
+				desc = "Cancel fly check",
+			},
+
+			{
+				"<space>im",
+				function()
+					vim.cmd.RustLsp("expandMacro")
+				end,
+				desc = "Expand macro",
+			},
+
+			{
+				"<space>ir",
+				function()
+					vim.cmd.RustLsp("rebuildProcMacros")
+				end,
+				desc = "Rebuild proc macros",
+			},
+
+			{
+				"<space>ij",
+				function()
+					vim.cmd.RustLsp("moveItem", "down")
+				end,
+				desc = "Move item down",
+			},
+
+			{
+				"<space>ik",
+				function()
+					vim.cmd.RustLsp("moveItem", "up")
+				end,
+				desc = "Move item up",
+			},
+
+			{
+				"<space>ia",
+				function()
+					vim.cmd.RustLsp("hover", "range")
+				end,
+				desc = "Hover range",
+			},
+
+			{
+				"<space>ie",
+				function()
+					vim.cmd.RustLsp("explainError", "current")
+				end,
+				desc = "Explain error",
+			},
+
+			{
+				"<space>io",
+				function()
+					vim.cmd.RustLsp("openCargo")
+				end,
+				desc = "Open Cargo.toml",
+			},
+
+			{
+				"<space>id",
+				function()
+					vim.cmd.RustLsp("openDocs")
+				end,
+				desc = "Open docs for symbol under cursor",
 			},
 		})
 	end,
