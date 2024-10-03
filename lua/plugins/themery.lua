@@ -3,12 +3,15 @@
 return {
 	"zaldih/themery.nvim",
 	dependencies = {
-		"craftzdog/solarized-osaka.nvim",
 		"lunacookies/vim-colors-xcode",
 	},
 	lazy = false,
 	priority = 1000,
 	config = function()
+		-- xcodedark configuration options
+		vim.g.xcodedark_green_comments = 1
+		vim.g.xcodedark_match_paren_style = 1
+
 		require("themery").setup({
 			themes = {
 				{
@@ -19,31 +22,17 @@ return {
 					name = "xcode-light",
 					colorscheme = "xcodelight",
 				},
-				{
-					name = "solarized-osaka",
-					colorscheme = "solarized-osaka",
-					before = [[
-            require("solarized-osaka").setup({
-               transparent = false
-            })
-          ]],
-				},
-				{
-					name = "solarized-osaka (transparent)",
-					colorscheme = "solarized-osaka",
-					before = [[
-            require("solarized-osaka").setup({
-               transparent = true
-            })
-          ]],
-				},
-				{
-					name = "solarized-osaka-day",
-					colorscheme = "solarized-osaka-day",
-				},
 			},
 		})
 
 		require("theme")
+
+		-- xcode lsp saga fix
+		vim.api.nvim_set_hl(0, "SagaNormal", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "SagaBorder", { link = "Normal" })
+
+		-- xcode which key fix
+		vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "Pmenu" })
+		vim.api.nvim_set_hl(0, "WhichKeyBorder", { link = "Pmenu" })
 	end,
 }
