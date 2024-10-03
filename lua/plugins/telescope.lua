@@ -1,6 +1,15 @@
+-- luacheck: globals vim
+
 return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
+		{
+			"<space>a",
+			function()
+				vim.cmd("Telescope")
+			end,
+			desc = "Telescope",
+		},
 		{
 			"<space>f",
 			function()
