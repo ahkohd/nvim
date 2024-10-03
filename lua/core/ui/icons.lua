@@ -1,6 +1,6 @@
 local M = {}
 
-M.git = ""
+M.git = ""
 M.error = " "
 M.warn = " "
 M.info = " "
