@@ -30,6 +30,13 @@ return {
 			cond = hide_in_width,
 		}
 
+		local filetype = {
+			"filetype",
+			icon_only = true,
+			colored = false,
+			cond = hide_in_width,
+		}
+
 		local branch = {
 			"branch",
 			icon = icons.git,
@@ -67,7 +74,7 @@ return {
 		local opts = {
 			options = {
 				icons_enabled = true,
-				theme = nil,
+				theme = require("lualine.xcodedark"),
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = disable,
@@ -76,7 +83,7 @@ return {
 				globalstatus = true,
 			},
 			sections = {
-				lualine_a = { "filename" },
+				lualine_a = { filetype, "filename" },
 				lualine_b = { branch },
 				lualine_c = { diff },
 				lualine_x = { lsp_progress, language_server },
