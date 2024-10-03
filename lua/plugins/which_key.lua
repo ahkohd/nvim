@@ -226,6 +226,14 @@ return {
 			},
 
 			{
+				"<space>ip",
+				function()
+					vim.cmd.RustLsp("parentModule")
+				end,
+				desc = "Jump to Parent Module",
+			},
+
+			{
 				"<space>id",
 				function()
 					vim.cmd.RustLsp("openDocs")
