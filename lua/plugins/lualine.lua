@@ -24,23 +24,6 @@ return {
 			return vim.fn.winwidth(0) > 80
 		end
 
-		local space = {
-			" ",
-		}
-
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = {
-				error = icons.error .. " ",
-				warn = icons.warn .. " ",
-			},
-			colored = false,
-			padding = 0,
-			update_in_insert = false,
-		}
-
 		local diff = {
 			"diff",
 			colored = false,
@@ -52,22 +35,19 @@ return {
 			icon = icons.git,
 		}
 
-		local filetype = {
-			"filetype",
-			icon_only = true,
-			colored = false,
-			cond = hide_in_width,
-		}
-
 		local function lsp_client_names()
 			local clients = vim.lsp.get_active_clients()
+
 			if next(clients) == nil then
 				return ""
 			end
+
 			local client_names = {}
+
 			for _, client in pairs(clients) do
 				table.insert(client_names, client.name)
 			end
+
 			return table.concat(client_names, ", ")
 		end
 
@@ -87,7 +67,8 @@ return {
 		local opts = {
 			options = {
 				icons_enabled = true,
-				theme = "auto",
+				theme = nil,
+				-- theme = "auto",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = disable,
@@ -96,11 +77,11 @@ return {
 				globalstatus = true,
 			},
 			sections = {
-				lualine_a = { filetype, "filename" },
+				lualine_a = { "filename" },
 				lualine_b = { branch },
-				lualine_c = { space, diff, diagnostics },
+				lualine_c = { diff },
 				lualine_x = { lsp_progress, language_server },
-				lualine_y = { "progress" },
+				lualine_y = {},
 				lualine_z = { "location" },
 			},
 			inactive_sections = {
