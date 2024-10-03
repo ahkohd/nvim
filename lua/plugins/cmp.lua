@@ -73,16 +73,16 @@ return {
 			formatting = {
 				format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
 			},
-			window = {
-				documentation = {
-					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					winhighlight = "FloatBorder:CmpPmenuBorder",
-				},
-				completion = {
-					border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-					winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
-				},
-			},
+			-- window = {
+			-- 	documentation = {
+			-- 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			-- 		winhighlight = "FloatBorder:CmpPmenuBorder",
+			-- 	},
+			-- 	completion = {
+			-- 		border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+			-- 		winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			-- 	},
+			-- },
 		})
 
 		vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])

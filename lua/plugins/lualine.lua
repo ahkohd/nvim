@@ -68,7 +68,6 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = nil,
-				-- theme = "auto",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = disable,
