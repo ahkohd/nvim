@@ -11,13 +11,7 @@ return {
 		{
 			"<space>k",
 			function()
-				local utils = require("core.utils.buffer")
-
-				if utils.filetype() == "rust" then
-					vim.cmd.RustLsp("codeAction")
-				else
-					require("tiny-code-action").code_action()
-				end
+				require("tiny-code-action").code_action()
 			end,
 			desc = "Show code action",
 		},
