@@ -83,7 +83,7 @@ return {
 					previewer = false,
 					mappings = {
 						n = {
-							["d"] = actions.delete_buffer + actions.move_to_top,
+							["d"] = actions.delete_buffer,
 							["p"] = action_layout.toggle_preview,
 						},
 					},
