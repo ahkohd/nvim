@@ -50,6 +50,7 @@ return {
 		})
 
 		local lsp = require("lspconfig")
+
 		local on_attach = require("core.utils.lsp").on_attach
 
 		local server_configs = {
