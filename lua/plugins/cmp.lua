@@ -9,7 +9,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
-		"onsails/lspkind-nvim",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 	},
@@ -21,7 +20,6 @@ return {
 		vim.o.completeopt = "menuone,noinsert,noselect"
 
 		local cmp = require("cmp")
-		local lspkind = require("lspkind")
 
 		local has_words_before = function()
 			if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -70,19 +68,6 @@ return {
 				{ name = "buffer", keyword_length = 2 },
 				{ name = "calc" },
 			}),
-			formatting = {
-				format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
-			},
-			-- window = {
-			-- 	documentation = {
-			-- 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			-- 		winhighlight = "FloatBorder:CmpPmenuBorder",
-			-- 	},
-			-- 	completion = {
-			-- 		border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-			-- 		winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
-			-- 	},
-			-- },
 		})
 
 		vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
