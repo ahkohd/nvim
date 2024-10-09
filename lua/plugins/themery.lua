@@ -31,6 +31,10 @@ return {
 		vim.api.nvim_set_hl(0, "SagaNormal", { link = "Normal" })
 		vim.api.nvim_set_hl(0, "SagaBorder", { link = "Normal" })
 
+		-- xcode trouble fix
+		vim.api.nvim_set_hl(0, "TroubleNormal", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "TroubleNormalNC", { link = "Pmenu" })
+
 		-- xcode which key fix
 		vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "Pmenu" })
 		vim.api.nvim_set_hl(0, "WhichKeyBorder", { link = "Pmenu" })

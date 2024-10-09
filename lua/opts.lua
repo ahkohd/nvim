@@ -32,9 +32,6 @@ vim.g.loaded_netrwPlugin = 0
 -- Ignore case when searching
 vim.o.ignorecase = true
 
--- Be smart when using tabs
-vim.o.smarttab = true
-
 -- Indents and other settings
 vim.cmd("filetype plugin indent on")
 vim.o.shiftwidth = 2

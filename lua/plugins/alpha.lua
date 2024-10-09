@@ -7,9 +7,13 @@ return {
 		event = "VimEnter",
 		config = function()
 			local headers = require("core.ui.alpha.headers")
+
 			local quotes = require("core.ui.alpha.quotes")
+
 			local theme = require("alpha.themes.theta")
+
 			local path_ok = pcall(require, "plenary.path")
+
 			if not path_ok then
 				return
 			end
@@ -17,12 +21,10 @@ return {
 			math.randomseed(os.time())
 
 			local function apply_gradient_hl(text)
-				-- no clown fiesta
-				-- local gradient = require("core.ui.alpha.utils").create_gradient("#E1E1E1", "#202020", #text)
-				-- embark
 				local gradient = require("core.ui.alpha.utils").create_gradient("#91ddff", "#cbe3e7", #text)
 
 				local lines = {}
+
 				for i, line in ipairs(text) do
 					local tbl = {
 						type = "text",
@@ -33,6 +35,7 @@ return {
 							position = "center",
 						},
 					}
+
 					table.insert(lines, tbl)
 
 					-- create hl group
@@ -48,6 +51,7 @@ return {
 
 			local function get_header(list)
 				local header_text = list[math.random(#list)]
+
 				return apply_gradient_hl(header_text)
 			end
 
@@ -58,8 +62,10 @@ return {
 				local max_width = width or 35
 
 				local tbl = {}
+
 				for _, text in ipairs(quote_text) do
 					local padded_text = require("core.ui.alpha.utils").pad_string(text, max_width, "right")
+
 					table.insert(
 						tbl,
 						{ type = "text", val = padded_text, opts = { hl = "Comment", position = "center" } }
