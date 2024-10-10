@@ -31,12 +31,6 @@ return {
 				desc = "Close other Buffers",
 			},
 
-			{
-				"<space>v",
-				"<cmd>Themery<cr>",
-				desc = "Theme",
-			},
-
 			{ "<space>s", group = "Find and Replace" },
 
 			{ "<space>d", group = "Diagnostics" },

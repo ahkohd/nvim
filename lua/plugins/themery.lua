@@ -3,40 +3,39 @@
 return {
 	"zaldih/themery.nvim",
 	dependencies = {
-		"lunacookies/vim-colors-xcode",
+		"folke/tokyonight.nvim",
 	},
 	lazy = false,
 	priority = 1000,
+	keys = {
+		{
+			"<space>v",
+			"<cmd>Themery<cr>",
+			desc = "Theme",
+		},
+	},
 	config = function()
-		-- xcodedark configuration options
-		vim.g.xcodedark_green_comments = 1
-		vim.g.xcodedark_match_paren_style = 1
-
 		require("themery").setup({
 			themes = {
 				{
-					name = "xcode-dark",
-					colorscheme = "xcodedark",
+					name = "tokyonight-moon",
+					colorscheme = "tokyonight-moon",
 				},
 				{
-					name = "xcode-light",
-					colorscheme = "xcodelight",
+					name = "tokyonight-storm",
+					colorscheme = "tokyonight-storm",
+				},
+				{
+					name = "tokyonight-night",
+					colorscheme = "tokyonight-night",
+				},
+				{
+					name = "tokyonight-day",
+					colorscheme = "tokyonight-day",
 				},
 			},
 		})
 
-		require("theme")
-
-		-- xcode lsp saga fix
-		vim.api.nvim_set_hl(0, "SagaNormal", { link = "Normal" })
-		vim.api.nvim_set_hl(0, "SagaBorder", { link = "Normal" })
-
-		-- xcode trouble fix
-		vim.api.nvim_set_hl(0, "TroubleNormal", { link = "Normal" })
-		vim.api.nvim_set_hl(0, "TroubleNormalNC", { link = "Pmenu" })
-
-		-- xcode which key fix
-		vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "Pmenu" })
-		vim.api.nvim_set_hl(0, "WhichKeyBorder", { link = "Pmenu" })
+		vim.cmd("colorscheme tokyonight-storm")
 	end,
 }
