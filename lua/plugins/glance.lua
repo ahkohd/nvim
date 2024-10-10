@@ -3,7 +3,7 @@
 return {
 	"dnlhc/glance.nvim",
 	event = "VeryLazy",
-	es = {
+	keys = {
 		{ "gd", "<cmd>Glance definitions<CR>", desc = "Peek definitions" },
 		{
 			"gD",

@@ -7,11 +7,11 @@ M.root_dir = function()
 end
 
 M.root_file = function(files)
-  local dirname = vim.fn.expand("%:p:h")
-  local found = vim.fs.find(files, { upward = true, path = dirname })[1]
-  if found then
-    return vim.fs.dirname(found)
-  end
+	local dirname = vim.fn.expand("%:p:h")
+	local found = vim.fs.find(files, { upward = true, path = dirname })[1]
+	if found then
+		return vim.fs.dirname(found)
+	end
 end
 
 M.cwd_to_root_dir = function()
