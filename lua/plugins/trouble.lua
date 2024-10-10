@@ -14,11 +14,6 @@ return {
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{
-			"<space>d",
-			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-			desc = "Buffer Diagnostics (Trouble)",
-		},
-		{
 			"<space>cs",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			desc = "Symbols (Trouble)",
