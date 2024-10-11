@@ -16,9 +16,9 @@ return {
 		{
 			"gR",
 			function()
-				vim.lsp.buf.references()
+				vim.lsp.buf.rename()
 			end,
-			desc = "Jump to reference",
+			desc = "Rename symbol",
 		},
 		{ "gt", "<cmd>Glance type_definitions<CR>", desc = "Peek type definitions" },
 		{

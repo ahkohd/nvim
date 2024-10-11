@@ -11,8 +11,6 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<space>m", group = "Marks" },
-
 			{ "<space>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
 
 			{
@@ -31,6 +29,10 @@ return {
 				desc = "Close other Buffers",
 			},
 
+			{ "<space>q", group = "Close" },
+
+			{ "<space>c", group = "Document Info" },
+
 			{ "<space>s", group = "Find and Replace" },
 
 			{ "<space>d", group = "Diagnostics" },
@@ -38,8 +40,6 @@ return {
 			{ "<space>b", group = "Debug" },
 
 			{ "<space>l", group = "Pencil" },
-
-			{ "<space>g", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 
 			{
 				"<space>.",

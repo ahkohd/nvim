@@ -18,13 +18,6 @@ return {
 			desc = "Live grep",
 		},
 		{
-			"<space>m",
-			function()
-				require("telescope.builtin").mark({ mark_type = "all" })
-			end,
-			desc = "Search all marks",
-		},
-		{
 			"<space>j",
 			function()
 				require("telescope.builtin").jumplist({
@@ -45,6 +38,13 @@ return {
 			desc = "Search buffers",
 		},
 		{ "<space>\\", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+		{
+			"<space>m",
+			function()
+				vim.cmd("Telescope marks")
+			end,
+			desc = "Toggle marks",
+		},
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",

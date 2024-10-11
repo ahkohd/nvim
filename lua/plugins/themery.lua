@@ -11,7 +11,7 @@ return {
 		{
 			"<space>v",
 			"<cmd>Themery<cr>",
-			desc = "Theme",
+			desc = "Toggle theme picker",
 		},
 	},
 	config = function()

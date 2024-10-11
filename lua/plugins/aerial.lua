@@ -29,11 +29,21 @@ return {
 	},
 	keys = {
 		{
-			"<space>a",
+			"<space>cs",
 			function()
 				vim.cmd("AerialToggle! left")
 			end,
-			desc = "Toggle Document Symbols",
+			desc = "Toggle Buffer Symbols",
+		},
+		{
+			"<space>cl",
+			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+			desc = "LSP Definitions / references / ... (Trouble)",
+		},
+		{
+			"<space>cx",
+			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+			desc = "Buffer Diagnostics (Trouble)",
 		},
 	},
 }
