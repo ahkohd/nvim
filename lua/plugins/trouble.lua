@@ -2,27 +2,38 @@
 
 return {
 	"folke/trouble.nvim",
-	opts = {},
+	opts = {
+		modes = {
+			preview_float = {
+				mode = "diagnostics",
+				preview = {
+					type = "float",
+					relative = "editor",
+					border = "rounded",
+					title = "Preview",
+					title_pos = "center",
+					position = { 0, -2 },
+					size = { width = 0.5, height = 0.5 },
+					zindex = 200,
+				},
+			},
+		},
+	},
 	cmd = "Trouble",
 	keys = {
 		{
 			"<space>cx",
-			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+			"<cmd>Trouble preview_float toggle focus=true filter.buf=0<cr>",
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{
-			"<space>cX",
-			"<cmd>Trouble diagnostics toggle<cr>",
+			"<space>cl",
+			"<cmd>Trouble preview_float toggle focus=true<cr>",
 			desc = "Diagnostics (Trouble)",
 		},
 		{
-			"<space>cl",
-			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-			desc = "LSP Definitions / references / ... (Trouble)",
-		},
-		{
 			"<space>cs",
-			"<cmd>Trouble lsp_document_symbols focus=false win.position=right<cr>",
+			"<cmd>Trouble symbols focus=true win.type=float<cr>",
 			desc = "Toggle Buffer Symbols",
 		},
 	},

@@ -73,6 +73,14 @@ return {
 				desc = "Make buffer full-screen",
 			},
 
+			{
+				"<space>'",
+
+				"<cmd>TogglePencil<cr>",
+
+				desc = "Toggle text wrap",
+			},
+
 			{ "<space>t", group = "Tests" },
 
 			{
