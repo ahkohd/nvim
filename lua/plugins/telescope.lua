@@ -33,6 +33,7 @@ return {
 					sort_mru = true,
 					sort_lastused = true,
 					initial_mode = "normal",
+					previewer = true,
 				})
 			end,
 			desc = "Search buffers",
