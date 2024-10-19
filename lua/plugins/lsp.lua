@@ -14,6 +14,7 @@ return {
 			version = "^5",
 			lazy = false,
 		},
+
 		-- neotest
 		"nvim-neotest/neotest",
 		"nvim-neotest/nvim-nio",
@@ -24,6 +25,9 @@ return {
 		"nvim-neotest/neotest-jest",
 		"marilari88/neotest-vitest",
 		"lawrence-laz/neotest-zig",
+
+		-- comment out if not using nvim-cmp
+		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		require("mason").setup({
@@ -48,16 +52,8 @@ return {
 			},
 		})
 
-		local lsp = require("lspconfig")
-
-		local on_attach = require("core.utils.lsp").on_attach
-
 		local server_configs = {
-			vimls = {
-				on_attach,
-			},
 			lua_ls = {
-				on_attach,
 				settings = {
 					Lua = {
 						runtime = { version = "LuaJIT" },
@@ -70,14 +66,7 @@ return {
 					},
 				},
 			},
-			css_ls = {
-				on_attach,
-			},
-			cssmodules_ls = {
-				on_attach,
-			},
 			biome = {
-				on_attach,
 				-- disable LSP if biome.json is not found
 				disabled = function()
 					local root_dir = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
@@ -89,53 +78,61 @@ return {
 					end
 				end,
 			},
-			tsserver = {
-				on_attach,
-			},
-			rust_analyzer = {
-				disabled = function()
-					return true
-				end,
-			},
-			zls = {
-				on_attach,
-			},
-			marksman = {
-				on_attach,
+			ts_ls = {
+				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+				},
+				init_options = {
+					hostInfo = "neovim",
+				},
+				single_file_support = true,
+				settings = {
+					completions = {
+						completeFunctionCalls = true,
+					},
+				},
 			},
 		}
 
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"biome",
-				"custom_elements_ls",
 				"html",
 				"jsonls",
 				"lua_ls",
+				"cssls",
+				"cssmodules_ls",
 				"tailwindcss",
 				"taplo",
-				"ts_ls",
 				"vimls",
 				"astro",
-				"mdx_analyzer",
 				"zls",
 				"marksman",
 			},
-		})
+			handlers = {
+				function(server_name)
+					local config = server_configs[server_name] or {}
 
-		require("mason-lspconfig").setup_handlers({
-			function(name)
-				local config = server_configs[name] or {}
+					-- disable LSP if disabled() returns true
+					if config.disabled and config.disabled() then
+						return
+					end
 
-				-- disable LSP if disabled() returns true
-				if config.disabled and config.disabled() then
-					return
-				end
+					local utils = require("core.utils.lsp")
 
-				config.capabilities = vim.lsp.protocol.make_client_capabilities()
+					config.on_attach = utils.on_attach
 
-				lsp[name].setup(config)
-			end,
+					config.capabilities = utils.capabilities()
+
+					require("lspconfig")[server_name].setup(config)
+				end,
+			},
 		})
 
 		-- configure rustaceanvim
