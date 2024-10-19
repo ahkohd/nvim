@@ -7,7 +7,6 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
-		"hrsh7th/cmp-nvim-lsp",
 		"mfussenegger/nvim-dap",
 		"jay-babu/mason-nvim-dap.nvim",
 		{
@@ -128,17 +127,12 @@ return {
 			function(name)
 				local config = server_configs[name] or {}
 
-				local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-
-				if ok then
-					local orig = vim.lsp.protocol.make_client_capabilities()
-					config.capabilities = cmp_nvim_lsp.default_capabilities(orig)
-				end
-
 				-- disable LSP if disabled() returns true
 				if config.disabled and config.disabled() then
 					return
 				end
+
+				config.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 				lsp[name].setup(config)
 			end,
