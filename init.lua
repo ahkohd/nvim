@@ -1,2 +1,2 @@
-require("opts")
-require("plugin_manager")
+require("config.opts")
+require("config.lazy")

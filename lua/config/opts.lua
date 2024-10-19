@@ -68,4 +68,4 @@ vim.g["pencil#conceallevel"] = 2
 -- register command that calls a lua function
 vim.cmd("command! -nargs=0 ProjectRoot lua require('core.utils.project').cwd_to_root_dir_of_current_buffer()")
 
-require("remaps")
+require("config.remaps")
