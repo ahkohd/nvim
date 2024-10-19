@@ -7,7 +7,6 @@ vim.wo.number = true
 vim.o.fileencodings = "utf-8,sjis,euc-jp,latin"
 vim.o.encoding = "utf-8"
 vim.o.title = true
-vim.o.autoindent = true
 vim.o.hlsearch = true
 vim.o.showcmd = true
 vim.o.mouse = ""
@@ -32,12 +31,8 @@ vim.g.loaded_netrwPlugin = 0
 -- Ignore case when searching
 vim.o.ignorecase = true
 
--- Indents and other settings
-vim.cmd("filetype plugin indent on")
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
-vim.o.ai = true -- Auto indent
-vim.o.si = true -- Smart indent
 vim.o.wrap = false -- No wrap lines
 vim.o.backspace = "start,eol,indent"
 
