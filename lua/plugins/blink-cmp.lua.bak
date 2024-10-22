@@ -18,7 +18,7 @@ return {
 		-- experimental signature help support
 		trigger = {
 			completion = {
-				keyword_range = "full",
+				keyword_range = "prefix",
 			},
 			signature_help = { enabled = true },
 		},
