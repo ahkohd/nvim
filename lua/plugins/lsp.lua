@@ -98,6 +98,22 @@ return {
 					},
 				},
 			},
+			nixd = {
+				nixpkgs = {
+					expr = "import <nixpkgs> { }",
+				},
+				formatting = {
+					command = { "nixfmt" },
+				},
+				options = {
+					nixos = {
+						expr = '(builtins.getFlake "/home/var/.dotfiles").nixosConfigurations.nixos.options',
+					},
+					home_manager = {
+						expr = '(builtins.getFlake "/home/var/.dotfiles").homeConfigurations.nixos.options',
+					},
+				},
+			},
 		}
 
 		require("mason-lspconfig").setup({
@@ -114,10 +130,20 @@ return {
 				"astro",
 				"zls",
 				"marksman",
+				"ts_ls",
+				"typos_lsp",
 			},
 			handlers = {
 				function(server_name)
-					local config = server_configs[server_name] or {}
+					local name = server_name
+
+					-- this is a hack to use nixd, mason-lsp-config does
+					-- not support nixd yet
+					if name == "typos_lsp" then
+						name = "nixd"
+					end
+
+					local config = server_configs[name] or {}
 
 					-- disable LSP if disabled() returns true
 					if config.disabled and config.disabled() then
@@ -130,7 +156,7 @@ return {
 
 					config.capabilities = utils.capabilities()
 
-					require("lspconfig")[server_name].setup(config)
+					require("lspconfig")[name].setup(config)
 				end,
 			},
 		})
