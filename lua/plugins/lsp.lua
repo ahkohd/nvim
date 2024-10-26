@@ -137,6 +137,12 @@ return {
 				function(server_name)
 					local name = server_name
 
+					-- do not configure rust_analyzer, let
+					-- rustaceanvim handle it
+					if name == "rust_analyzer" then
+						return
+					end
+
 					-- this is a hack to use nixd, mason-lsp-config does
 					-- not support nixd yet
 					if name == "typos_lsp" then
