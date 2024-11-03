@@ -11,7 +11,7 @@ return {
 				return { "biome" }
 			end
 
-			return { "prettierd", "prettier" }
+			return { "prettier" }
 		end
 
 		vim.api.nvim_create_user_command("Format", function(args)

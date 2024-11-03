@@ -26,7 +26,7 @@ return {
 
 				local eslint = root_dir .. "/node_modules/eslint/package.json"
 				if vim.fn.filereadable(eslint) == 1 then
-					return { "eslint_d" }
+					return { "eslint" }
 				end
 			end
 
