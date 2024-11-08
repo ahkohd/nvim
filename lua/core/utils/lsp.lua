@@ -23,9 +23,15 @@ local M = {
 		}
 
 		-- extra capabilities for nvim-cmp
-		local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-		if ok then
+		local isCmpOk, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+		if isCmpOk then
 			capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+		end
+
+		-- extra capabilities for blink-cmp
+		local isBlinkOk, blink = pcall(require, "blink.cmp")
+		if isBlinkOk then
+			capabilities = blink.get_lsp_capabilities(capabilities)
 		end
 
 		return capabilities
