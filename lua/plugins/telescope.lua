@@ -46,6 +46,39 @@ return {
 			end,
 			desc = "Toggle marks",
 		},
+		{
+			"<space>p",
+			function()
+				local action_layout = require("telescope.actions.layout")
+
+				require("telescope").extensions.neoclip.neoclip(require("telescope.themes").get_dropdown({
+					initial_mode = "normal",
+					mappings = {
+						n = {
+							["p"] = action_layout.toggle_preview,
+						},
+					},
+				}))
+			end,
+			desc = "Toggle yank list",
+		},
+		{
+			"<space>n",
+			function()
+				local action_layout = require("telescope.actions.layout")
+
+				require("telescope").extensions.noice.noice(require("telescope.themes").get_dropdown({
+					initial_mode = "normal",
+					previewer = false,
+					mappings = {
+						n = {
+							["p"] = action_layout.toggle_preview,
+						},
+					},
+				}))
+			end,
+			desc = "Toggle notifications",
+		},
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -57,8 +90,9 @@ return {
 		local actions = require("telescope.actions")
 		local action_layout = require("telescope.actions.layout")
 
-		telescope.load_extension("ui-select")
 		telescope.load_extension("neoclip")
+
+		telescope.load_extension("noice")
 
 		telescope.setup({
 			pickers = {
