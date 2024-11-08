@@ -40,13 +40,6 @@ return {
 		},
 		{ "<space>\\", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		{
-			"<space>m",
-			function()
-				vim.cmd("Telescope marks")
-			end,
-			desc = "Toggle marks",
-		},
-		{
 			"<space>p",
 			function()
 				local action_layout = require("telescope.actions.layout")
@@ -63,7 +56,7 @@ return {
 			desc = "Toggle yank list",
 		},
 		{
-			"<space>n",
+			"<space>-",
 			function()
 				local action_layout = require("telescope.actions.layout")
 

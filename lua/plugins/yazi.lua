@@ -15,7 +15,7 @@ return {
 			desc = "Toggle Yazi (cwd)",
 		},
 		{
-			"<space>-",
+			"<space>_",
 			function()
 				require("yazi").yazi(nil, vim.fn.getcwd())
 			end,
