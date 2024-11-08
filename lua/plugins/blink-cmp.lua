@@ -8,11 +8,14 @@ return {
 	opts = {
 		nerd_font_variant = "mono",
 
+		-- experimental auto-brackets support
+		accept = { auto_brackets = { enabled = true } },
+
 		-- experimental signature help support
 		trigger = {
-			completion = {
-				keyword_range = "prefix",
-			},
+			-- completion = {
+			-- 	keyword_range = "prefix",
+			-- },
 			signature_help = { enabled = true },
 		},
 
