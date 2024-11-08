@@ -53,8 +53,8 @@ vim.opt.cursorline = false
 vim.o.exrc = true
 
 -- line number
-vim.o.number = false
-vim.o.relativenumber = false
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- Conceal
 vim.o.conceallevel = 2
