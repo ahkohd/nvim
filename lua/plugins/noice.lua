@@ -4,7 +4,6 @@ return {
 	"folke/noice.nvim",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
 	},
 	event = "VeryLazy",
 	config = function()
@@ -18,8 +17,8 @@ return {
 				},
 			},
 
-			presets = {
-				long_message_to_split = true, -- long messages will be sent to a split
+			notify = {
+				enabled = false,
 			},
 
 			cmdline = {
@@ -35,22 +34,6 @@ return {
 					},
 				},
 			},
-		})
-
-		require("notify").setup({
-			timeout = 1500,
-
-			render = "minimal",
-			-- render = "wrapped-compact",
-			-- max_width = 40,
-
-			stages = "static",
-
-			top_down = false,
-
-			on_open = function(win)
-				vim.api.nvim_win_set_config(win, { focusable = false })
-			end,
 		})
 	end,
 }
