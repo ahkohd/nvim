@@ -70,26 +70,26 @@ return {
 					end
 				end,
 			},
-			ts_ls = {
-				cmd = { "typescript-language-server", "--stdio" },
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"javascript.jsx",
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-				},
-				init_options = {
-					hostInfo = "neovim",
-				},
-				single_file_support = true,
-				settings = {
-					completions = {
-						completeFunctionCalls = true,
-					},
-				},
-			},
+			-- ts_ls = {
+			-- 	cmd = { "typescript-language-server", "--stdio" },
+			-- 	filetypes = {
+			-- 		"javascript",
+			-- 		"javascriptreact",
+			-- 		"javascript.jsx",
+			-- 		"typescript",
+			-- 		"typescriptreact",
+			-- 		"typescript.tsx",
+			-- 	},
+			-- 	init_options = {
+			-- 		hostInfo = "neovim",
+			-- 	},
+			-- 	single_file_support = true,
+			-- 	settings = {
+			-- 		completions = {
+			-- 			completeFunctionCalls = true,
+			-- 		},
+			-- 	},
+			-- },
 			nixd = {
 				nixpkgs = {
 					expr = "import <nixpkgs> { }",
@@ -122,7 +122,7 @@ return {
 				"astro",
 				"zls",
 				"marksman",
-				"ts_ls",
+				-- "ts_ls",
 				"typos_lsp",
 			},
 			handlers = {
