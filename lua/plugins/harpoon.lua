@@ -20,7 +20,7 @@ return {
 
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
-			desc = "Harpoon / Toggle quick menu",
+			desc = "Harpoon / Toggle UI",
 		},
 		{
 			"<space>z",
@@ -29,7 +29,7 @@ return {
 
 				harpoon:list():select(1)
 			end,
-			desc = "Harpoon / #1",
+			desc = "Harpoon / Buffer #1",
 		},
 		{
 			"<space>x",
@@ -38,7 +38,7 @@ return {
 
 				harpoon:list():select(2)
 			end,
-			desc = "Harpoon / #2",
+			desc = "Harpoon / Buffer #2",
 		},
 		{
 			"<space>t",
@@ -47,7 +47,7 @@ return {
 
 				harpoon:list():select(3)
 			end,
-			desc = "Harpoon / #3",
+			desc = "Harpoon / Buffer #3",
 		},
 		{
 			"<space>y",
@@ -56,7 +56,7 @@ return {
 
 				harpoon:list():select(4)
 			end,
-			desc = "Harpoon / #4",
+			desc = "Harpoon / Buffer #4",
 		},
 		{
 			"<space>n",
@@ -65,6 +65,7 @@ return {
 
 				harpoon:list():prev()
 			end,
+			desc = "Harpoon / Prev Buffer",
 		},
 		{
 			"<space>m",
@@ -73,6 +74,7 @@ return {
 
 				harpoon:list():next()
 			end,
+			desc = "Harpoon / Next Buffer",
 		},
 	},
 	config = function()
