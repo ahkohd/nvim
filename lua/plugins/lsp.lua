@@ -24,15 +24,6 @@ return {
 			PATH = "append",
 		})
 
-		vim.api.nvim_create_user_command("LspConfigShow", function()
-			vim.notify(vim.inspect(vim.lsp.get_active_clients()))
-		end, { desc = "Show LSP settings" })
-
-		vim.api.nvim_create_user_command("LspConfigReload", function()
-			vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
-			vim.cmd.edit()
-		end, { desc = "Reload LSP settings" })
-
 		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 			underline = true,
 			virtual_text = {
