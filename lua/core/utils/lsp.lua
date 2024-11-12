@@ -22,12 +22,6 @@ local M = {
 			snippetSupport = true,
 		}
 
-		-- extra capabilities for nvim-cmp
-		local isCmpOk, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-		if isCmpOk then
-			capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-		end
-
 		-- extra capabilities for blink-cmp
 		local isBlinkOk, blink = pcall(require, "blink.cmp")
 		if isBlinkOk then

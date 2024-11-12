@@ -17,9 +17,6 @@ return {
 			version = "^5",
 			lazy = false,
 		},
-
-		-- comment out if not using nvim-cmp
-		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		require("mason").setup({
