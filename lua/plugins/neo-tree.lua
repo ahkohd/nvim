@@ -7,9 +7,9 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
-	event = "VeryLazy",
+	cmd = "Neotree",
 	keys = {
-		{ "<space>e", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
+		{ "<space>e", "<cmd>Neotree toggle left<cr>", silent = true, desc = "Left File Explorer" },
 	},
 	config = function()
 		require("neo-tree").setup({
