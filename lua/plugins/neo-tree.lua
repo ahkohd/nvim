@@ -16,7 +16,7 @@ return {
 			close_if_last_window = true,
 			popup_border_style = "single",
 			enable_git_status = false,
-			enable_modified_markers = false,
+			enable_modified_markers = true,
 			enable_diagnostics = true,
 			sort_case_insensitive = true,
 			default_component_configs = {
@@ -25,7 +25,7 @@ return {
 					with_expanders = true,
 				},
 				modified = {
-					symbol = "  ",
+					symbol = "",
 					highlight = "NeoTreeModified",
 				},
 				icon = {

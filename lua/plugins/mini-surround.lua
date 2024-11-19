@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.surround",
 	version = "*",
+	event = "BufRead",
 	opts = {
 		mappings = {
 			add = "<space>sa", -- Add surrounding in Normal and Visual modes
