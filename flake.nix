@@ -10,8 +10,6 @@
         pkgs = import nixpkgs { inherit system; };
 
         packages = with pkgs; [
-          git-cliff
-
           nodejs_20
 
           corepack_20
@@ -22,7 +20,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = packages;
 
-          shellHook = with pkgs; ''
+          shellHook = ''
             echo "🔮 Welcome to ahkohd/nvim development environment!"
           '';
         };
