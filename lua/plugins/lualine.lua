@@ -1,48 +1,21 @@
 -- luacheck: globals vim
---
-vim.g.toggle_statusline = false
-
-vim.g.laststatus = vim.o.laststatus
 
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
 	event = "BufReadPost",
-	keys = {
-		{
-			"<space>e",
-			function()
-				local lualine = require("lualine")
-
-				if vim.g.toggle_statusline then
-					vim.g.toggle_statusline = false
-
-					lualine.hide({
-						place = { "statusline" },
-						unhide = false,
-					})
-
-					vim.o.laststatus = 0
-				else
-					vim.g.toggle_statusline = true
-
-					lualine.hide({ unhide = true })
-
-					vim.o.laststatus = vim.g.laststatus
-				end
-			end,
-			desc = "Toggle statusline",
-		},
-	},
 	config = function()
 		local icons = require("core.ui.icons")
 
 		local disable = {
+			"neogitstatus",
 			"netrw",
+			"lir",
 			"lazy",
-			"lazygit",
-			"Starter",
-			"neo-tree",
+			"alpha",
+			"Outline",
+			"NeogitStatus",
+			"NeogitCommitMessage",
 		}
 
 		local ignore = { "help", "TelescopePrompt" }
@@ -128,17 +101,6 @@ return {
 			extensions = {},
 		}
 
-		local lualine = require("lualine")
-
-		lualine.setup(opts)
-
-		if not vim.g.toggle_statusline then
-			lualine.hide({
-				place = { "statusline" },
-				unhide = false,
-			})
-
-			vim.o.laststatus = vim.g.laststatus
-		end
+		require("lualine").setup(opts)
 	end,
 }
