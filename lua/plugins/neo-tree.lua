@@ -30,10 +30,10 @@ return {
 					highlight = "NeoTreeModified",
 				},
 				icon = {
-					folder_closed = "",
-					folder_open = "",
+					folder_closed = "",
+					folder_open = "",
 					folder_empty = "",
-					folder_empty_open = "",
+					folder_empty_open = "",
 				},
 			},
 			window = {
