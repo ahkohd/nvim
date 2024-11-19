@@ -4,24 +4,18 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
 	event = "BufReadPost",
-	keys = {
-		{
-			"<space>e",
-			function()
-				require("core.utils.statusline").toggle()
-			end,
-			desc = "Toggle statusline",
-		},
-	},
 	config = function()
 		local icons = require("core.ui.icons")
 
 		local disable = {
+			"neogitstatus",
 			"netrw",
+			"lir",
 			"lazy",
-			"lazygit",
-			"Starter",
-			"neo-tree",
+			"alpha",
+			"Outline",
+			"NeogitStatus",
+			"NeogitCommitMessage",
 		}
 
 		local ignore = { "help", "TelescopePrompt" }
@@ -107,16 +101,6 @@ return {
 			extensions = {},
 		}
 
-		local lualine = require("lualine")
-
-		local statsline = require("core.utils.statusline")
-
-		lualine.setup(opts)
-
-		if vim.g.toggle_statusline then
-			statsline.show()
-		else
-			statsline.hide()
-		end
+		require("lualine").setup(opts)
 	end,
 }
