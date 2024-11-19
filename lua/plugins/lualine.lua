@@ -6,7 +6,7 @@ return {
 	event = "BufReadPost",
 	keys = {
 		{
-			"<space>e",
+			"<space>_",
 			function()
 				require("core.utils.statusline").toggle()
 			end,

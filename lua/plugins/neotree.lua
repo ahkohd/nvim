@@ -8,8 +8,8 @@ return {
 	},
 	keys = {
 		{
-			"<space>_",
-			"<cmd>Neotree filesystem reveal left<cr>",
+			"<space>e",
+			"<cmd>Neotree float<cr>",
 			desc = "Toggle Neotree",
 		},
 	},
