@@ -33,13 +33,15 @@ return {
 
 			{ "<space>c", group = "Document Info" },
 
-			{ "<space>s", group = "Find and Replace" },
+			{ "<space>w", group = "Find and Replace" },
 
 			{ "<space>d", group = "Diagnostics" },
 
 			{ "<space>b", group = "Debug" },
 
 			{ "<space>l", group = "Pencil" },
+
+			{ "<space>s", group = "Surround" },
 
 			{
 				"<space>.",
