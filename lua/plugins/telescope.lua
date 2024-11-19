@@ -8,7 +8,6 @@ return {
 		{
 			"AckslD/nvim-neoclip.lua",
 			name = "neoclip",
-			opts = {},
 		},
 	},
 	event = "VeryLazy",
@@ -89,10 +88,6 @@ return {
 		local actions = require("telescope.actions")
 		local action_layout = require("telescope.actions.layout")
 
-		telescope.load_extension("neoclip")
-
-		telescope.load_extension("noice")
-
 		telescope.setup({
 			pickers = {
 				find_files = {
@@ -151,5 +146,13 @@ return {
 				set_env = { ["COLORTERM"] = "truecolor" },
 			},
 		})
+
+		telescope.load_extension("noice")
+
+		local neoclip = require("neoclip")
+
+		neoclip.setup()
+
+		telescope.load_extension("neoclip")
 	end,
 }
