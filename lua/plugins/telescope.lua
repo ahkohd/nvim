@@ -82,6 +82,8 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local action_layout = require("telescope.actions.layout")
+		local trouble = require("trouble.sources.telescope")
+		local utils = require("core.utils.telescope")
 
 		telescope.load_extension("neoclip")
 
@@ -126,6 +128,12 @@ return {
 				mappings = {
 					n = {
 						["q"] = actions.close,
+						["<C-t>"] = trouble.open,
+						["<C-s>"] = utils.document_symbols_for_selected,
+					},
+					i = {
+						["<C-t>"] = trouble.open,
+						["<C-s>"] = utils.document_symbols_for_selected,
 					},
 				},
 				vimgrep_arguments = {
