@@ -16,9 +16,9 @@ return {
 		require("neo-tree").setup({
 			close_if_last_window = true,
 			popup_border_style = "single",
-			enable_git_status = true,
-			enable_modified_markers = true,
-			enable_diagnostics = true,
+			enable_git_status = false,
+			enable_modified_markers = false,
+			enable_diagnostics = false,
 			sort_case_insensitive = true,
 			default_component_configs = {
 				indent = {
@@ -35,21 +35,6 @@ return {
 					folder_empty = "",
 					folder_empty_open = "",
 				},
-				git_status = {
-					symbols = {
-						-- Change type
-						added = "",
-						deleted = "",
-						modified = "",
-						renamed = "",
-						-- Status type
-						untracked = "",
-						ignored = "",
-						unstaged = "",
-						staged = "",
-						conflict = "",
-					},
-				},
 			},
 			window = {
 				position = "float",
@@ -62,6 +47,8 @@ return {
 					hide_gitignored = false,
 					hide_by_name = {
 						"node_modules",
+						".jj",
+						".git",
 					},
 					never_show = {
 						".DS_Store",
@@ -70,11 +57,9 @@ return {
 				},
 			},
 			source_selector = {
-				winbar = true,
+				winbar = false,
 				sources = {
-					{ source = "filesystem", display_name = "   Files " },
-					{ source = "buffers", display_name = "   Bufs " },
-					{ source = "git_status", display_name = "   Git " },
+					{ source = "filesystem", display_name = " Tree " },
 				},
 			},
 			event_handlers = {
