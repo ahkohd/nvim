@@ -7,12 +7,12 @@ return {
 	keys = {
 		{
 			"<space>o",
-			"<cmd>Yazi cwd<cr>",
+			"<cmd>Yazi<cr>",
 			desc = "Toggle Yazi (cwd)",
 		},
 		{
 			"<space>e",
-			"<cmd>Yazi<cr>",
+			"<cmd>Yazi cwd<cr>",
 			desc = "Toggle Yazi (root)",
 		},
 		{

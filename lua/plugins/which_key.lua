@@ -37,8 +37,6 @@ return {
 
 			{ "<space>d", group = "Diagnostics" },
 
-			{ "<space>b", group = "Debug" },
-
 			{ "<space>l", group = "Pencil" },
 
 			{ "<space>s", group = "Surround" },
