@@ -8,6 +8,7 @@ return {
 		{
 			"AckslD/nvim-neoclip.lua",
 			name = "neoclip",
+			opts = {},
 		},
 	},
 	event = "VeryLazy",
@@ -82,10 +83,11 @@ return {
 			desc = "Toggle notifications",
 		},
 	},
-
 	config = function()
 		local telescope = require("telescope")
+
 		local actions = require("telescope.actions")
+
 		local action_layout = require("telescope.actions.layout")
 
 		telescope.setup({
@@ -148,10 +150,6 @@ return {
 		})
 
 		telescope.load_extension("noice")
-
-		local neoclip = require("neoclip")
-
-		neoclip.setup()
 
 		telescope.load_extension("neoclip")
 	end,
