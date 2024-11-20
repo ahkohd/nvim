@@ -14,21 +14,16 @@ return {
 			end,
 			desc = "Toggle Yazi (cwd)",
 		},
-		{
-			"<space>e",
-			function()
-				require("yazi").yazi(nil, vim.fn.getcwd())
-			end,
-			desc = "Toggle Yazi (root)",
-		},
-		{
-			"<space>E",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Resume the last yazi session",
-		},
+		-- {
+		-- 	"<space>_",
+		-- 	function()
+		-- 		require("yazi").yazi(nil, vim.fn.getcwd())
+		-- 	end,
+		-- 	desc = "Toggle Yazi (project root)",
+		-- },
 	},
 	opts = {
-		open_for_directories = true,
+		open_for_directories = false,
 		yazi_floating_window_border = "rounded",
 	},
 }
