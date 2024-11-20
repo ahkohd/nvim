@@ -41,8 +41,6 @@ return {
 
 			{ "<space>s", group = "Surround" },
 
-			{ "<space>o", group = "Yazi" },
-
 			{
 				"<space>.",
 

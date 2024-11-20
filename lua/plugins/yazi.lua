@@ -6,14 +6,14 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<space>oo",
+			"<space>o",
 			"<cmd>Yazi<cr>",
 			desc = "Toggle Yazi",
 		},
 		{
-			"<space>oe",
+			"<space>w",
 			"<cmd>Yazi cwd<cr>",
-			desc = "Toggle Yazi (root)",
+			desc = "Toggle Yazi (cwd)",
 		},
 		{
 			"<space>e",
