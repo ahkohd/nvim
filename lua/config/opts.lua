@@ -19,7 +19,7 @@ vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
 vim.opt.swapfile = false
 
--- vim.g.loaded_netrwPlugin = 0
+vim.g.loaded_netrwPlugin = 0
 
 -- Don't redraw while executing macros (good performance config)
 -- vim.o.lazyredraw = true
