@@ -2,9 +2,6 @@
 
 return {
 	"mikavilpas/yazi.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
 	event = "VeryLazy",
 	keys = {
 		{
@@ -23,7 +20,9 @@ return {
 		},
 		{
 			"<space>E",
-			"<cmd>Yazi toggle<cr>",
+			function()
+				require("yazi").toggle()
+			end,
 			desc = "Resume the last yazi session",
 		},
 	},
