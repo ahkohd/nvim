@@ -6,23 +6,23 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<space>e",
-			"<cmd>Yazi<cr>",
-			desc = "Toggle Yazi (root)",
-		},
-		{
 			"<space>o",
 			"<cmd>Yazi cwd<cr>",
 			desc = "Toggle Yazi (cwd)",
 		},
 		{
-			"<space>O",
+			"<space>e",
+			"<cmd>Yazi<cr>",
+			desc = "Toggle Yazi (root)",
+		},
+		{
+			"<space>b",
 			"<cmd>Yazi toggle<cr>",
 			desc = "Toggle Yazi (resume)",
 		},
 	},
 	opts = {
 		open_for_directories = true,
-		yazi_floating_window_border = "rounded",
+		highlight_hovered_buffers_in_same_directory = false,
 	},
 }
