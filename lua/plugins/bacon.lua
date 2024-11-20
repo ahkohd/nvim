@@ -1,6 +1,6 @@
 return {
 	"Canop/nvim-bacon",
-	event = "VeryLazy",
+	cmd = "BaconLoad",
 	opts = {
 		quickfix = {
 			enabled = true,
