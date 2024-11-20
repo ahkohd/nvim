@@ -2,28 +2,23 @@
 
 return {
 	"mikavilpas/yazi.nvim",
+	branch = "main",
 	event = "VeryLazy",
 	keys = {
 		{
-			"<space>o",
-			function()
-				require("yazi").yazi()
-			end,
-			desc = "Toggle Yazi (cwd)",
-		},
-		{
 			"<space>e",
-			function()
-				require("yazi").yazi(nil, vim.fn.getcwd())
-			end,
+			"<cmd>Yazi<cr>",
 			desc = "Toggle Yazi (root)",
 		},
 		{
-			"<space>E",
-			function()
-				require("yazi").toggle()
-			end,
-			desc = "Resume the last yazi session",
+			"<space>o",
+			"<cmd>Yazi cwd<cr>",
+			desc = "Toggle Yazi (cwd)",
+		},
+		{
+			"<space>O",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Toggle Yazi (resume)",
 		},
 	},
 	opts = {
