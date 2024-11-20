@@ -1,4 +1,4 @@
 return {
-	"wakatime/vim-wakatime",
+	"https://github.com/wakatime/vim-wakatime",
 	event = "VeryLazy",
 }
