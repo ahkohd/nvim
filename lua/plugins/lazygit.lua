@@ -2,7 +2,7 @@
 
 return {
 	"kdheepak/lazygit.nvim",
-	event = "VeryLazy",
+	event = "LazyGit",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
