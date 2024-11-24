@@ -11,7 +11,7 @@ return {
 			opts = {},
 		},
 	},
-	event = "VeryLazy",
+	cmd = "Telescope",
 	keys = {
 		{
 			"<space>f",
