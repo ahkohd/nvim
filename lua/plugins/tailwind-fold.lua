@@ -1,6 +1,6 @@
 return {
 	"razak17/tailwind-fold.nvim",
-	event = "LspAttach",
+	ft = { "html", "astro", "javascriptreact", "typescriptreact" },
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	opts = {
 		symbol = "󱏿",
