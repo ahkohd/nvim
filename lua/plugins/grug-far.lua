@@ -1,6 +1,6 @@
 return {
 	"MagicDuck/grug-far.nvim",
-	event = "VeryLazy",
+	cmd = "GrugFar",
 	keys = {
 		{ "<space>bs", "<cmd>lua require('grug-far').open()<CR>", desc = "Find & Replace" },
 		{
