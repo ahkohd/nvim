@@ -2,7 +2,7 @@
 
 return {
 	"preservim/vim-pencil",
-	event = "VeryLazy",
+	cmd = { "PencilToggle", "PencilSoft", "PencilHard" },
 	keys = {
 		{
 			"<space>lw",
@@ -24,14 +24,6 @@ return {
 				vim.cmd("PencilHard")
 			end,
 			desc = "Enable hard line breaks",
-		},
-		{
-			"<space>lt",
-			function()
-				vim.cmd("TwilightEnable")
-				vim.cmd("PencilSoft")
-			end,
-			desc = "Toggle Writer mode",
 		},
 	},
 	config = function() end,
