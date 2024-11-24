@@ -2,7 +2,7 @@
 
 return {
 	"mbbill/undotree",
-	event = "VeryLazy",
+	cmd = "UndotreeToggle",
 	keys = {
 		{
 			"<space>u",
