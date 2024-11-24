@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
-	event = "VeryLazy",
+	cmd = "VeryLazy",
 	config = function()
 		require("noice").setup({
 			lsp = {

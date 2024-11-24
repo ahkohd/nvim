@@ -2,6 +2,7 @@
 
 return {
 	"folke/trouble.nvim",
+	cmd = "Trouble",
 	opts = {
 		modes = {
 			preview_float = {
@@ -19,7 +20,6 @@ return {
 			},
 		},
 	},
-	cmd = "Trouble",
 	keys = {
 		{
 			"<space>cx",
