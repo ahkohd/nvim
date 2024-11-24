@@ -18,6 +18,7 @@ vim.o.shell = "zsh"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
 vim.opt.swapfile = false
+vim.opt.shortmess:append("I") -- Disable intro message
 
 vim.g.loaded_netrwPlugin = 0
 
