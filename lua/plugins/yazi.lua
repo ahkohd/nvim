@@ -3,7 +3,7 @@
 return {
 	"mikavilpas/yazi.nvim",
 	branch = "main",
-	event = "VeryLazy",
+	cmd = "Yazi",
 	keys = {
 		{
 			"<space>o",
@@ -22,7 +22,6 @@ return {
 		},
 	},
 	opts = {
-		open_for_directories = true,
 		highlight_hovered_buffers_in_same_directory = false,
 	},
 }
