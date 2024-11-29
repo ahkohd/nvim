@@ -56,6 +56,11 @@ return {
 			desc = "Search workspace symbols",
 		},
 		{
+			"<space>k",
+			"<cmd>FzfLua lsp_code_actions<cr>",
+			desc = "Show code actions",
+		},
+		{
 			"<space>-",
 			"<cmd>NoiceFzf<cr>",
 			desc = "Search messages",
