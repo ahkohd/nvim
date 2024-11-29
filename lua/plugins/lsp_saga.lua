@@ -6,8 +6,9 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-tree/nvim-web-devicons",
 	},
-	event = "VeryLazy",
+	cmd = "Lspsaga",
 	keys = {
+		{ "<space>k", "<cmd>Lspsaga code_action<CR>", desc = "Show code action" },
 		{ "<space>ck", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump to Previous diagnostic" },
 		{ "<space>cj", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to Next diagnostic" },
 	},
