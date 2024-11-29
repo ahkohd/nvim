@@ -31,8 +31,6 @@ return {
 
 			{ "<space>q", group = "Close" },
 
-			{ "<space>c", group = "Document Info" },
-
 			{ "<space>w", group = "Find and Replace" },
 
 			{ "<space>d", group = "Diagnostics" },

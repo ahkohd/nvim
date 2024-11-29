@@ -36,6 +36,16 @@ return {
 			desc = "Search helptags",
 		},
 		{
+			"<space>c",
+			"<cmd>FzfLua lsp_document_diagnostics<cr>",
+			desc = "Search document diagnostics",
+		},
+		{
+			"<space>C",
+			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
+			desc = "Search workspace diagnostics",
+		},
+		{
 			"<space>-",
 			"<cmd>NoiceFzf<cr>",
 			desc = "Search messages",
