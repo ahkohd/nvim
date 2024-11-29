@@ -46,6 +46,16 @@ return {
 			desc = "Search workspace diagnostics",
 		},
 		{
+			"<space>a",
+			"<cmd>FzfLua lsp_document_symbols<cr>",
+			desc = "Search document symbols",
+		},
+		{
+			"<space>A",
+			"<cmd>FzfLua lsp_workspace_symbols<cr>",
+			desc = "Search workspace symbols",
+		},
+		{
 			"<space>-",
 			"<cmd>NoiceFzf<cr>",
 			desc = "Search messages",
