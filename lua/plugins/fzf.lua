@@ -61,11 +61,6 @@ return {
 			desc = "Show code actions",
 		},
 		{
-			"<space>-",
-			"<cmd>NoiceFzf<cr>",
-			desc = "Search messages",
-		},
-		{
 			"<space>p",
 			function()
 				require("neoclip.fzf")()
