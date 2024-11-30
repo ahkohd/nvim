@@ -5,12 +5,12 @@ return {
 	cmd = "UndotreeToggle",
 	keys = {
 		{
-			"<space>u",
+			"<space>G",
 			function()
 				vim.cmd("UndotreeToggle")
 				vim.cmd("UndotreeFocus")
 			end,
-			desc = "Toggle Undo tree",
+			desc = "Toggle undo tree",
 		},
 	},
 	config = function() end,

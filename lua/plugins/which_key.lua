@@ -31,9 +31,7 @@ return {
 
 			{ "<space>q", group = "Close" },
 
-			{ "<space>w", group = "Find and Replace" },
-
-			{ "<space>d", group = "Diagnostics" },
+			{ "<space>b", group = "Find & Replace" },
 
 			{ "<space>l", group = "Pencil" },
 
@@ -58,7 +56,7 @@ return {
 					vim.o.mouse = vim.o.mouse == "a" and "" or "a"
 				end,
 
-				desc = "Toggle Mouse support",
+				desc = "Toggle mouse support",
 			},
 
 			{

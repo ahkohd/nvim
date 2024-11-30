@@ -32,7 +32,7 @@ return {
 			desc = "Harpoon / Buffer #1",
 		},
 		{
-			"<space>x",
+			"<space>Z",
 			function()
 				local harpoon = require("harpoon")
 
@@ -41,7 +41,7 @@ return {
 			desc = "Harpoon / Buffer #2",
 		},
 		{
-			"<space>t",
+			"<space>x",
 			function()
 				local harpoon = require("harpoon")
 
@@ -50,7 +50,7 @@ return {
 			desc = "Harpoon / Buffer #3",
 		},
 		{
-			"<space>y",
+			"<space>X",
 			function()
 				local harpoon = require("harpoon")
 
@@ -59,7 +59,7 @@ return {
 			desc = "Harpoon / Buffer #4",
 		},
 		{
-			"<space>n",
+			"<space>-",
 			function()
 				local harpoon = require("harpoon")
 
@@ -68,7 +68,7 @@ return {
 			desc = "Harpoon / Prev Buffer",
 		},
 		{
-			"<space>m",
+			"<space>_",
 			function()
 				local harpoon = require("harpoon")
 

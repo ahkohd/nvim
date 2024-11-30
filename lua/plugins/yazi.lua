@@ -11,14 +11,14 @@ return {
 			desc = "Toggle Yazi",
 		},
 		{
+			"<space>O",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Toggle Yazi (resume)",
+		},
+		{
 			"<space>w",
 			"<cmd>Yazi cwd<cr>",
 			desc = "Toggle Yazi (cwd)",
-		},
-		{
-			"<space>e",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Toggle Yazi (resume)",
 		},
 	},
 	opts = {

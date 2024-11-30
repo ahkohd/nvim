@@ -16,14 +16,19 @@ return {
 			desc = "Find files",
 		},
 		{
-			"<space>r",
+			"<space>F",
 			"<cmd>FzfLua live_grep_native<cr>",
-			desc = "Live grep",
+			desc = "Search (live grep)",
 		},
 		{
 			"<space>j",
 			"<cmd>FzfLua jumps<cr>",
 			desc = "Search jumplist",
+		},
+		{
+			"<space>J",
+			"<cmd>FzfLua marks<cr>",
+			desc = "Search marks",
 		},
 		{
 			"<space><space>",
@@ -36,12 +41,12 @@ return {
 			desc = "Search helptags",
 		},
 		{
-			"<space>c",
+			"<space>d",
 			"<cmd>FzfLua lsp_document_diagnostics<cr>",
 			desc = "Search document diagnostics",
 		},
 		{
-			"<space>C",
+			"<space>D",
 			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
 			desc = "Search workspace diagnostics",
 		},
