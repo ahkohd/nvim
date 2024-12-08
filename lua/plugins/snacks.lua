@@ -1,9 +1,17 @@
+--luacheck: globals Snacks
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
 	keys = {
-		{ "<leader>g", "<cmd>lua Snacks.lazygit.open()<cr>", desc = "Toggle Lazygit" },
+		{
+			"<leader>g",
+			function()
+				Snacks.lazygit.open()
+			end,
+			desc = "Toggle Lazygit",
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },

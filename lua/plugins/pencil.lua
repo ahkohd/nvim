@@ -5,25 +5,11 @@ return {
 	cmd = { "PencilToggle", "PencilSoft", "PencilHard" },
 	keys = {
 		{
-			"<leader>lw",
+			"<leader>'",
 			function()
 				vim.cmd("PencilToggle")
 			end,
-			desc = "Toggle line wrap",
-		},
-		{
-			"<leader>ls",
-			function()
-				vim.cmd("PencilSoft")
-			end,
-			desc = "Enable soft line wrap",
-		},
-		{
-			"<leader>lh",
-			function()
-				vim.cmd("PencilHard")
-			end,
-			desc = "Enable hard line breaks",
+			desc = "Toggle text wrap",
 		},
 	},
 	config = function() end,

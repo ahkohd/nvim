@@ -33,8 +33,6 @@ return {
 
 			{ "<leader>b", group = "Find & Replace" },
 
-			{ "<leader>l", group = "Pencil" },
-
 			{ "<leader>s", group = "Surround" },
 
 			{
@@ -67,14 +65,6 @@ return {
 				end,
 
 				desc = "Make buffer full-screen",
-			},
-
-			{
-				"<leader>'",
-
-				"<cmd>PencilToggle<cr>",
-
-				desc = "Toggle text wrap",
 			},
 
 			{
