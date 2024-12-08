@@ -5,7 +5,7 @@ return {
 	cmd = "UndotreeToggle",
 	keys = {
 		{
-			"<leader>G",
+			"<leader>u",
 			function()
 				vim.cmd("UndotreeToggle")
 				vim.cmd("UndotreeFocus")

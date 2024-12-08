@@ -13,6 +13,13 @@ return {
 			desc = "Toggle Lazygit",
 		},
 		{
+			"<leader>G",
+			function()
+				Snacks.lazygit.log_file()
+			end,
+			desc = "Lazygit Current File History",
+		},
+		{
 			"]]",
 			function()
 				Snacks.words.jump(vim.v.count1)
