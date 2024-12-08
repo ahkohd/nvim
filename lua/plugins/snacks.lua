@@ -1,4 +1,4 @@
---luacheck: globals Snacks
+--luacheck: globals vim Snacks
 
 return {
 	"folke/snacks.nvim",
@@ -11,6 +11,22 @@ return {
 				Snacks.lazygit.open()
 			end,
 			desc = "Toggle Lazygit",
+		},
+		{
+			"]]",
+			function()
+				Snacks.words.jump(vim.v.count1)
+			end,
+			desc = "Next Reference",
+			mode = { "n", "t" },
+		},
+		{
+			"[[",
+			function()
+				Snacks.words.jump(-vim.v.count1)
+			end,
+			desc = "Prev Reference",
+			mode = { "n", "t" },
 		},
 	},
 	opts = {
