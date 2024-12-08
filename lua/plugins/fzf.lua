@@ -31,7 +31,7 @@ return {
 			desc = "Search marks",
 		},
 		{
-			"<leader><leader>",
+			"<leader><space>",
 			"<cmd>FzfLua buffers<cr>",
 			desc = "Search buffers",
 		},
