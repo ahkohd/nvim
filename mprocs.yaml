@@ -1,2 +1,0 @@
-procs:
-  shell: nix develop -c zsh

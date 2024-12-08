@@ -9,7 +9,7 @@ return {
 	},
 	keys = {
 		{
-			"<space>ib",
+			"<leader>ib",
 			"<cmd>BaconList<cr>",
 			desc = "Bacon list locations",
 		},

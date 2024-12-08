@@ -11,10 +11,10 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<space>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
+			{ "<leader>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
 
 			{
-				"<space>qb",
+				"<leader>qb",
 				function()
 					local bufs = vim.api.nvim_list_bufs()
 
@@ -29,16 +29,16 @@ return {
 				desc = "Close other Buffers",
 			},
 
-			{ "<space>q", group = "Close" },
+			{ "<leader>q", group = "Close" },
 
-			{ "<space>b", group = "Find & Replace" },
+			{ "<leader>b", group = "Find & Replace" },
 
-			{ "<space>l", group = "Pencil" },
+			{ "<leader>l", group = "Pencil" },
 
-			{ "<space>s", group = "Surround" },
+			{ "<leader>s", group = "Surround" },
 
 			{
-				"<space>.",
+				"<leader>.",
 
 				function()
 					vim.o.number = not vim.o.number
@@ -50,7 +50,7 @@ return {
 			},
 
 			{
-				"<space>,",
+				"<leader>,",
 
 				function()
 					vim.o.mouse = vim.o.mouse == "a" and "" or "a"
@@ -60,7 +60,7 @@ return {
 			},
 
 			{
-				"<space><tab>",
+				"<leader><tab>",
 
 				function()
 					vim.cmd([[tab split]])
@@ -70,20 +70,20 @@ return {
 			},
 
 			{
-				"<space>'",
+				"<leader>'",
 
-				"<cmd>TogglePencil<cr>",
+				"<cmd>PencilToggle<cr>",
 
 				desc = "Toggle text wrap",
 			},
 
 			{
-				"<space>i",
+				"<leader>i",
 				group = "Rust",
 			},
 
 			{
-				"<space>if",
+				"<leader>if",
 				function()
 					vim.cmd.RustLsp("flyCheck")
 				end,
@@ -91,7 +91,7 @@ return {
 			},
 
 			{
-				"<space>iF",
+				"<leader>iF",
 				function()
 					vim.cmd.RustLsp("flyCheck", "clear")
 				end,
@@ -99,7 +99,7 @@ return {
 			},
 
 			{
-				"<space>ix",
+				"<leader>ix",
 				function()
 					vim.cmd.RustLsp("flyCheck", "cancel")
 				end,
@@ -107,7 +107,7 @@ return {
 			},
 
 			{
-				"<space>im",
+				"<leader>im",
 				function()
 					vim.cmd.RustLsp("expandMacro")
 				end,
@@ -115,7 +115,7 @@ return {
 			},
 
 			{
-				"<space>ir",
+				"<leader>ir",
 				function()
 					vim.cmd.RustLsp("rebuildProcMacros")
 				end,
@@ -123,7 +123,7 @@ return {
 			},
 
 			{
-				"<space>ij",
+				"<leader>ij",
 				function()
 					vim.cmd.RustLsp("moveItem", "down")
 				end,
@@ -131,7 +131,7 @@ return {
 			},
 
 			{
-				"<space>ik",
+				"<leader>ik",
 				function()
 					vim.cmd.RustLsp("moveItem", "up")
 				end,
@@ -139,7 +139,7 @@ return {
 			},
 
 			{
-				"<space>ia",
+				"<leader>ia",
 				function()
 					vim.cmd.RustLsp("hover", "range")
 				end,
@@ -147,7 +147,7 @@ return {
 			},
 
 			{
-				"<space>ie",
+				"<leader>ie",
 				function()
 					vim.cmd.RustLsp("explainError", "current")
 				end,
@@ -155,7 +155,7 @@ return {
 			},
 
 			{
-				"<space>io",
+				"<leader>io",
 				function()
 					vim.cmd.RustLsp("openCargo")
 				end,
@@ -163,7 +163,7 @@ return {
 			},
 
 			{
-				"<space>ip",
+				"<leader>ip",
 				function()
 					vim.cmd.RustLsp("parentModule")
 				end,
@@ -171,7 +171,7 @@ return {
 			},
 
 			{
-				"<space>id",
+				"<leader>id",
 				function()
 					vim.cmd.RustLsp("openDocs")
 				end,

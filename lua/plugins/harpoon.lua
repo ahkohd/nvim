@@ -5,7 +5,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{
-			"<space>h",
+			"<leader>h",
 			function()
 				local harpoon = require("harpoon")
 
@@ -14,7 +14,7 @@ return {
 			desc = "Harpoon / Add buffer",
 		},
 		{
-			"<space>H",
+			"<leader>H",
 			function()
 				local harpoon = require("harpoon")
 
@@ -23,7 +23,7 @@ return {
 			desc = "Harpoon / Toggle UI",
 		},
 		{
-			"<space>z",
+			"<leader>z",
 			function()
 				local harpoon = require("harpoon")
 
@@ -32,7 +32,7 @@ return {
 			desc = "Harpoon / Buffer #1",
 		},
 		{
-			"<space>Z",
+			"<leader>Z",
 			function()
 				local harpoon = require("harpoon")
 
@@ -41,7 +41,7 @@ return {
 			desc = "Harpoon / Buffer #2",
 		},
 		{
-			"<space>x",
+			"<leader>x",
 			function()
 				local harpoon = require("harpoon")
 
@@ -50,7 +50,7 @@ return {
 			desc = "Harpoon / Buffer #3",
 		},
 		{
-			"<space>X",
+			"<leader>X",
 			function()
 				local harpoon = require("harpoon")
 
@@ -59,7 +59,7 @@ return {
 			desc = "Harpoon / Buffer #4",
 		},
 		{
-			"<space>-",
+			"<leader>-",
 			function()
 				local harpoon = require("harpoon")
 
@@ -68,7 +68,7 @@ return {
 			desc = "Harpoon / Prev Buffer",
 		},
 		{
-			"<space>_",
+			"<leader>_",
 			function()
 				local harpoon = require("harpoon")
 

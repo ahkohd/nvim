@@ -11,62 +11,62 @@ return {
 	cmd = "FzfLua",
 	keys = {
 		{
-			"<space>f",
+			"<leader>f",
 			"<cmd>FzfLua files<cr>",
 			desc = "Find files",
 		},
 		{
-			"<space>F",
+			"<leader>F",
 			"<cmd>FzfLua live_grep_native<cr>",
 			desc = "Search (live grep)",
 		},
 		{
-			"<space>j",
+			"<leader>j",
 			"<cmd>FzfLua jumps<cr>",
 			desc = "Search jumplist",
 		},
 		{
-			"<space>J",
+			"<leader>J",
 			"<cmd>FzfLua marks<cr>",
 			desc = "Search marks",
 		},
 		{
-			"<space><space>",
+			"<leader><leader>",
 			"<cmd>FzfLua buffers<cr>",
 			desc = "Search buffers",
 		},
 		{
-			"<space>\\",
+			"<leader>\\",
 			"<cmd>FzfLua helptags<cr>",
 			desc = "Search helptags",
 		},
 		{
-			"<space>d",
+			"<leader>d",
 			"<cmd>FzfLua lsp_document_diagnostics<cr>",
 			desc = "Search document diagnostics",
 		},
 		{
-			"<space>D",
+			"<leader>D",
 			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
 			desc = "Search workspace diagnostics",
 		},
 		{
-			"<space>a",
+			"<leader>a",
 			"<cmd>FzfLua lsp_document_symbols<cr>",
 			desc = "Search document symbols",
 		},
 		{
-			"<space>A",
+			"<leader>A",
 			"<cmd>FzfLua lsp_workspace_symbols<cr>",
 			desc = "Search workspace symbols",
 		},
 		{
-			"<space>k",
+			"<leader>k",
 			"<cmd>FzfLua lsp_code_actions<cr>",
 			desc = "Show code actions",
 		},
 		{
-			"<space>p",
+			"<leader>p",
 			function()
 				require("neoclip.fzf")()
 			end,

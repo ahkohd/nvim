@@ -6,17 +6,17 @@ return {
 	cmd = "Yazi",
 	keys = {
 		{
-			"<space>o",
+			"<leader>o",
 			"<cmd>Yazi<cr>",
 			desc = "Toggle Yazi",
 		},
 		{
-			"<space>O",
+			"<leader>O",
 			"<cmd>Yazi toggle<cr>",
 			desc = "Toggle Yazi (resume)",
 		},
 		{
-			"<space>w",
+			"<leader>w",
 			"<cmd>Yazi cwd<cr>",
 			desc = "Toggle Yazi (cwd)",
 		},
