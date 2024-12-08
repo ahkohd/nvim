@@ -71,7 +71,4 @@ vim.o.wildignore = vim.o.wildignore .. ",*/node_modules/*"
 -- turn off paste mode when leaving insert
 vim.cmd("autocmd InsertLeave * set nopaste")
 
--- add asterisks in block comments
-vim.o.formatoptions = vim.o.formatoptions .. "r"
-
 require("config.remaps")
