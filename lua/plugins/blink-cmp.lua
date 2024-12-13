@@ -9,7 +9,7 @@ return {
 		nerd_font_variant = "mono",
 
 		-- experimental auto-brackets support
-		accept = { auto_brackets = { enabled = true } },
+		-- accept = { auto_brackets = { enabled = true } },
 
 		-- experimental signature help support
 		trigger = {
