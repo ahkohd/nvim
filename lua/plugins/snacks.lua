@@ -56,6 +56,13 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
+		{
+			"<leader>t",
+			function()
+				Snacks.terminal.toggle()
+			end,
+			desc = "Toggle terminal",
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },
