@@ -57,7 +57,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"<leader>t",
+			"<leader>r",
 			function()
 				Snacks.terminal.toggle()
 			end,
