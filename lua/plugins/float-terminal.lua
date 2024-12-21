@@ -62,12 +62,12 @@ return {
 				if vim.bo[state.floating.buf].buftype ~= "terminal" then
 					vim.cmd.terminal()
 
-					-- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {
-					-- 	buffer = state.floating.buf,
-					-- 	noremap = true,
-					-- 	silent = true,
-					-- 	desc = "Exit terminal mode",
-					-- })
+					vim.keymap.set("t", "??", "<c-\\><c-n>", {
+						buffer = state.floating.buf,
+						noremap = true,
+						silent = true,
+						desc = "Exit terminal mode",
+					})
 				end
 
 				vim.cmd("startinsert")
