@@ -44,7 +44,7 @@ return {
 			biome = {
 				-- disable LSP if biome.json is not found
 				disabled = function()
-					local root_dir = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
+					local root_dir = require("core.utils.project").root_dir()
 					local biome_config_path = root_dir and (root_dir .. "/biome.json") or ""
 					if root_dir and vim.fn.filereadable(biome_config_path) == 1 then
 						return false
@@ -72,6 +72,7 @@ return {
 		}
 
 		require("mason-lspconfig").setup({
+			automatic_installation = true,
 			ensure_installed = {
 				"biome",
 				"html",
