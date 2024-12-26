@@ -86,7 +86,6 @@ return {
 				"astro",
 				"zls",
 				"marksman",
-				-- "ts_ls",
 				"typos_lsp",
 			},
 			handlers = {
