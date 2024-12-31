@@ -59,6 +59,7 @@ return {
 		local function toggle_terminal()
 			if not vim.api.nvim_win_is_valid(state.floating.win) then
 				state.floating = create_floating_window({ buf = state.floating.buf })
+
 				if vim.bo[state.floating.buf].buftype ~= "terminal" then
 					vim.cmd.terminal()
 
@@ -77,5 +78,12 @@ return {
 		end
 
 		vim.api.nvim_create_user_command("FloatTerminal", toggle_terminal, {})
+
+		vim.api.nvim_create_autocmd("TermEnter", {
+			pattern = "*",
+			callback = function()
+				vim.opt_local.mouse = ""
+			end,
+		})
 	end,
 }
