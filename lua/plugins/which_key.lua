@@ -35,6 +35,8 @@ return {
 
 			{ "<leader>s", group = "Surround" },
 
+			{ "<leader>I", group = "Neogen" },
+
 			{
 				"<leader>.",
 
