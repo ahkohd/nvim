@@ -14,13 +14,13 @@ return {
 		},
 	},
 	keys = {
-		{
-			"<leader>;",
-			function()
-				vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-			end,
-			desc = "Toggle Diagnostics (buffer)",
-		},
+		-- {
+		-- 	"<leader>t",
+		-- 	function()
+		-- 		vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+		-- 	end,
+		-- 	desc = "Toggle Diagnostics (buffer)",
+		-- },
 	},
 	config = function()
 		require("mason").setup({
@@ -29,10 +29,10 @@ return {
 		})
 
 		vim.diagnostic.config({
-			underline = true,
-			update_in_insert = false,
+			underline = false,
+			update_in_insert = true,
 			virtual_text = false,
-			signs = false,
+			signs = true,
 		})
 
 		local server_configs = {
@@ -157,5 +157,9 @@ return {
 		end
 
 		vim.g.rustaceanvim = rust_config()
+
+		local lsp_utils = require("core.utils.lsp")
+
+		lsp_utils.setup_appearance()
 	end,
 }

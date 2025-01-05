@@ -41,16 +41,6 @@ return {
 			desc = "Search helptags",
 		},
 		{
-			"<leader>d",
-			"<cmd>FzfLua lsp_document_diagnostics<cr>",
-			desc = "Search document diagnostics",
-		},
-		{
-			"<leader>D",
-			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
-			desc = "Search workspace diagnostics",
-		},
-		{
 			"<leader>a",
 			"<cmd>FzfLua lsp_document_symbols<cr>",
 			desc = "Search document symbols",
@@ -73,5 +63,12 @@ return {
 			desc = "Search yank list",
 		},
 	},
-	opts = {},
+	opts = {
+		lsp = {
+			code_actions = {
+				async_or_timeout = true,
+				previewer = "codeaction_native",
+			},
+		},
+	},
 }

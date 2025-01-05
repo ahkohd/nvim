@@ -30,6 +30,17 @@ local M = {
 
 		return capabilities
 	end,
+
+	setup_appearance = function()
+		for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+			vim.fn.sign_define("DiagnosticSign" .. diag, {
+				text = "",
+				texthl = "DiagnosticSign" .. diag,
+				linehl = "",
+				numhl = "DiagnosticSign" .. diag,
+			})
+		end
+	end,
 }
 
 return M
