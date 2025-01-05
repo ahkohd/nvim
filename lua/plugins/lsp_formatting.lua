@@ -4,7 +4,7 @@ return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
 	opts = function()
-		local function pick_web_formatter()
+		local function web_formatter()
 			local cwd = require("core.utils.project").root_file({ "biome.json" })
 
 			if cwd then
@@ -28,14 +28,14 @@ return {
 
 		return {
 			formatters_by_ft = {
-				html = pick_web_formatter(),
-				scss = pick_web_formatter(),
-				css = pick_web_formatter(),
-				javascript = pick_web_formatter(),
-				typescript = pick_web_formatter(),
-				javascriptreact = pick_web_formatter(),
-				typescriptreact = pick_web_formatter(),
-				markdown = pick_web_formatter(),
+				html = web_formatter(),
+				scss = web_formatter(),
+				css = web_formatter(),
+				javascript = web_formatter(),
+				typescript = web_formatter(),
+				javascriptreact = web_formatter(),
+				typescriptreact = web_formatter(),
+				markdown = web_formatter(),
 				toml = { "taplo" },
 				lua = { "stylua" },
 				nix = { "nixfmt" },

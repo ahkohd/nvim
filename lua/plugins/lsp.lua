@@ -13,18 +13,26 @@ return {
 			lazy = false,
 		},
 	},
+	keys = {
+		{
+			"<leader>;",
+			function()
+				vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+			end,
+			desc = "Toggle Diagnostics (buffer)",
+		},
+	},
 	config = function()
 		require("mason").setup({
 			max_concurrent_installers = 12,
 			PATH = "append",
 		})
 
-		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		vim.diagnostic.config({
 			underline = true,
-			virtual_text = {
-				spacing = 4,
-				prefix = "",
-			},
+			update_in_insert = false,
+			virtual_text = false,
+			signs = false,
 		})
 
 		local server_configs = {
@@ -127,11 +135,21 @@ return {
 			local lsp_utils = require("core.utils.lsp")
 
 			return {
+				tools = {
+					enable_clippy = true,
+					reload_workspace_from_cargo_toml = true,
+					hover_actions = {
+						replace_builtin_hover = false,
+					},
+				},
 				server = {
 					on_attach = lsp_utils.on_attach,
 					default_settings = {
 						["rust-analyzer"] = {
-							checkOnSave = false,
+							checkOnSave = true,
+							diagnostics = {
+								disabled = { "unresolved-proc-macro" },
+							},
 						},
 					},
 				},

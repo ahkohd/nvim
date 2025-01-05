@@ -3,16 +3,6 @@
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
-	keys = {
-		{
-			"<leader>l",
-			function()
-				require("lint").try_lint()
-			end,
-			mode = "n",
-			desc = "Lint current file",
-		},
-	},
 	config = function()
 		local function pick_web_linter()
 			local root_dir = require("core.utils.project").root_dir()

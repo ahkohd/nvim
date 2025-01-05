@@ -59,7 +59,6 @@ return {
 
 			{
 				"<leader><tab>",
-
 				function()
 					vim.cmd([[tab split]])
 				end,
