@@ -4,7 +4,7 @@ return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local webdev_linters = { "biomejs", "eslint_d", "eslint" }
+		local webdev_linters = { "biomejs", "eslint" }
 
 		require("lint").linters_by_ft = {
 			html = webdev_linters,
