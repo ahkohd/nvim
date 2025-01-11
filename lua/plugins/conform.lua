@@ -16,7 +16,7 @@ return {
 				}
 			end
 
-			require("conform").format({ async = true, lsp_format = "fallback", range = range })
+			require("conform").format({ async = false, timeout_ms = 500, lsp_format = "fallback", range = range })
 		end, { range = true })
 
 		local webdev_formatters = { "biome", "prettier" }
@@ -39,7 +39,7 @@ return {
 				["*"] = {},
 			},
 			format_on_save = {
-				timeout_ms = 1000,
+				timeout_ms = 500,
 				lsp_format = "fallback",
 			},
 		}

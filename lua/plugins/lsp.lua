@@ -13,15 +13,6 @@ return {
 			lazy = false,
 		},
 	},
-	keys = {
-		-- {
-		-- 	"<leader>t",
-		-- 	function()
-		-- 		vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-		-- 	end,
-		-- 	desc = "Toggle Diagnostics (buffer)",
-		-- },
-	},
 	config = function()
 		require("mason").setup({
 			max_concurrent_installers = 12,
