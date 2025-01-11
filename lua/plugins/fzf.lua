@@ -12,7 +12,7 @@ return {
 	keys = {
 		{
 			"<leader>f",
-			"<cmd>FzfLua files<cr>",
+			"<cmd>FzfLua files previewer=false<cr>",
 			desc = "Find files",
 		},
 		{
@@ -32,17 +32,17 @@ return {
 		},
 		{
 			"<leader>d",
-			"<cmd>FzfLua lsp_document_diagnostics<cr>",
+			"<cmd>FzfLua lsp_document_diagnostics previewer=false<cr>",
 			desc = "Search document diagnostics",
 		},
 		{
 			"<leader>D",
-			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
+			"<cmd>FzfLua lsp_workspace_diagnostics previewer=false<cr>",
 			desc = "Search workspace diagnostics",
 		},
 		{
 			"<leader><space>",
-			"<cmd>FzfLua buffers<cr>",
+			"<cmd>FzfLua buffers previewer=false<cr>",
 			desc = "Search buffers",
 		},
 		{
