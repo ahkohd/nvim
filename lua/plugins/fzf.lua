@@ -74,6 +74,11 @@ return {
 		},
 	},
 	opts = {
+		winopts = {
+			preview = {
+				layout = "vertical",
+			},
+		},
 		lsp = {
 			code_actions = {
 				async_or_timeout = true,
