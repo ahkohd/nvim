@@ -4,32 +4,15 @@ return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local function pick_web_linter()
-			local root_dir = require("core.utils.project").root_dir()
-
-			if root_dir then
-				local biome_config_path = root_dir .. "/biome.json"
-
-				if vim.fn.filereadable(biome_config_path) == 1 then
-					return { "biomejs" }
-				end
-
-				local eslint = root_dir .. "/node_modules/eslint/package.json"
-				if vim.fn.filereadable(eslint) == 1 then
-					return { "eslint" }
-				end
-			end
-
-			return nil
-		end
+		local webdev_linters = { "biomejs", "eslint_d", "eslint" }
 
 		require("lint").linters_by_ft = {
-			html = { "biomejs" },
-			css = pick_web_linter(),
-			typescript = pick_web_linter(),
-			typescriptreact = pick_web_linter(),
-			javascript = pick_web_linter(),
-			javascriptreact = pick_web_linter(),
+			html = webdev_linters,
+			css = webdev_linters,
+			typescript = webdev_linters,
+			typescriptreact = webdev_linters,
+			javascript = webdev_linters,
+			javascriptreact = webdev_linters,
 			lua = { "luacheck" },
 		}
 		vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
