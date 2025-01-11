@@ -31,6 +31,16 @@ return {
 			desc = "Search marks",
 		},
 		{
+			"<leader>d",
+			"<cmd>FzfLua lsp_document_diagnostics<cr>",
+			desc = "Search document diagnostics",
+		},
+		{
+			"<leader>D",
+			"<cmd>FzfLua lsp_workspace_diagnostics<cr>",
+			desc = "Search workspace diagnostics",
+		},
+		{
 			"<leader><space>",
 			"<cmd>FzfLua buffers<cr>",
 			desc = "Search buffers",
