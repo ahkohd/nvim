@@ -81,7 +81,7 @@ return {
 		},
 		lsp = {
 			code_actions = {
-				async_or_timeout = true,
+				async_or_timeout = 500,
 				previewer = "codeaction_native",
 			},
 		},
