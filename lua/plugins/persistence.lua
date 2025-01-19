@@ -3,28 +3,28 @@ return {
 	event = "BufReadPre",
 	keys = {
 		{
-			"<leader>ss",
+			"<leader>qs",
 			function()
 				require("persistence").load()
 			end,
 			desc = "Load session",
 		},
 		{
-			"<leader>sS",
+			"<leader>qS",
 			function()
 				require("persistence").select()
 			end,
 			desc = "Select session",
 		},
 		{
-			"<leader>sl",
+			"<leader>ql",
 			function()
 				require("persistence").load({ last = true })
 			end,
 			desc = "Load last session",
 		},
 		{
-			"<leader>sd",
+			"<leader>qd",
 			function()
 				require("persistence").stop()
 			end,

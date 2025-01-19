@@ -33,8 +33,6 @@ return {
 
 			{ "<leader>b", group = "Find & Replace" },
 
-			{ "<leader>s", group = "Session" },
-
 			{ "<leader>I", group = "Neogen" },
 
 			{

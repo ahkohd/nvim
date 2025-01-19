@@ -56,6 +56,11 @@ return {
 				use_virtual_text = true,
 				lint_events = { "BufWrite", "CursorHold" },
 			},
+			textobjects = {
+				select = {
+					enable = false,
+				},
+			},
 		})
 
 		vim.filetype.add({ extension = { mdx = "markdown.mdx" } })
