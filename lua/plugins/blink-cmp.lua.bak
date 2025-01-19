@@ -2,6 +2,11 @@
 
 return {
 	"saghen/blink.cmp",
+	dependencies = {
+		{
+			"giuxtaposition/blink-cmp-copilot",
+		},
+	},
 	event = { "LspAttach", "InsertCharPre" },
 	version = "v0.*",
 	opts = {
@@ -39,12 +44,12 @@ return {
 		completion = {
 			keyword = { range = "full" },
 			accept = { auto_brackets = { enabled = false } },
-			list = { selection = "auto_insert", cycle = { from_bottom = true, from_top = false } },
-			trigger = {
-				show_on_keyword = false,
-				show_on_trigger_character = false,
-				show_on_insert_on_trigger_character = false,
-				show_on_accept_on_trigger_character = false,
+			list = {
+				selection = {
+					preselect = true,
+					auto_insert = true,
+				},
+				cycle = { from_bottom = true, from_top = false },
 			},
 			documentation = {
 				auto_show = true,
@@ -63,6 +68,18 @@ return {
 		},
 
 		signature = { enabled = true },
+
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			providers = {
+				copilot = {
+					name = "copilot",
+					module = "blink-cmp-copilot",
+					score_offset = 100,
+					async = true,
+				},
+			},
+		},
 
 		keymap = {
 			preset = "default",
