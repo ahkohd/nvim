@@ -11,10 +11,27 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<leader>qj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
+			{ "<leader>q", group = "Quickfix" },
+
+			{ "<leader>c", group = "Clear Lists & Buffers" },
+
+			{ "<leader>b", group = "Sessions" },
+
+			{ "<leader>;", group = "Surround" },
+
+			{ "<leader>g", group = "Git" },
+
+			{ "<leader>l", group = "Find and Replace" },
 
 			{
-				"<leader>qb",
+				"<leader>i",
+				group = "Rust",
+			},
+
+			{ "<leader>cj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
+
+			{
+				"<leader>cb",
 				function()
 					local bufs = vim.api.nvim_list_bufs()
 
@@ -28,12 +45,6 @@ return {
 				end,
 				desc = "Close other Buffers",
 			},
-
-			{ "<leader>q", group = "Close" },
-
-			{ "<leader>b", group = "Find & Replace" },
-
-			{ "<leader>I", group = "Neogen" },
 
 			{
 				"<leader>.",
@@ -64,11 +75,6 @@ return {
 				end,
 
 				desc = "Make buffer full-screen",
-			},
-
-			{
-				"<leader>i",
-				group = "Rust",
 			},
 
 			{

@@ -66,6 +66,16 @@ return {
 			desc = "Show code actions",
 		},
 		{
+			"<leader>q",
+			"<cmd>FzfLua quickfix<cr>",
+			desc = "Show Quickfix list",
+		},
+		{
+			"<leader>Q",
+			"<cmd>FzfLua quickfix_stack<cr>",
+			desc = "Show Quickfix stack",
+		},
+		{
 			"<leader>p",
 			function()
 				require("neoclip.fzf")()
