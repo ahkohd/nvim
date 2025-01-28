@@ -1,0 +1,12 @@
+return {
+	"TabbyML/vim-tabby",
+	init = function()
+		vim.g.tabby_agent_start_command = { "tabby-agent", "--stdio" }
+
+		vim.g.tabby_inline_completion_trigger = "auto"
+
+		vim.g.tabby_inline_completion_keybinding_accept = "<c-y>"
+
+		vim.g.tabby_inline_completion_keybinding_cancel = "<c-a>"
+	end,
+}
