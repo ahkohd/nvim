@@ -2,11 +2,6 @@
 
 return {
 	"saghen/blink.cmp",
-	dependencies = {
-		{
-			"giuxtaposition/blink-cmp-copilot",
-		},
-	},
 	event = { "LspAttach", "InsertCharPre" },
 	version = "v0.*",
 	opts = {
@@ -70,15 +65,8 @@ return {
 		signature = { enabled = true },
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "copilot" },
-			providers = {
-				copilot = {
-					name = "copilot",
-					module = "blink-cmp-copilot",
-					score_offset = 100,
-					async = true,
-				},
-			},
+			-- default = { "lsp", "path", "snippets", "buffer" },
+			default = { "path", "snippets", "buffer" },
 		},
 
 		keymap = {
