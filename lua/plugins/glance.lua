@@ -39,14 +39,7 @@ return {
 		{
 			"K",
 			function()
-				local utils = require("core.utils.buffer")
-
-				if utils.filetype() == "rust" then
-					vim.cmd.RustLsp("hover", "actions")
-					vim.cmd.RustLsp("hover", "actions")
-				else
-					vim.lsp.buf.hover()
-				end
+				vim.lsp.buf.hover()
 			end,
 			desc = "Show hover doc",
 		},
