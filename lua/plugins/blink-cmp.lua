@@ -2,6 +2,7 @@
 
 return {
 	"saghen/blink.cmp",
+	dependencies = "rafamadriz/friendly-snippets",
 	event = { "LspAttach", "InsertCharPre" },
 	version = "v0.*",
 	opts = {
@@ -65,9 +66,10 @@ return {
 		signature = { enabled = true },
 
 		sources = {
-			-- default = { "lsp", "path", "snippets", "buffer" },
-			default = { "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
+
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 
 		keymap = {
 			preset = "default",
