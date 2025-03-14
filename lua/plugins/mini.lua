@@ -19,5 +19,7 @@ return {
 		})
 
 		require("mini.bracketed").setup()
+
+		require("mini.pairs").setup()
 	end,
 }
