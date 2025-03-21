@@ -172,25 +172,6 @@ return {
 			desc = "Show Quickfix stack",
 		},
 		{
-			"<leader><space>",
-			function()
-				Snacks.picker.buffers({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-					win = {
-						input = {
-							keys = {
-								["d"] = "bufdelete",
-							},
-						},
-						list = { keys = { ["d"] = "bufdelete" } },
-					},
-				})
-			end,
-			desc = "Search buffers",
-		},
-		{
 			"<leader>p",
 			"<cmd>YankyRingHistory<cr>",
 			desc = "Search yank list",
