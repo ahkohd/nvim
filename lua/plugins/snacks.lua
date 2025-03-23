@@ -106,30 +106,6 @@ return {
 			desc = "Search marks",
 		},
 		{
-			"<leader>d",
-			function()
-				Snacks.picker.diagnostics_buffer({
-					layout = "sidebar",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-				})
-			end,
-			desc = "Search document diagnostics",
-		},
-		{
-			"<leader>D",
-			function()
-				Snacks.picker.diagnostics({
-					layout = "sidebar",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-				})
-			end,
-			desc = "Search workspace diagnostics",
-		},
-		{
 			"<leader>\\",
 			function()
 				Snacks.picker.help()
