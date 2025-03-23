@@ -27,5 +27,5 @@ require("config.opts")
 require("lazy").setup({
 	spec = { { import = "plugins" } },
 	install = { colorscheme = { "tokyonight-storm" } },
-	checker = { enabled = true },
+	checker = { enabled = false },
 })
