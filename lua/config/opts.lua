@@ -18,7 +18,7 @@ vim.o.hlsearch = true
 
 vim.o.showcmd = true
 
-vim.o.mouse = ""
+-- vim.o.mouse = ""
 
 vim.o.cmdheight = 0
 
