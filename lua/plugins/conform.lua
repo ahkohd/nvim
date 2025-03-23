@@ -35,6 +35,7 @@ return {
 				lua = { "stylua" },
 				nix = { "nixfmt" },
 				zig = { "zig fmt" },
+				rust = { "rustfmt", lsp_format = "fallback" },
 				["_"] = { "trim_whitespace" },
 				["*"] = {},
 			},
