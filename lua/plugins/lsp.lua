@@ -7,11 +7,6 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
-		{
-			"mrcjkb/rustaceanvim",
-			version = "^5",
-			lazy = false,
-		},
 	},
 	config = function()
 		require("mason").setup({
@@ -91,12 +86,6 @@ return {
 				function(server_name)
 					local name = server_name
 
-					-- do not configure rust_analyzer, let
-					-- rustaceanvim handle it
-					if name == "rust_analyzer" then
-						return
-					end
-
 					-- this is a hack to use nixd, mason-lsp-config does
 					-- not support nixd yet
 					if name == "typos_lsp" then
@@ -120,34 +109,6 @@ return {
 				end,
 			},
 		})
-
-		-- configure rustaceanvim
-		local rust_config = function()
-			local lsp_utils = require("core.utils.lsp")
-
-			return {
-				tools = {
-					enable_clippy = true,
-					reload_workspace_from_cargo_toml = true,
-					hover_actions = {
-						replace_builtin_hover = false,
-					},
-				},
-				server = {
-					on_attach = lsp_utils.on_attach,
-					default_settings = {
-						["rust-analyzer"] = {
-							checkOnSave = false,
-							diagnostics = {
-								disabled = { "unresolved-proc-macro" },
-							},
-						},
-					},
-				},
-			}
-		end
-
-		vim.g.rustaceanvim = rust_config()
 
 		local lsp_utils = require("core.utils.lsp")
 

@@ -24,7 +24,7 @@ return {
 			{ "<leader>l", group = "Find and Replace" },
 
 			{
-				"<leader>i",
+				"<leader>r",
 				group = "Rust",
 			},
 
@@ -75,102 +75,6 @@ return {
 				end,
 
 				desc = "Make buffer full-screen",
-			},
-
-			{
-				"<leader>if",
-				function()
-					vim.cmd.RustLsp("flyCheck")
-				end,
-				desc = "Run fly check",
-			},
-
-			{
-				"<leader>iF",
-				function()
-					vim.cmd.RustLsp("flyCheck", "clear")
-				end,
-				desc = "Clear fly check",
-			},
-
-			{
-				"<leader>ix",
-				function()
-					vim.cmd.RustLsp("flyCheck", "cancel")
-				end,
-				desc = "Cancel fly check",
-			},
-
-			{
-				"<leader>im",
-				function()
-					vim.cmd.RustLsp("expandMacro")
-				end,
-				desc = "Expand macro",
-			},
-
-			{
-				"<leader>ir",
-				function()
-					vim.cmd.RustLsp("rebuildProcMacros")
-				end,
-				desc = "Rebuild proc macros",
-			},
-
-			{
-				"<leader>ij",
-				function()
-					vim.cmd.RustLsp("moveItem", "down")
-				end,
-				desc = "Move item down",
-			},
-
-			{
-				"<leader>ik",
-				function()
-					vim.cmd.RustLsp("moveItem", "up")
-				end,
-				desc = "Move item up",
-			},
-
-			{
-				"<leader>ia",
-				function()
-					vim.cmd.RustLsp("hover", "range")
-				end,
-				desc = "Hover range",
-			},
-
-			{
-				"<leader>ie",
-				function()
-					vim.cmd.RustLsp("explainError", "current")
-				end,
-				desc = "Explain error",
-			},
-
-			{
-				"<leader>io",
-				function()
-					vim.cmd.RustLsp("openCargo")
-				end,
-				desc = "Open Cargo.toml",
-			},
-
-			{
-				"<leader>ip",
-				function()
-					vim.cmd.RustLsp("parentModule")
-				end,
-				desc = "Jump to Parent Module",
-			},
-
-			{
-				"<leader>id",
-				function()
-					vim.cmd.RustLsp("openDocs")
-				end,
-				desc = "Open docs for symbol under cursor",
 			},
 		})
 	end,
