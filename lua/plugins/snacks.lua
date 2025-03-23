@@ -113,20 +113,6 @@ return {
 			desc = "Search helptags",
 		},
 		{
-			"<leader>a",
-			function()
-				Snacks.picker.lsp_symbols()
-			end,
-			desc = "Search document symbols",
-		},
-		{
-			"<leader>A",
-			function()
-				Snacks.picker.lsp_workspace_symbols()
-			end,
-			desc = "Search workspace symbols",
-		},
-		{
 			"<leader>k",
 			function()
 				vim.lsp.buf.code_action()
