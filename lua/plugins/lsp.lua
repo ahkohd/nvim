@@ -137,7 +137,7 @@ return {
 					on_attach = lsp_utils.on_attach,
 					default_settings = {
 						["rust-analyzer"] = {
-							checkOnSave = true,
+							checkOnSave = false,
 							diagnostics = {
 								disabled = { "unresolved-proc-macro" },
 							},
