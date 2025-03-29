@@ -20,6 +20,11 @@ return {
 			"<cmd>Yazi cwd<cr>",
 			desc = "Toggle Yazi (cwd)",
 		},
+		{
+			"<leader>W",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Toggle Yazi (resume)",
+		},
 	},
 	opts = {
 		highlight_hovered_buffers_in_same_directory = false,
