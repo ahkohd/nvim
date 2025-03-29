@@ -4,16 +4,6 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	dependencies = {
-		{
-			"gbprod/yanky.nvim",
-			opts = {
-				system_clipboard = {
-					sync_with_ring = false,
-				},
-			},
-		},
-	},
 	keys = {
 		{
 			"<leader>go",
@@ -95,17 +85,6 @@ return {
 			desc = "Search jumplist",
 		},
 		{
-			"<leader>J",
-			function()
-				Snacks.picker.marks({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-				})
-			end,
-			desc = "Search marks",
-		},
-		{
 			"<leader>\\",
 			function()
 				Snacks.picker.help()
@@ -132,11 +111,6 @@ return {
 				-- todo
 			end,
 			desc = "Show Quickfix stack",
-		},
-		{
-			"<leader>p",
-			"<cmd>YankyRingHistory<cr>",
-			desc = "Search yank list",
 		},
 		{
 			"<leader>P",
