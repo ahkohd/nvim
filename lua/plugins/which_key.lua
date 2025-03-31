@@ -8,7 +8,7 @@ return {
 
 		wk.setup({
 			preset = "helix",
-			delay = 240,
+			delay = 300,
 		})
 
 		wk.add({
