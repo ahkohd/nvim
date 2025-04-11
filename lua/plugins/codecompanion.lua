@@ -10,6 +10,14 @@ return {
 		{ "<leader>A", "<cmd>CodeCompanionActions<CR>", desc = "Open CodeCompanion Actions" },
 	},
 	config = {
+		display = {
+			chat = {
+				window = {
+					layout = "horizontal",
+					position = "bottom",
+				},
+			},
+		},
 		strategies = {
 			chat = {
 				adapter = "anthropic",
