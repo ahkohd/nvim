@@ -7,7 +7,9 @@ return {
 	config = function()
 		local theme = require("tokyonight")
 
-		theme.setup({})
+		theme.setup({
+			transparent = true,
+		})
 
 		vim.cmd("colorscheme tokyonight-storm")
 	end,
