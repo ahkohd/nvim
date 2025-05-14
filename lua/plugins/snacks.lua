@@ -74,6 +74,14 @@ return {
 			desc = "Search (live grep)",
 		},
 		{
+			"<leader><space>",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Search buffers",
+		},
+
+		{
 			"<leader>j",
 			function()
 				Snacks.picker.jumps({
