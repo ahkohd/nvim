@@ -13,7 +13,6 @@ return {
 
 		wk.add({
 			{ "<leader>q", group = "Quickfix" },
-			{ "<leader>c", group = "Clear Lists & Buffers" },
 			{ "<leader>b", group = "Sessions" },
 			{ "<leader>;", group = "Surround" },
 			{ "<leader>g", group = "Git" },
@@ -22,7 +21,6 @@ return {
 				"<leader>r",
 				group = "Rust",
 			},
-			{ "<leader>cj", "<cmd>clearjumps<cr>", desc = "Clear Jumplist" },
 			{
 				"<leader>.",
 				function()

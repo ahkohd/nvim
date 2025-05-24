@@ -20,27 +20,27 @@ return {
 		},
 		strategies = {
 			chat = {
-				adapter = "anthropic",
+				adapter = "openai",
 			},
 			inline = {
 				adapter = "copilot",
 			},
 			cmd = {
-				adapter = "anthropic",
+				adapter = "openai",
 			},
 		},
 		adapters = {
 			openai = function()
 				return require("codecompanion.adapters").extend("openai", {
 					env = {
-						api_key = "cmd:op read op://Personal/bsmb67eqywjp2f3qayupnh555u/credential --no-newline",
+						api_key = "cmd:op read op://Personal/OpenAiApi/credential --no-newline",
 					},
 				})
 			end,
 			anthropic = function()
 				return require("codecompanion.adapters").extend("anthropic", {
 					env = {
-						api_key = "cmd:op read op://Personal/bsmb67eqywjp2f3qayupnh555u/credential --no-newline",
+						api_key = "cmd:op read op://Personal/OpenAiApi/credential --no-newline",
 					},
 				})
 			end,
