@@ -63,7 +63,7 @@ vim.g["pencil#conceallevel"] = 2
 
 vim.opt.cursorline = false
 
-vim.opt.updatetime = 250
+-- vim.opt.updatetime = 250
 
 -- finding files - search down into subfolders
 vim.o.path = vim.o.path .. ",**"

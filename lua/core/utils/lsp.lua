@@ -168,14 +168,6 @@ local M = {
 
 	on_attach = function(_, buf)
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-		local show_diagnostic = function()
-			vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
-		end
-
-		vim.api.nvim_create_autocmd("CursorHold", {
-			callback = show_diagnostic,
-		})
 	end,
 
 	capabilities = function()
@@ -195,14 +187,34 @@ local M = {
 	end,
 
 	setup_appearance = function()
-		for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
-			vim.fn.sign_define("DiagnosticSign" .. diag, {
-				text = "",
-				texthl = "DiagnosticSign" .. diag,
-				linehl = "",
-				numhl = "DiagnosticSign" .. diag,
-			})
+		local highlights = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+		}
+
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.INFO] = "",
+					[vim.diagnostic.severity.HINT] = "",
+				},
+				texthl = highlights,
+				numhl = highlights,
+			},
+			underline = false,
+			virtual_lines = false,
+			update_in_insert = true,
+		})
+
+		local show_diagnostic = function()
+			vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
 		end
+
+		keymap_set("n", "<leader>d", show_diagnostic)
 	end,
 }
 

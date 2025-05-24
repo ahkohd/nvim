@@ -14,13 +14,6 @@ return {
 			PATH = "append",
 		})
 
-		vim.diagnostic.config({
-			signs = true,
-			underline = false,
-			virtual_lines = false,
-			update_in_insert = true,
-		})
-
 		local server_configs = {
 			lua_ls = {
 				settings = {
