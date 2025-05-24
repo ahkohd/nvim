@@ -15,10 +15,10 @@ return {
 		})
 
 		vim.diagnostic.config({
-			underline = false,
-			update_in_insert = true,
-			virtual_lines = { current_line = true },
 			signs = true,
+			underline = false,
+			virtual_lines = false,
+			update_in_insert = true,
 		})
 
 		local server_configs = {
