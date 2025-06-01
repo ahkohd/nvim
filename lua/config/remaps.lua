@@ -13,3 +13,5 @@ map("n", "<C-o>", "<C-o>zz", { noremap = true })
 map("n", "n", "nzzzv", { noremap = true })
 
 map("n", "N", "Nzzzv", { noremap = true })
+
+-- map("t", "??", "<C-\\><C-n>", { noremap = true, silent = true })

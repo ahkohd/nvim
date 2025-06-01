@@ -5,11 +5,11 @@ return {
 	cmd = "Copilot",
 	keys = {
 		{
-			"<leader>c",
+			"<leader>as",
 			function()
 				vim.cmd("Copilot toggle")
 			end,
-			desc = "Toggle Copilot",
+			desc = "Toggle Copilot Suggestion",
 		},
 	},
 	config = function()

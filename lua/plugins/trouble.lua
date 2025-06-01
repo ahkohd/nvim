@@ -4,32 +4,32 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>DX",
+			"<leader>TX",
 			"<cmd>Trouble diagnostics toggle<cr>",
 			desc = "Diagnostics (Trouble)",
 		},
 		{
-			"<leader>Dx",
+			"<leader>Tx",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{
-			"<leader>Ds",
+			"<leader>Ts",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			desc = "Symbols (Trouble)",
 		},
 		{
-			"<leader>Dl",
+			"<leader>Tl",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 			desc = "LSP Definitions / references / ... (Trouble)",
 		},
 		{
-			"<leader>DL",
+			"<leader>TL",
 			"<cmd>Trouble loclist toggle<cr>",
 			desc = "Location List (Trouble)",
 		},
 		{
-			"<leader>Dq",
+			"<leader>Tq",
 			"<cmd>Trouble qflist toggle<cr>",
 			desc = "Quickfix List (Trouble)",
 		},

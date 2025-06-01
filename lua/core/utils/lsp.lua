@@ -214,7 +214,9 @@ local M = {
 			vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
 		end
 
-		keymap_set("n", "<leader>d", show_diagnostic)
+		keymap_set("n", "<leader>t", show_diagnostic, {
+			desc = "Show diagnostic",
+		})
 	end,
 }
 
