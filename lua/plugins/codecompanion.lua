@@ -8,9 +8,8 @@ return {
 	},
 	cmd = { "CodeCompanion" },
 	keys = {
-		{ "<c-;>", "<cmd>CodeCompanionChat Toggle<CR>", desc = "AI Chat", mode = { "n", "i", "v", "t" } },
+		{ "<c-'>", "<cmd>CodeCompanionChat Toggle<CR>", desc = "AI Chat", mode = { "n", "i", "v", "t" } },
 		{ "<leader>ac", "<cmd>CodeCompanionChat Toggle<CR>", desc = "AI Chat" },
-		{ "<c-'>", "<cmd>CodeCompanionActions<CR>", desc = "AI Chat Actions", mode = { "n", "i", "v", "t" } },
 		{ "<leader>aC", "<cmd>CodeCompanionActions<CR>", desc = "AI Chat Actions" },
 	},
 	config = function()
