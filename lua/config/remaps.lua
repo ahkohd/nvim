@@ -14,4 +14,8 @@ map("n", "n", "nzzzv", { noremap = true })
 
 map("n", "N", "Nzzzv", { noremap = true })
 
+-- Buffer navigation
+map("n", "<C-S-O>", ":bprev<CR>", { noremap = true, silent = true })
+map("n", "<C-S-I>", ":bnext<CR>", { noremap = true, silent = true })
+
 -- map("t", "??", "<C-\\><C-n>", { noremap = true, silent = true })
