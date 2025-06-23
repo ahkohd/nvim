@@ -5,7 +5,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{
-			"<leader>h",
+			"<leader>s",
 			function()
 				local harpoon = require("harpoon")
 
@@ -14,7 +14,7 @@ return {
 			desc = "Harpoon / Add buffer",
 		},
 		{
-			"<leader>H",
+			"<leader>h",
 			function()
 				local harpoon = require("harpoon")
 
@@ -80,6 +80,11 @@ return {
 	config = function()
 		local harpoon = require("harpoon")
 
-		harpoon:setup()
+		harpoon:setup({
+			settings = {
+				save_on_toggle = true,
+				save_on_ui_close = true,
+			},
+		})
 	end,
 }
