@@ -4,7 +4,6 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	config = function()
 		if not vim.g.loaded_nvim_treesitter then
 			vim.cmd([[echom "Not loaded treesitter"]])
@@ -35,31 +34,9 @@ return {
 				"astro",
 				"zig",
 			},
-			autotag = {
-				enable = true,
-			},
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = { "markdown" },
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-CR>",
-					node_incremental = "<C-CR>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
-			query_linter = {
-				enable = true,
-				use_virtual_text = true,
-				lint_events = { "BufWrite", "CursorHold" },
-			},
-			textobjects = {
-				select = {
-					enable = false,
-				},
 			},
 		})
 
