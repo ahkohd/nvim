@@ -16,12 +16,13 @@ return {
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>b", group = "Sessions" },
 			{ "<leader>;", group = "Surround" },
+			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>g", group = "Git" },
-			{ "<leader>l", group = "Find and Replace" },
-			{
-				"<leader>r",
-				group = "Rust",
-			},
+			{ "<leader>l", group = "Locations & Replace" },
+			{ "<C-S-O>", ":bprev<CR>", desc = "Previous buffer" },
+			{ "<C-S-I>", ":bnext<CR>", desc = "Next buffer" },
+			{ "<C-i>", "<C-i>zz", desc = "Jump forward (centered)" },
+			{ "<C-o>", "<C-o>zz", desc = "Jump back (centered)" },
 			{
 				"<leader>.",
 				function()

@@ -10,9 +10,9 @@
         pkgs = import nixpkgs { inherit system; };
 
         packages = with pkgs; [
-          nodejs_20
+          nodejs_24
 
-          corepack_20
+          corepack_24
         ];
 
       in {

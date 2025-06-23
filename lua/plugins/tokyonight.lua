@@ -6,7 +6,6 @@ return {
 	priority = 1000,
 	config = function()
 		local theme = require("tokyonight")
-
 		theme.setup({})
 
 		vim.cmd("colorscheme tokyonight-night")

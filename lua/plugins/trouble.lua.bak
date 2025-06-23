@@ -1,3 +1,5 @@
+-- luacheck: globals vim
+
 return {
 	"folke/trouble.nvim",
 	cmd = "Trouble",
@@ -12,16 +14,6 @@ return {
 			"<leader>Dx",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 			desc = "Buffer Diagnostics (Trouble)",
-		},
-		{
-			"<leader>Ds",
-			"<cmd>Trouble symbols toggle focus=false<cr>",
-			desc = "Symbols (Trouble)",
-		},
-		{
-			"<leader>Dl",
-			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-			desc = "LSP Definitions / references / ... (Trouble)",
 		},
 		{
 			"<leader>DL",

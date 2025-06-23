@@ -12,18 +12,8 @@ return {
 		},
 		{
 			"<leader>O",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Toggle Yazi (resume)",
-		},
-		{
-			"<leader>w",
 			"<cmd>Yazi cwd<cr>",
-			desc = "Toggle Yazi (cwd)",
-		},
-		{
-			"<leader>W",
-			"<cmd>Yazi toggle<cr>",
-			desc = "Toggle Yazi (resume)",
+			desc = "Toggle Yazi",
 		},
 	},
 	opts = {

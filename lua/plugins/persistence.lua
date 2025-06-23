@@ -1,37 +1,23 @@
+-- luacheck: globals vim
+--
 return {
 	"folke/persistence.nvim",
 	event = "BufReadPre",
-	keys = {
-		{
-			"<leader>bs",
-			function()
-				require("persistence").load()
+	opts = {},
+	init = function()
+		-- Auto-restore session on startup
+		vim.api.nvim_create_autocmd("VimEnter", {
+			group = vim.api.nvim_create_augroup("persistence_auto_restore", { clear = true }),
+			nested = true,
+			callback = function()
+				-- Only load the session if nvim was started with no args
+				if vim.fn.argc() == 0 then
+					-- Small delay to ensure all plugins are loaded
+					vim.defer_fn(function()
+						require("persistence").load()
+					end, 50)
+				end
 			end,
-			desc = "Load session",
-		},
-		{
-			"<leader>bS",
-			function()
-				require("persistence").select()
-			end,
-			desc = "Select session",
-		},
-		{
-			"<leader>bl",
-			function()
-				require("persistence").load({ last = true })
-			end,
-			desc = "Load last session",
-		},
-		{
-			"<leader>bd",
-			function()
-				require("persistence").stop()
-			end,
-			desc = "Stop persistence",
-		},
-	},
-	opts = {
-		need = 0,
-	},
+		})
+	end,
 }
