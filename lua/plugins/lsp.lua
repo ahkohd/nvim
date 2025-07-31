@@ -1,107 +1,78 @@
 -- luacheck: globals vim
 
 return {
-	"neovim/nvim-lspconfig",
-	name = "lspconfig",
+	"williamboman/mason.nvim",
 	event = "VeryLazy",
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		"williamboman/mason.nvim",
-	},
 	config = function()
 		require("mason").setup({
 			max_concurrent_installers = 12,
 			PATH = "append",
 		})
 
-		local server_configs = {
-			lua_ls = {
-				settings = {
-					Lua = {
-						runtime = { version = "LuaJIT" },
-						completion = { callSnippet = "Replace" },
-						diagnostics = { globals = require("core.utils.lsp").lua_globals },
-						format = { enable = false },
-						hint = { enable = true },
-						telemetry = { enable = false },
-						workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
-					},
-				},
-			},
-			biome = {
-				-- disable LSP if biome.json is not found
-				disabled = function()
-					local root_dir = require("core.utils.project").root_dir()
-					local biome_config_path = root_dir and (root_dir .. "/biome.json") or ""
-					if root_dir and vim.fn.filereadable(biome_config_path) == 1 then
-						return false
-					else
-						return true
-					end
-				end,
-			},
-			nixd = {
-				nixpkgs = {
-					expr = "import <nixpkgs> { }",
-				},
-				formatting = {
-					command = { "nixfmt" },
-				},
-				options = {
-					nixos = {
-						expr = '(builtins.getFlake "/home/var/.dotfiles").nixosConfigurations.nixos.options',
-					},
-					home_manager = {
-						expr = '(builtins.getFlake "/home/var/.dotfiles").homeConfigurations.nixos.options',
-					},
-				},
-			},
+		-- Ensure LSP servers are installed
+		local registry = require("mason-registry")
+		local ensure_installed = {
+			"lua-language-server",
+			"rust-analyzer",
+			"biome",
+			"html-lsp",
+			"json-lsp",
+			"css-lsp",
+			"cssmodules-language-server",
+			"tailwindcss-language-server",
+			"taplo",
+			"vim-language-server",
+			"astro-language-server",
+			"marksman",
+			"nixd",
+			"zls",
+			"typescript-language-server",
+			"eslint-lsp",
 		}
 
-		require("mason-lspconfig").setup({
-			automatic_installation = true,
-			ensure_installed = {
-				"biome",
-				"html",
-				"jsonls",
-				"lua_ls",
-				"cssls",
-				"cssmodules_ls",
-				"tailwindcss",
-				"taplo",
-				"vimls",
-				"astro",
-				"zls",
-				"marksman",
-				"typos_lsp",
-			},
-			handlers = {
-				function(server_name)
-					local name = server_name
+		registry.refresh(function()
+			for _, pkg_name in ipairs(ensure_installed) do
+				local ok, pkg = pcall(registry.get_package, pkg_name)
+				if ok and not pkg:is_installed() then
+					pkg:install()
+				end
+			end
+		end)
 
-					-- this is a hack to use nixd, mason-lsp-config does
-					-- not support nixd yet
-					if name == "typos_lsp" then
-						name = "nixd"
-					end
+		-- List of LSP servers to enable
+		local servers = {
+			"biome",
+			"html",
+			"jsonls",
+			"lua_ls",
+			"cssls",
+			"cssmodules_ls",
+			"tailwindcss",
+			"taplo",
+			"astro",
+			"marksman",
+			"nixd",
+			"rust_analyzer",
+			"zls",
+			"ts_ls",
+		}
 
-					local config = server_configs[name] or {}
+		local utils = require("core.utils.lsp")
 
-					-- disable LSP if disabled() returns true
-					if config.disabled and config.disabled() then
-						return
-					end
+		-- Enable each server
+		for _, name in ipairs(servers) do
+			-- Check if the server config exists
+			if vim.lsp.config[name] then
+				-- Override on_attach and capabilities
+				vim.lsp.config[name].on_attach = utils.on_attach
+				vim.lsp.config[name].capabilities = utils.capabilities()
 
-					local utils = require("core.utils.lsp")
-
-					config.on_attach = utils.on_attach
-
-					config.capabilities = utils.capabilities()
-
-					require("lspconfig")[name].setup(config)
-				end,
-			},
-		})
+				-- Enable the LSP server
+				vim.lsp.enable(name)
+			else
+				vim.notify("LSP config not found for: " .. name, vim.log.levels.WARN)
+			end
+		end
 
 		local lsp_utils = require("core.utils.lsp")
 
