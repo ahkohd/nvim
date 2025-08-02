@@ -58,7 +58,7 @@ return {
 		},
 		-- pickers
 		{
-			"<leader>f",
+			"<leader>fe",
 			function()
 				Snacks.explorer.open({
 					auto_close = true,
@@ -112,7 +112,7 @@ return {
 					},
 				})
 			end,
-			desc = "Finder",
+			desc = "File explorer",
 		},
 		{
 			"<leader>F",
