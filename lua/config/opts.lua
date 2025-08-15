@@ -61,6 +61,11 @@ vim.g["pencil#conceallevel"] = 2
 
 vim.opt.cursorline = false
 
+-- Reduce key sequence timeout
+vim.opt.timeoutlen = 200 -- for mapped sequences (like jk for escape)
+vim.opt.ttimeoutlen = 30 -- for terminal key codes
+
+-- Faster CursorHold events (for LSP diagnostics, git signs, etc.)
 -- vim.opt.updatetime = 250
 
 -- finding files - search down into subfolders

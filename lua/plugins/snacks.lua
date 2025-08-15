@@ -131,13 +131,9 @@ return {
 			desc = "Search buffers",
 		},
 		{
-			"<leader>j",
+			"<leader>J",
 			function()
-				Snacks.picker.jumps({
-					-- on_show = function()
-					-- 	vim.cmd.stopinsert()
-					-- end,
-				})
+				Snacks.picker.jumps()
 			end,
 			desc = "Search jumplist",
 		},
@@ -161,15 +157,6 @@ return {
 				vim.lsp.buf.code_action()
 			end,
 			desc = "Show code actions",
-		},
-		{
-			"<leader>p",
-			function()
-				Snacks.picker.explorer({
-					title = "File Tree",
-				})
-			end,
-			desc = "File tree",
 		},
 		{
 			"<leader>R",
