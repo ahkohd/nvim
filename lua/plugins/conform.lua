@@ -49,8 +49,7 @@ return {
 		local web = get_available_formatters({ "biome", "prettier" })
 
 		return {
-			formatters = {
-			},
+			formatters = {},
 			formatters_by_ft = {
 				html = web,
 				css = web,

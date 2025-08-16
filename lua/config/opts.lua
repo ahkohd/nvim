@@ -76,4 +76,8 @@ vim.o.wildignore = vim.o.wildignore .. ",*/node_modules/*"
 -- turn off paste mode when leaving insert
 vim.cmd("autocmd InsertLeave * set nopaste")
 
+-- Prevent terminal buffers from automatically entering insert mode
+vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
+vim.cmd("autocmd TermOpen * stopinsert")  -- Stay in normal mode
+
 require("config.remaps")

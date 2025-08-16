@@ -19,7 +19,7 @@ map("n", "<C-S-O>", ":bprev<CR>", { noremap = true, silent = true })
 map("n", "<C-S-I>", ":bnext<CR>", { noremap = true, silent = true })
 
 -- Terminal mode mappings
-map("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
 
 -- Split navigation
 map("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Navigate to left split" })

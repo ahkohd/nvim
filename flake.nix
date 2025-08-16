@@ -1,29 +1,55 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      rust-overlay,
+    }:
+    let
+      overlays = [ rust-overlay.overlays.default ];
 
-        packages = with pkgs; [
-          nodejs_24
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        inherit overlays;
+      };
+      pkgsX86 = import nixpkgs {
+        system = "x86_64-darwin";
+        inherit overlays;
+      };
 
-          corepack_24
+      rustToolchainExtensions = [ "rust-src" ];
+      rustToolchain = pkgs.rust-bin.nightly.latest.default.override {
+        targets = [ "aarch64-apple-darwin" ];
+        extensions = rustToolchainExtensions;
+      };
+      rustToolchainX86 = pkgsX86.rust-bin.nightly.latest.default.override {
+        targets = [ "x86_64-apple-darwin" ];
+        extensions = rustToolchainExtensions;
+      };
+
+      commonPackages =
+        p: with p; [
+          nodejs_22
+          corepack_22
+          stylua
+          nixfmt
+          taplo
         ];
 
-      in {
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = packages;
-
-          shellHook = ''
-            echo "🔮 Welcome to ahkohd/nvim development environment!"
-          '';
+    in
+    {
+      devShells = {
+        aarch64-darwin.default = pkgs.mkShellNoCC {
+          packages = [ rustToolchain ] ++ (commonPackages pkgs);
         };
-      });
+        x86_64-darwin.default = pkgsX86.mkShellNoCC {
+          packages = [ rustToolchainX86 ] ++ (commonPackages pkgsX86);
+        };
+      };
+    };
 }
-

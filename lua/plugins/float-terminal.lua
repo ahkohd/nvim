@@ -5,23 +5,43 @@ return {
 	cmd = "FloatTerminal",
 	keys = {
 		{
-			"<C-;>",
+			";a",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(1)
 				end
 			end,
-			desc = "Toggle floating terminal 1",
+			desc = "Toggle Claude Code",
 			mode = { "n", "t" },
 		},
 		{
-			"<C-'>",
+			";s",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(2)
 				end
 			end,
 			desc = "Toggle floating terminal 2",
+			mode = { "n", "t" },
+		},
+		{
+			";d",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(3)
+				end
+			end,
+			desc = "Toggle floating terminal 3",
+			mode = { "n", "t" },
+		},
+		{
+			";f",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(3)
+				end
+			end,
+			desc = "Toggle floating terminal 4",
 			mode = { "n", "t" },
 		},
 	},
