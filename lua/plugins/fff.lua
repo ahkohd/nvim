@@ -1,7 +1,9 @@
 return {
 	"dmtrKovalenko/fff.nvim",
 	build = "cargo build --release",
-	opts = {},
+	opts = {
+    prompt = "➜ ",
+  },
 	keys = {
 		{
 			"<leader>f",

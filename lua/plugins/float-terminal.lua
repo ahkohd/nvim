@@ -5,17 +5,17 @@ return {
 	cmd = "FloatTerminal",
 	keys = {
 		{
-			"<C-;>",
+			"<C-'>",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(1)
 				end
 			end,
-			desc = "Toggle floating terminal 1",
+			desc = "Toggle Claude Code",
 			mode = { "n", "t" },
 		},
 		{
-			"<C-'>",
+			"<leader>z",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(2)
@@ -24,6 +24,16 @@ return {
 			desc = "Toggle floating terminal 2",
 			mode = { "n", "t" },
 		},
+    {
+			"<leader>x",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(3)
+				end
+			end,
+			desc = "Toggle floating terminal 3",
+			mode = { "n", "t" },
+		}
 	},
 	opts = {
 		width = nil,
