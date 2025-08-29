@@ -11,7 +11,7 @@ return {
 					_G.FloatTerminal.toggle_terminal(1)
 				end
 			end,
-			desc = "Toggle Claude Code",
+			desc = "Toggle floating terminal 1",
 			mode = { "n", "t" },
 		},
 		{
@@ -50,8 +50,9 @@ return {
 		height = nil,
 		exclusive = true, -- when true, only one terminal can be visible at a time
 		terminals = {
-			{ id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
-			{ id = 2, cmd = nil }, -- default shell
+			-- { id = 1, cmd = 'opencode --continue "$@" 2>/dev/null || opencode "$@"' }, -- opencode
+			{ id = 1, cmd = nil }, -- default shell
+			{ id = 2, cmd = nil },
 		},
 	},
 	config = function(_, opts)
