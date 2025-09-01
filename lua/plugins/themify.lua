@@ -1,7 +1,7 @@
 return {
 	"LmanTW/themify.nvim",
 	lazy = false,
-	priority = 999,
+	priority = 1000,
 	keys = {
 		{
 			"<leader>b",
@@ -13,7 +13,9 @@ return {
 		require("themify").setup({
 			"nyoom-engineering/oxocarbon.nvim",
 			"monochrome",
-			"folke/tokyonight.nvim",
+			"xeno-lilypad",
+			"xeno-pink-haze",
+			"xeno-golden-hour",
 		})
 	end,
 }
