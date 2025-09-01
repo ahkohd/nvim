@@ -58,12 +58,3 @@ map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Op
 map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
 map("n", "<M-S-j>", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
 map("n", "<M-S-k>", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
-
--- Toggle light/dark background
-vim.keymap.set("n", "<leader>b", function()
-	if vim.o.background == "dark" then
-		vim.o.background = "light"
-	else
-		vim.o.background = "dark"
-	end
-end, { desc = "Toggle background light/dark" })
