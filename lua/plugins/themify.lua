@@ -4,7 +4,7 @@ return {
 	priority = 999,
 	keys = {
 		{
-			"<leader>T",
+			"<leader>b",
 			"<cmd>Themify<CR>",
 			desc = "Themes",
 		},

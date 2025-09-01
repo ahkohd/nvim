@@ -28,7 +28,7 @@ map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to
 map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
 
 -- Quick file operations
-map("n", "<leader>b", ":e!<CR>", { noremap = true, silent = true, desc = "Reload current file" })
+map("n", "<leader>h", ":e!<CR>", { noremap = true, silent = true, desc = "Reload current file" })
 
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
