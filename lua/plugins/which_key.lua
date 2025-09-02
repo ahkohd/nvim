@@ -18,18 +18,18 @@ return {
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>l", group = "Locations & Replace" },
-			{ "<C-S-O>", ":bprev<CR>", desc = "Previous buffer" },
-			{ "<C-S-I>", ":bnext<CR>", desc = "Next buffer" },
+			{ "<M-S-O>", ":bprev<CR>", desc = "Previous buffer" },
+			{ "<M-S-I>", ":bnext<CR>", desc = "Next buffer" },
 			{ "<C-i>", "<C-i>zz", desc = "Jump forward (centered)" },
 			{ "<C-o>", "<C-o>zz", desc = "Jump back (centered)" },
 			{
 				"<leader>.",
 				function()
-					vim.o.number = not vim.o.number
+          vim.o.number = not vim.o.number
 
-					vim.o.relativenumber = not vim.o.relativenumber
+          vim.o.relativenumber = not vim.o.relativenumber
 				end,
-				desc = "Toggle line number",
+        desc = "Toggle line number",
 			},
 			{
 				"<leader>,",
