@@ -22,8 +22,10 @@ return {
       follow_cwd = true,
       use_git_branch = false,
       should_save = function()
-        -- Don't save sessions for certain file types
-        if vim.bo.filetype == "alpha" or vim.bo.filetype == "" then
+        -- Don't save sessions for certain file types or terminals
+        if vim.bo.filetype == "alpha"
+           or vim.bo.filetype == ""
+           or vim.bo.buftype == "terminal" then
           return false
         end
         return true
