@@ -19,6 +19,24 @@ return {
 			require("conform").format({ async = true, timeout_ms = 1000, lsp_format = "fallback", range = range })
 		end, { range = true })
 
+		-- Format keymap
+		vim.keymap.set("n", "<leader>y", function()
+			-- Check if we're in a JS project (has package.json)
+			if vim.fn.filereadable("package.json") == 1 then
+				-- Check if pnpm is available
+				if vim.fn.executable("pnpm") == 1 then
+					vim.cmd("!pnpm lint --fix")
+				elseif vim.fn.executable("npm") == 1 then
+					vim.cmd("!npm run lint --fix")
+				else
+					vim.notify("No package manager found", vim.log.levels.WARN)
+				end
+			else
+				-- Fallback to conform.nvim for other file types
+				require("conform").format({ lsp_format = "fallback" })
+			end
+		end, { desc = "Format code" })
+
 		-- Helper function to check if a formatter exists
 		local function formatter_exists(name)
 			-- Handle special cases
