@@ -166,8 +166,13 @@ vim.lsp.util.open_floating_preview = float_wrapper(default_opener)
 local M = {
 	lua_globals = lua_globals,
 
-	on_attach = function(_, buf)
+	on_attach = function(client, buf)
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+		local isNavicOk, navic = pcall(require, "nvim-navic")
+		if isNavicOk and client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, buf)
+		end
 	end,
 
 	capabilities = function()

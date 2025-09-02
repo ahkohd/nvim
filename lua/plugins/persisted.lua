@@ -28,10 +28,22 @@ return {
         end
         return true
       end,
-      allowed_dirs = {
-        "~/.dotfiles",
-        "~/Developer",
-      }
+    })
+
+    -- Set up autocmds to clear buffers after loading sessions
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "PersistedLoadPost",
+      callback = function()
+        local current_buf = vim.api.nvim_get_current_buf()
+        -- Clear all buffers except current and terminals
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          if vim.api.nvim_buf_is_valid(buf)
+             and buf ~= current_buf
+             and vim.bo[buf].buftype ~= "terminal" then
+            vim.api.nvim_buf_delete(buf, { force = true })
+          end
+        end
+      end,
     })
   end,
 }

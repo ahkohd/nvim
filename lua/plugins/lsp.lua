@@ -2,6 +2,9 @@
 
 return {
 	"williamboman/mason.nvim",
+  dependencies = {
+    "SmiteshP/nvim-navic"
+  },
 	event = "VeryLazy",
 	config = function()
 		require("mason").setup({
@@ -63,8 +66,7 @@ return {
 		for _, name in ipairs(servers) do
 			-- Check if the server config exists
 			if vim.lsp.config[name] then
-				-- Override on_attach and capabilities
-				vim.lsp.config[name].on_attach = utils.on_attach
+				-- Override capabilities
 				vim.lsp.config[name].capabilities = utils.capabilities()
 
 				-- Enable the LSP server
@@ -73,6 +75,13 @@ return {
 				vim.notify("LSP config not found for: " .. name, vim.log.levels.WARN)
 			end
 		end
+
+		vim.api.nvim_create_autocmd('LspAttach', {
+			callback = function(args)
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				utils.on_attach(client, args.buf)
+			end,
+		})
 
 		local lsp_utils = require("core.utils.lsp")
 
