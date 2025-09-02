@@ -3,7 +3,7 @@ return {
 	cmd = { "Outline", "OutlineOpen" },
 	keys = {
 		{
-			"<leader>t",
+			"<leader>b",
 			"<cmd>Outline<CR>",
 			desc = "Outline",
 		},
