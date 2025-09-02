@@ -168,11 +168,6 @@ local M = {
 
 	on_attach = function(client, buf)
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-		local isNavicOk, navic = pcall(require, "nvim-navic")
-		if isNavicOk and client.server_capabilities.documentSymbolProvider then
-			navic.attach(client, buf)
-		end
 	end,
 
 	capabilities = function()

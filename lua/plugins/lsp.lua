@@ -2,9 +2,6 @@
 
 return {
 	"williamboman/mason.nvim",
-  dependencies = {
-    "SmiteshP/nvim-navic"
-  },
 	event = "VeryLazy",
 	config = function()
 		require("mason").setup({

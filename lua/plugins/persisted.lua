@@ -3,7 +3,7 @@ return {
   event = "BufReadPre",
   keys = {
     {
-      "<leader>j",
+      "<leader>b",
       "<cmd>SessionSelect<cr>",
       desc = "Load Session"
     }
