@@ -21,5 +21,7 @@ return {
 		require("mini.bracketed").setup()
 
 		require("mini.pairs").setup()
+
+    require("mini.move").setup()
 	end,
 }
