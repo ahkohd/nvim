@@ -352,7 +352,7 @@ function M.setup()
 	for group, settings in pairs(highlights) do
 		vim.api.nvim_set_hl(0, group, settings)
 	end
-	
+
 	-- Dropbar monochrome theme highlights
 	-- Active window dropbar highlights - subtle monochrome style
 	vim.api.nvim_set_hl(0, "DropBarCurrentContext", { bg = c.one_bg })
