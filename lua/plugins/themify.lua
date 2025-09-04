@@ -9,7 +9,7 @@ return {
 		{
 			"<leader>t",
 			"<cmd>Themify<CR>",
-			desc = "Themes",
+			desc = "Theme",
 		},
 	},
 	config = function()

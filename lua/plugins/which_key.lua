@@ -9,6 +9,9 @@ return {
 		wk.setup({
 			preset = "helix",
 			delay = 300,
+      icons = {
+        mappings = false
+      }
 		})
 
 		wk.add({
@@ -36,14 +39,14 @@ return {
 				function()
 					vim.o.mouse = vim.o.mouse == "a" and "" or "a"
 				end,
-				desc = "Toggle mouse support",
+				desc = "Toggle mouse",
 			},
 			{
 				"<leader><tab>",
 				function()
 					vim.cmd([[tab split]])
 				end,
-				desc = "Make buffer full-screen",
+				desc = "Buffer full-screen",
 			},
 		})
 	end,

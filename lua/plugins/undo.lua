@@ -10,7 +10,7 @@ return {
 				vim.cmd("UndotreeToggle")
 				vim.cmd("UndotreeFocus")
 			end,
-			desc = "Toggle undo tree",
+			desc = "Undo tree",
 		},
 	},
 	config = function() end,

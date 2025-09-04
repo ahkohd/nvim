@@ -215,7 +215,7 @@ local M = {
 		end
 
 		keymap_set("n", "<leader>d", show_diagnostic, {
-			desc = "Show diagnostic",
+			desc = "Toggle diagnostics",
 		})
 	end,
 }

@@ -6,7 +6,7 @@ return {
 	},
 	event = "VeryLazy",
 	keys = {
-		{ "<leader>j", "<cmd>Navbuddy<cr>", desc = "Outlines" }
+		{ "<leader>j", "<cmd>Navbuddy<cr>", desc = "Outline" }
 	},
   config = function()
     local icons = require("core.ui.icons").lsp_icons

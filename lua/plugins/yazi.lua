@@ -8,12 +8,12 @@ return {
 		{
 			"<leader>o",
 			"<cmd>Yazi<cr>",
-			desc = "Toggle Yazi",
+			desc = "Yazi",
 		},
 		{
 			"<leader>O",
 			"<cmd>Yazi cwd<cr>",
-			desc = "Toggle Yazi",
+			desc = "Yazi (Root)",
 		},
 	},
 	opts = {

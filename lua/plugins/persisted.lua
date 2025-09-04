@@ -5,7 +5,7 @@ return {
     {
       "<leader>b",
       "<cmd>SessionSelect<cr>",
-      desc = "Load Session"
+      desc = "Session"
     }
   },
   config = function()

@@ -112,7 +112,7 @@ return {
 					},
 				})
 			end,
-			desc = "File explorer",
+			desc = "File tree",
 		},
 		{
 			"<leader>r",
@@ -121,42 +121,42 @@ return {
 					layout = "dropdown",
 				})
 			end,
-			desc = "Search (live grep)",
+			desc = "Grep",
 		},
 		{
 			"<leader><space>",
 			function()
 				Snacks.picker.buffers()
 			end,
-			desc = "Search buffers",
+			desc = "Buffers",
 		},
 		{
 			"<leader>J",
 			function()
 				Snacks.picker.jumps()
 			end,
-			desc = "Search jumplist",
+			desc = "Jumplist",
 		},
 		{
 			"<leader>m",
 			function()
 				Snacks.picker.marks()
 			end,
-			desc = "Search marks",
+			desc = "Marks",
 		},
 		{
 			"<leader>\\",
 			function()
 				Snacks.picker.help()
 			end,
-			desc = "Search helptags",
+			desc = "Helptags",
 		},
 		{
 			"<leader>k",
 			function()
 				vim.lsp.buf.code_action()
 			end,
-			desc = "Show code actions",
+			desc = "Code actions",
 		},
 		{
 			"<leader>R",
@@ -180,7 +180,7 @@ return {
 			function()
 				Snacks.picker.lines()
 			end,
-			desc = "Buffer lines",
+			desc = "Lines",
 		},
 		{
 			"<leader>?",
