@@ -9,13 +9,14 @@ return {
 		wk.setup({
 			preset = "helix",
 			delay = 300,
-      icons = {
-        mappings = false
-      }
+			icons = {
+				mappings = false,
+			},
 		})
 
 		wk.add({
 			{ "<leader>a", group = "AI" },
+			{ "<leader>w", group = "Session" },
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>;", group = "Surround" },
 			{ "<leader>q", group = "Quickfix" },
@@ -28,11 +29,11 @@ return {
 			{
 				"<leader>.",
 				function()
-          vim.o.number = not vim.o.number
+					vim.o.number = not vim.o.number
 
-          vim.o.relativenumber = not vim.o.relativenumber
+					vim.o.relativenumber = not vim.o.relativenumber
 				end,
-        desc = "Toggle line number",
+				desc = "Toggle line number",
 			},
 			{
 				"<leader>,",
