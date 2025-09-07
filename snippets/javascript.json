@@ -1,0 +1,88 @@
+{
+  "ESLint disable react-hooks deps": {
+    "prefix": "eslint-deps",
+    "body": [
+      "// eslint-disable-next-line react-hooks/exhaustive-deps"
+    ],
+    "description": "Disable react-hooks/exhaustive-deps for next line"
+  },
+  "ESLint disable react-hooks block": {
+    "prefix": "eslint-deps-block",
+    "body": [
+      "/* eslint-disable react-hooks/exhaustive-deps */",
+      "$1",
+      "/* eslint-enable react-hooks/exhaustive-deps */"
+    ],
+    "description": "Disable react-hooks/exhaustive-deps for block"
+  },
+  "ESLint disable next line": {
+    "prefix": "eslint-disable",
+    "body": [
+      "// eslint-disable-next-line $1"
+    ],
+    "description": "Generic ESLint disable next line"
+  },
+  "ESLint disable any": {
+    "prefix": "eslint-any",
+    "body": [
+      "// eslint-disable-next-line @typescript-eslint/no-explicit-any"
+    ],
+    "description": "Disable TypeScript any rule"
+  },
+  "ESLint disable file": {
+    "prefix": "eslint-file",
+    "body": [
+      "/* eslint-disable */"
+    ],
+    "description": "Disable ESLint for entire file"
+  },
+  "ESLint disable specific rule file": {
+    "prefix": "eslint-file-rule",
+    "body": [
+      "/* eslint-disable $1 */"
+    ],
+    "description": "Disable specific ESLint rule for entire file"
+  },
+  "Console log": {
+    "prefix": "log",
+    "body": [
+      "console.log($1);"
+    ],
+    "description": "Console log statement"
+  },
+  "Console log with label": {
+    "prefix": "logl",
+    "body": [
+      "console.log('$1:', $2);"
+    ],
+    "description": "Console log with label"
+  },
+  "Console log variable": {
+    "prefix": "logv",
+    "body": [
+      "console.log({ $1 });"
+    ],
+    "description": "Console log variable in object shorthand"
+  },
+  "TypeScript ignore": {
+    "prefix": "ts-ignore",
+    "body": [
+      "// @ts-ignore"
+    ],
+    "description": "TypeScript ignore next line"
+  },
+  "TypeScript expect error": {
+    "prefix": "ts-expect-error",
+    "body": [
+      "// @ts-expect-error"
+    ],
+    "description": "TypeScript expect error on next line"
+  },
+  "TypeScript nocheck": {
+    "prefix": "ts-nocheck",
+    "body": [
+      "// @ts-nocheck"
+    ],
+    "description": "TypeScript ignore entire file"
+  }
+}
