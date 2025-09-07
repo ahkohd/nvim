@@ -1,3 +1,5 @@
+-- luacheck: globals vim
+
 return {
 	"b0o/incline.nvim",
 	dependencies = {

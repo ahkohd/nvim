@@ -24,8 +24,6 @@ return {
 			{ "<leader>l", group = "Locations & Replace" },
 			{ "<M-S-O>", ":bprev<CR>", desc = "Previous buffer" },
 			{ "<M-S-I>", ":bnext<CR>", desc = "Next buffer" },
-			{ "<C-i>", "<C-i>zz", desc = "Jump forward (centered)" },
-			{ "<C-o>", "<C-o>zz", desc = "Jump back (centered)" },
 			{
 				"<leader>.",
 				function()
