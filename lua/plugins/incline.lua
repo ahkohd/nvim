@@ -30,7 +30,7 @@ return {
 				margin = { vertical = 0, horizontal = 1 },
 				placement = {
 					horizontal = "left",
-					vertical = "top",
+					vertical = "bottom",
 				},
 			},
 			render = function(props)
