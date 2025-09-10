@@ -44,6 +44,26 @@ return {
 			desc = "Toggle floating terminal 4",
 			mode = { "n", "t" },
 		},
+		{
+			";<esc>",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.hide_current_terminal()
+				end
+			end,
+			desc = "Hide current floating terminal",
+			mode = { "n", "t" },
+		},
+		{
+			";q",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.hide_current_terminal()
+				end
+			end,
+			desc = "Hide current floating terminal",
+			mode = { "n", "t" },
+		},
 	},
 	opts = {
 		width = nil,
@@ -157,9 +177,20 @@ return {
 			end
 		end
 
-		-- Store the toggle_terminal function globally for access from keybindings
+		local function hide_current_terminal()
+			local current_win = vim.api.nvim_get_current_win()
+			for _, term in pairs(state.terminals) do
+				if term.win == current_win and vim.api.nvim_win_is_valid(term.win) then
+					vim.api.nvim_win_hide(term.win)
+					break
+				end
+			end
+		end
+
+		-- Store the functions globally for access from keybindings
 		_G.FloatTerminal = {
 			toggle_terminal = toggle_terminal,
+			hide_current_terminal = hide_current_terminal,
 		}
 
 		vim.api.nvim_create_user_command("FloatTerminal", function()
