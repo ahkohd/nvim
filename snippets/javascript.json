@@ -44,21 +44,21 @@
     "description": "Disable specific ESLint rule for entire file"
   },
   "Console log": {
-    "prefix": "log",
+    "prefix": "cl",
     "body": [
       "console.log($1);"
     ],
     "description": "Console log statement"
   },
   "Console log with label": {
-    "prefix": "logl",
+    "prefix": "cll",
     "body": [
       "console.log('$1:', $2);"
     ],
     "description": "Console log with label"
   },
   "Console log variable": {
-    "prefix": "logv",
+    "prefix": "clv",
     "body": [
       "console.log({ $1 });"
     ],
