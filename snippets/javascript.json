@@ -84,5 +84,12 @@
       "// @ts-nocheck"
     ],
     "description": "TypeScript ignore entire file"
+  },
+  "ESLint disable react refresh": {
+    "prefix": "eslint-refresh",
+    "body": [
+      "// eslint-disable-next-line react-refresh/only-export-components"
+    ],
+    "description": "Disable react-refresh/only-export-components for next line"
   }
 }
