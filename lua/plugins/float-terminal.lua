@@ -38,7 +38,7 @@ return {
 			";f",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(3)
+					_G.FloatTerminal.toggle_terminal(4)
 				end
 			end,
 			desc = "Toggle floating terminal 4",
@@ -66,6 +66,7 @@ return {
 		},
 	},
 	opts = {
+		layout = "ivy_taller", -- "float" or "ivy_taller"
 		width = nil,
 		height = nil,
 		exclusive = true, -- when true, only one terminal can be visible at a time
@@ -79,14 +80,48 @@ return {
 			terminals = {},
 		}
 
-		local function create_floating_window(config)
+		local function get_float_layout(config)
 			config = config or {}
 			local width = config.width or math.floor(vim.o.columns * 0.8)
-			local height = config.height or math.floor(vim.o.lines * 0.8)
+			local height = config.height or math.floor(vim.o.lines * 0.6)
 
-			-- calculate the position to center the window
+			-- center the window
 			local col = math.floor((vim.o.columns - width) / 2)
 			local row = math.floor((vim.o.lines - height) / 2)
+
+			return {
+				relative = "editor",
+				width = width,
+				height = height,
+				col = col,
+				row = row,
+				style = "minimal",
+				border = "rounded",
+			}
+		end
+
+		local function get_ivy_taller_layout(config)
+			config = config or {}
+			local width = config.width or vim.o.columns
+			local height = config.height or math.floor(vim.o.lines * 0.8)
+
+			-- position at bottom like ivy_taller
+			local col = 0
+			local row = vim.o.lines - height
+
+			return {
+				relative = "editor",
+				width = width,
+				height = height,
+				col = col,
+				row = row,
+				style = "minimal",
+				border = "rounded",
+			}
+		end
+
+		local function create_floating_window(config)
+			config = config or {}
 
 			-- create a buffer
 			local buf = nil
@@ -96,15 +131,13 @@ return {
 				buf = vim.api.nvim_create_buf(false, true) -- No file, scratch buffer
 			end
 
-			local win_config = {
-				relative = "editor",
-				width = width,
-				height = height,
-				col = col,
-				row = row,
-				style = "minimal",
-				border = "rounded",
-			}
+			-- get window configuration based on layout
+			local win_config
+			if opts.layout == "float" then
+				win_config = get_float_layout(config)
+			else -- default to ivy_taller
+				win_config = get_ivy_taller_layout(config)
+			end
 
 			-- create the floating window
 			local win = vim.api.nvim_open_win(buf, true, win_config)

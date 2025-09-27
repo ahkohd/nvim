@@ -58,91 +58,82 @@ return {
 		},
 		-- pickers
 		{
-			"<leader>F",
+			"<leader>f",
 			function()
-				Snacks.explorer.open({
-					auto_close = true,
-					focus = "input",
-					hidden = true,
-					git = {
-						ignore = true,
-					},
-					actions = {
-
-						confirm_from_input = function(picker)
-							local item = picker:current()
-							if item then
-								-- For directories, focus the list
-								if item.dir then
-									picker:focus("list")
-								else
-									-- For files, open them and close the picker
-									picker:close()
-									vim.cmd("edit " .. vim.fn.fnameescape(item.file or item._path))
-								end
-							end
-						end,
-					},
-					win = {
-						input = {
-							keys = {
-								["<cr>"] = { "confirm_from_input", mode = { "i", "n" }, desc = "Open file from input" },
-							},
-						},
-					},
-					layout = {
-						layout = {
-							box = "horizontal",
-							backdrop = false,
-							width = 0.8,
-							height = 0.9,
-							border = "none",
-							{
-								box = "vertical",
-								{
-									win = "input",
-									height = 1,
-									border = "rounded",
-									title = "Finder",
-									title_pos = "center",
-								},
-								{ win = "list", title = "", title_pos = "center", border = "rounded" },
-							},
-						},
-					},
+				Snacks.picker.fff({
+					title = "Files"
 				})
 			end,
-			desc = "File tree",
+			desc = "Files",
 		},
 		{
 			"<leader>r",
 			function()
-				Snacks.picker.grep({
-					layout = "dropdown",
-				})
+				Snacks.picker.grep()
 			end,
 			desc = "Grep",
 		},
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.buffers()
+				Snacks.picker.buffers({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
 			end,
 			desc = "Buffers",
 		},
 		{
 			"<leader>J",
 			function()
-				Snacks.picker.jumps()
+				Snacks.picker.jumps({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
 			end,
 			desc = "Jumplist",
 		},
 		{
 			"<leader>m",
 			function()
-				Snacks.picker.marks()
+				Snacks.picker.marks({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
 			end,
 			desc = "Marks",
+		},
+		{
+			"<leader>M",
+			function()
+				Snacks.picker.man()
+			end,
+			desc = "Man Page",
+		},
+		{
+			"<leader>qo",
+			function()
+				Snacks.picker.qflist({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Quickfix",
+		},
+		{
+			"<leader>lo",
+			function()
+				Snacks.picker.loclist({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Locations",
 		},
 		{
 			"<leader>\\",
@@ -150,6 +141,91 @@ return {
 				Snacks.picker.help()
 			end,
 			desc = "Helptags",
+		},
+		-- LSP
+		{
+			"gd",
+			function()
+				Snacks.picker.lsp_definitions({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Goto Definition"
+		},
+		{
+			"gD",
+			function()
+				Snacks.picker.lsp_declarations({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Goto Declaration"
+		},
+		{
+			"gr",
+			function()
+				Snacks.picker.lsp_references({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			nowait = true,
+			desc = "References"
+		},
+    {
+			"gR",
+			function()
+				vim.lsp.buf.rename()
+			end,
+			desc = "Rename symbol"
+		},
+    {
+			"gfr",
+			function()
+        Snacks.rename.rename_file()
+			end,
+			desc = "Rename file"
+		},
+		{
+			"gI",
+			function()
+				Snacks.picker.lsp_implementations({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Goto Implementation"
+		},
+		{
+			"gy",
+			function()
+				Snacks.picker.lsp_type_definitions({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+				})
+			end,
+			desc = "Goto Type Definition"
+		},
+		{
+			"<leader>ss",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "LSP Symbols"
+		},
+		{
+			"<leader>sS",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "LSP Workspace Symbols"
 		},
 		{
 			"<leader>k",
@@ -162,6 +238,9 @@ return {
 			"<leader>R",
 			function()
 				Snacks.picker.registers({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
 					actions = {
 						copy_silent = function(picker, item)
 							if item and item.text then
@@ -197,8 +276,7 @@ return {
 		input = { enabled = true },
 		picker = {
 			layout = {
-				preset = "dropdown",
-				preview = false,
+				preset = "ivy_taller",
 			},
 			win = {
 				input = {
@@ -229,4 +307,8 @@ return {
 			},
 		},
 	},
+	init = function()
+		local layouts = require("snacks.picker.config.layouts")
+		layouts.ivy_taller = vim.tbl_deep_extend("keep", { layout = { height = 0.8 } }, layouts.ivy)
+	end
 }

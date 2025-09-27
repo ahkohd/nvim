@@ -41,7 +41,7 @@ map("n", "<leader><CR>", ":w<CR>", { noremap = true, silent = true, desc = "Save
 -- Quickfix navigation
 map("n", "<C-S-J>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
 map("n", "<C-S-K>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
-map("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
+-- map("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 map(
 	"n",
 	"<leader>qq",
@@ -57,7 +57,7 @@ map(
 map("n", "<leader>qs", ":vimgrep /<C-r>//g %<CR>:copen<CR>", { noremap = true, desc = "Search results to quickfix" })
 
 -- Location list commands
-map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
+-- map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
 map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
 map("n", "<C-S-I>", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
 map("n", "<C-S-o>", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
