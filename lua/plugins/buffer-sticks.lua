@@ -1,9 +1,29 @@
+--luacheck: globals vim BufferSticks
+
 return {
-	dir = "~/Developer/buffer-sticks.nvim",
+	"ahkohd/buffer-sticks.nvim",
 	event = "VeryLazy",
+	keys = {
+		{
+			"<leader>j",
+			function()
+				BufferSticks.jump()
+			end,
+			desc = "Buffer jump mode",
+		},
+	},
 	config = function()
-		local sticks = require("buffer-sticks")
-		sticks.setup()
-		sticks.show()
+		local stick = require("buffer-sticks")
+		stick.setup({
+			filter = { buftypes = { "terminal" } },
+			highlights = {
+				active = { link = "Statement" },
+				inactive = { link = "Whitespace" },
+				active_modified = { link = "Constant" },
+				inactive_modified = { link = "Constant" },
+				label = { link = "Comment" },
+			},
+		})
+		stick.show()
 	end,
 }
