@@ -46,6 +46,7 @@ return {
 			"xeno-lilypad",
 			"xeno-pink-haze",
 			"xeno-golden-hour",
+      "projekt0n/github-nvim-theme"
 		})
 	end,
 }
