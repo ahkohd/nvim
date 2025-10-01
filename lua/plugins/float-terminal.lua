@@ -34,6 +34,16 @@ return {
 			desc = "Toggle floating terminal #3",
 			mode = { "n", "t" },
 		},
+  	{
+			";h",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(4)
+				end
+			end,
+			desc = "Toggle Coderabbit",
+			mode = { "n", "t" },
+		},
 		{
 			";<esc>",
 			function()
@@ -63,8 +73,7 @@ return {
 		terminals = {
 			-- { id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
 			{ id = 1, cmd = nil }, -- default shell
-			{ id = 2, cmd = nil },
-			{ id = 3, cmd = nil },
+			{ id = 4, cmd = 'cr' },
 		},
 	},
 	config = function(_, opts)
