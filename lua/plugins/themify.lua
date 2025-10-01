@@ -41,6 +41,7 @@ return {
 		require("themify").setup({
 			"nyoom-engineering/oxocarbon.nvim",
 			"folke/tokyonight.nvim",
+      "catppuccin/nvim",
 			"monochrome",
 			"xeno-lilypad",
 			"xeno-pink-haze",
