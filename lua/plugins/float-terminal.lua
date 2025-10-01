@@ -5,7 +5,7 @@ return {
 	cmd = "FloatTerminal",
 	keys = {
 		{
-			";s",
+			";f",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(1)
@@ -15,7 +15,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			";d",
+			";j",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(2)
@@ -24,21 +24,11 @@ return {
 			desc = "Toggle floating terminal #2",
 			mode = { "n", "t" },
 		},
-		{
-			";f",
+  	{
+			";c",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(3)
-				end
-			end,
-			desc = "Toggle floating terminal #3",
-			mode = { "n", "t" },
-		},
-  	{
-			";h",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(4)
 				end
 			end,
 			desc = "Toggle Coderabbit",
@@ -64,6 +54,26 @@ return {
 			desc = "Hide current floating terminal",
 			mode = { "n", "t" },
 		},
+		{
+			"q",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.hide_current_terminal()
+				end
+			end,
+			desc = "Hide current floating terminal",
+			mode = "n",
+		},
+		{
+			"<C-q>",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.hide_current_terminal()
+				end
+			end,
+			desc = "Hide current floating terminal",
+			mode = "n",
+		},
 	},
 	opts = {
 		layout = "ivy_taller", -- "float" or "ivy_taller"
@@ -73,7 +83,7 @@ return {
 		terminals = {
 			-- { id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
 			{ id = 1, cmd = nil }, -- default shell
-			{ id = 4, cmd = 'cr' },
+			{ id = 3, cmd = 'cr' },
 		},
 	},
 	config = function(_, opts)
@@ -169,6 +179,12 @@ return {
 			local term = state.terminals[id]
 
 			if not vim.api.nvim_win_is_valid(term.win) then
+				-- Hide sidekick CLI before showing terminal
+				local ok, sidekick_cli = pcall(require, "sidekick.cli")
+				if ok then
+					sidekick_cli.hide()
+				end
+
 				-- Hide other terminals if exclusive mode is enabled
 				if opts.exclusive then
 					hide_other_terminals(id)
@@ -189,6 +205,23 @@ return {
 						noremap = true,
 						silent = true,
 						desc = "Exit terminal mode",
+					})
+
+					vim.keymap.set("t", ";a", function()
+						-- Hide current floating terminal
+						if _G.FloatTerminal then
+							_G.FloatTerminal.hide_current_terminal()
+						end
+						-- Toggle sidekick CLI
+						local ok, sidekick_cli = pcall(require, "sidekick.cli")
+						if ok then
+							sidekick_cli.toggle({ name = "claude", focus = true })
+						end
+					end, {
+						buffer = term.buf,
+						noremap = true,
+						silent = true,
+						desc = "Toggle Sidekick Claude",
 					})
 				end
 
@@ -230,6 +263,24 @@ return {
 		vim.api.nvim_create_user_command("FloatTerminal", function()
 			toggle_terminal(1)
 		end, {})
+
+		-- Resize floating terminals on VimResized
+		vim.api.nvim_create_autocmd("VimResized", {
+			pattern = "*",
+			callback = function()
+				for _, term in pairs(state.terminals) do
+					if vim.api.nvim_win_is_valid(term.win) then
+						local win_config
+						if opts.layout == "float" then
+							win_config = get_float_layout({})
+						else -- default to ivy_taller
+							win_config = get_ivy_taller_layout({})
+						end
+						vim.api.nvim_win_set_config(term.win, win_config)
+					end
+				end
+			end,
+		})
 
 		-- vim.api.nvim_create_autocmd("TermEnter", {
 		--   pattern = "*",

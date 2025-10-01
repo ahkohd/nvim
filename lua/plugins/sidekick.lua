@@ -2,9 +2,21 @@ return {
   "folke/sidekick.nvim",
   opts = {
     cli = {
-      mux = {
-        backend = "tmux",
-        enabled = true,
+      tools = {
+        claude = { cmd = { "claude", "--continue" }, url = "https://github.com/anthropics/claude-code" },
+      },
+      win =  {
+        layout = "float",
+        float = {
+          width = 1.0,
+          height = 0.8,
+          border = "rounded",
+          row = 1.0,
+        },
+        keys = {
+          -- hide from terminal mode
+          hide_t = { ";a", "hide" },
+        }
       },
     },
   },
@@ -23,15 +35,11 @@ return {
     {
       ";a",
       function()
-        require("sidekick.cli").focus()
-      end,
-      mode = { "n", "x", "i", "t" },
-      desc = "Sidekick Switch Focus",
-    },
-    {
-      ";c",
-      function()
-        require("sidekick.cli").toggle({ name = "claude", focus = false })
+        -- Hide current floating terminal before toggling CLI
+        if _G.FloatTerminal then
+          _G.FloatTerminal.hide_current_terminal()
+        end
+        require("sidekick.cli").toggle({ name = "claude", focus = true })
       end,
       desc = "Sidekick Claude Toggle",
       mode = { "n", "v" },
