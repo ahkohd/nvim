@@ -28,6 +28,7 @@ return {
 			"zls",
 			"typescript-language-server",
 			"eslint-lsp",
+      "copilot-language-server"
 		}
 
 		registry.refresh(function()
@@ -54,6 +55,7 @@ return {
 			"nixd",
 			"rust_analyzer",
 			"zls",
+      "copilot"
 		}
 
 		local utils = require("core.utils.lsp")
@@ -82,5 +84,7 @@ return {
 		local lsp_utils = require("core.utils.lsp")
 
 		lsp_utils.setup_appearance()
+
+    vim.lsp.inline_completion.enable()
 	end,
 }

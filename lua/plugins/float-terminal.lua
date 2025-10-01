@@ -5,43 +5,33 @@ return {
 	cmd = "FloatTerminal",
 	keys = {
 		{
-			";a",
+			";s",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(1)
 				end
 			end,
-			desc = "Toggle Claude Code",
-			mode = { "n", "t" },
-		},
-		{
-			";s",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(2)
-				end
-			end,
-			desc = "Toggle floating terminal 2",
+			desc = "Toggle floating terminal #1",
 			mode = { "n", "t" },
 		},
 		{
 			";d",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(3)
+					_G.FloatTerminal.toggle_terminal(2)
 				end
 			end,
-			desc = "Toggle floating terminal 3",
+			desc = "Toggle floating terminal #2",
 			mode = { "n", "t" },
 		},
 		{
 			";f",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(4)
+					_G.FloatTerminal.toggle_terminal(3)
 				end
 			end,
-			desc = "Toggle floating terminal 4",
+			desc = "Toggle floating terminal #3",
 			mode = { "n", "t" },
 		},
 		{
@@ -71,8 +61,10 @@ return {
 		height = nil,
 		exclusive = true, -- when true, only one terminal can be visible at a time
 		terminals = {
-			{ id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
-			{ id = 2, cmd = nil }, -- default shell
+			-- { id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
+			{ id = 1, cmd = nil }, -- default shell
+			{ id = 2, cmd = nil },
+			{ id = 3, cmd = nil },
 		},
 	},
 	config = function(_, opts)
