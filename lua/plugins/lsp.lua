@@ -54,7 +54,6 @@ return {
 			"nixd",
 			"rust_analyzer",
 			"zls",
-			"ts_ls",
 		}
 
 		local utils = require("core.utils.lsp")
