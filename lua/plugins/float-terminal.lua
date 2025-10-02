@@ -24,7 +24,7 @@ return {
 			desc = "Toggle floating terminal #2",
 			mode = { "n", "t" },
 		},
-  	{
+		{
 			";c",
 			function()
 				if _G.FloatTerminal then
@@ -83,7 +83,7 @@ return {
 		terminals = {
 			-- { id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
 			{ id = 1, cmd = nil }, -- default shell
-			{ id = 3, cmd = 'cr' },
+			{ id = 3, cmd = "cr" },
 		},
 	},
 	config = function(_, opts)
@@ -164,6 +164,20 @@ return {
 			end
 		end
 
+		local function hide_sidekick()
+			local ok, sidekick_cli = pcall(require, "sidekick.cli")
+			if ok then
+				sidekick_cli.hide()
+			end
+		end
+
+		local function show_sidekick()
+			local ok, sidekick_cli = pcall(require, "sidekick.cli")
+			if ok then
+				sidekick_cli.show({ name = "claude", focus = true })
+			end
+		end
+
 		local function toggle_terminal(id, shell_cmd)
 			id = id or 1
 
@@ -178,13 +192,10 @@ return {
 
 			local term = state.terminals[id]
 
-			if not vim.api.nvim_win_is_valid(term.win) then
-				-- Hide sidekick CLI before showing terminal
-				local ok, sidekick_cli = pcall(require, "sidekick.cli")
-				if ok then
-					sidekick_cli.hide()
-				end
+			-- Hide sidekick CLI before showing terminal (always)
+			hide_sidekick()
 
+			if not vim.api.nvim_win_is_valid(term.win) then
 				-- Hide other terminals if exclusive mode is enabled
 				if opts.exclusive then
 					hide_other_terminals(id)
@@ -208,20 +219,16 @@ return {
 					})
 
 					vim.keymap.set("t", ";a", function()
-						-- Hide current floating terminal
+						-- Hide current floating terminal and show sidekick
 						if _G.FloatTerminal then
 							_G.FloatTerminal.hide_current_terminal()
 						end
-						-- Toggle sidekick CLI
-						local ok, sidekick_cli = pcall(require, "sidekick.cli")
-						if ok then
-							sidekick_cli.toggle({ name = "claude", focus = true })
-						end
+						show_sidekick()
 					end, {
 						buffer = term.buf,
 						noremap = true,
 						silent = true,
-						desc = "Toggle Sidekick Claude",
+						desc = "Show Sidekick Claude",
 					})
 				end
 

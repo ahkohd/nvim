@@ -41,12 +41,13 @@ return {
 		require("themify").setup({
 			"nyoom-engineering/oxocarbon.nvim",
 			"folke/tokyonight.nvim",
-      "catppuccin/nvim",
+			"catppuccin/nvim",
 			"monochrome",
 			"xeno-lilypad",
 			"xeno-pink-haze",
 			"xeno-golden-hour",
-      "projekt0n/github-nvim-theme"
+			"projekt0n/github-nvim-theme",
+			"everviolet/nvim",
 		})
 	end,
 }

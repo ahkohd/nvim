@@ -9,7 +9,7 @@ return {
 			function()
 				BufferSticks.jump()
 			end,
-			desc = "Buffer jump mode",
+			desc = "Jump to buffer",
 		},
 	},
 	config = function()
@@ -18,9 +18,11 @@ return {
 			filter = { buftypes = { "terminal" } },
 			highlights = {
 				active = { link = "Statement" },
+				alternate = { link = "StorageClass" },
 				inactive = { link = "Whitespace" },
-				active_modified = { link = "Statement" },
-				inactive_modified = { link = "Whitespace" },
+				active_modified = { link = "Constant" },
+				alternate_modified = { link = "Constant" },
+				inactive_modified = { link = "Constant" },
 				label = { link = "Comment" },
 			},
 		})
