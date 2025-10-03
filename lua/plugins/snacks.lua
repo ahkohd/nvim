@@ -4,6 +4,13 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
+	dependencies = {
+		{
+			"madmaxieee/fff-snacks.nvim",
+			cmd = "FFFSnacks",
+			config = true,
+		},
+	},
 	keys = {
 		{
 			"<leader>go",
@@ -59,11 +66,7 @@ return {
 		-- pickers
 		{
 			"<leader>f",
-			function()
-				Snacks.picker.fff({
-					title = "Files"
-				})
-			end,
+			"<cmd>FFFSnacks<cr>",
 			desc = "Files",
 		},
 		{
@@ -152,7 +155,7 @@ return {
 					end,
 				})
 			end,
-			desc = "Goto Definition"
+			desc = "Goto Definition",
 		},
 		{
 			"gD",
@@ -163,7 +166,7 @@ return {
 					end,
 				})
 			end,
-			desc = "Goto Declaration"
+			desc = "Goto Declaration",
 		},
 		{
 			"gr",
@@ -175,21 +178,21 @@ return {
 				})
 			end,
 			nowait = true,
-			desc = "References"
+			desc = "References",
 		},
-    {
+		{
 			"gR",
 			function()
 				vim.lsp.buf.rename()
 			end,
-			desc = "Rename symbol"
+			desc = "Rename symbol",
 		},
-    {
+		{
 			"gfr",
 			function()
-        Snacks.rename.rename_file()
+				Snacks.rename.rename_file()
 			end,
-			desc = "Rename file"
+			desc = "Rename file",
 		},
 		{
 			"gI",
@@ -200,7 +203,7 @@ return {
 					end,
 				})
 			end,
-			desc = "Goto Implementation"
+			desc = "Goto Implementation",
 		},
 		{
 			"gy",
@@ -211,21 +214,21 @@ return {
 					end,
 				})
 			end,
-			desc = "Goto Type Definition"
+			desc = "Goto Type Definition",
 		},
 		{
 			"<leader>ss",
 			function()
 				Snacks.picker.lsp_symbols()
 			end,
-			desc = "LSP Symbols"
+			desc = "LSP Symbols",
 		},
 		{
 			"<leader>sS",
 			function()
 				Snacks.picker.lsp_workspace_symbols()
 			end,
-			desc = "LSP Workspace Symbols"
+			desc = "LSP Workspace Symbols",
 		},
 		{
 			"<leader>k",
@@ -310,5 +313,5 @@ return {
 	init = function()
 		local layouts = require("snacks.picker.config.layouts")
 		layouts.ivy_taller = vim.tbl_deep_extend("keep", { layout = { height = 0.8 } }, layouts.ivy)
-	end
+	end,
 }

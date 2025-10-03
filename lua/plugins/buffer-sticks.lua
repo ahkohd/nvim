@@ -1,9 +1,16 @@
---luacheck: globals vim BufferSticks
+-- luacheck: globals BufferSticks
 
 return {
 	"ahkohd/buffer-sticks.nvim",
 	event = "VeryLazy",
 	keys = {
+		{
+			"<leader>J",
+			function()
+				BufferSticks.toggle()
+			end,
+			desc = "Toggle BufferSticks",
+		},
 		{
 			"<leader>j",
 			function()
@@ -13,8 +20,8 @@ return {
 		},
 	},
 	config = function()
-		local stick = require("buffer-sticks")
-		stick.setup({
+		local sticks = require("buffer-sticks")
+		sticks.setup({
 			filter = { buftypes = { "terminal" } },
 			highlights = {
 				active = { link = "Statement" },
@@ -24,8 +31,10 @@ return {
 				alternate_modified = { link = "Constant" },
 				inactive_modified = { link = "Constant" },
 				label = { link = "Comment" },
+				filter_selected = { link = "Statement" },
+				filter_title = { link = "Comment" },
 			},
 		})
-		stick.show()
+		sticks.show()
 	end,
 }

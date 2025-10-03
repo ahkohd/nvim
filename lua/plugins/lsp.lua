@@ -2,7 +2,7 @@
 
 return {
 	"williamboman/mason.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
 	config = function()
 		require("mason").setup({
 			max_concurrent_installers = 12,
@@ -28,7 +28,6 @@ return {
 			"zls",
 			"typescript-language-server",
 			"eslint-lsp",
-      "copilot-language-server"
 		}
 
 		registry.refresh(function()
@@ -55,7 +54,6 @@ return {
 			"nixd",
 			"rust_analyzer",
 			"zls",
-      "copilot"
 		}
 
 		local utils = require("core.utils.lsp")
@@ -74,7 +72,7 @@ return {
 			end
 		end
 
-		vim.api.nvim_create_autocmd('LspAttach', {
+		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
 				utils.on_attach(client, args.buf)
@@ -84,7 +82,5 @@ return {
 		local lsp_utils = require("core.utils.lsp")
 
 		lsp_utils.setup_appearance()
-
-    vim.lsp.inline_completion.enable()
 	end,
 }

@@ -3,6 +3,7 @@
 return {
 	"b0o/incline.nvim",
 	dependencies = {
+		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
 		"SmiteshP/nvim-navic",
 	},
