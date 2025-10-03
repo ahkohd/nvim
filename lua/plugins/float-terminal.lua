@@ -5,30 +5,20 @@ return {
 	cmd = "FloatTerminal",
 	keys = {
 		{
-			";f",
+			";j",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(1)
 				end
 			end,
-			desc = "Toggle floating terminal #1",
-			mode = { "n", "t" },
-		},
-		{
-			";j",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(2)
-				end
-			end,
-			desc = "Toggle floating terminal #2",
+			desc = "Toggle terminal",
 			mode = { "n", "t" },
 		},
 		{
 			";c",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(3)
+					_G.FloatTerminal.toggle_terminal(2)
 				end
 			end,
 			desc = "Toggle Coderabbit",
@@ -41,7 +31,7 @@ return {
 					_G.FloatTerminal.hide_current_terminal()
 				end
 			end,
-			desc = "Hide current floating terminal",
+			desc = "Hide terminal",
 			mode = { "n", "t" },
 		},
 		{
@@ -51,7 +41,7 @@ return {
 					_G.FloatTerminal.hide_current_terminal()
 				end
 			end,
-			desc = "Hide current floating terminal",
+			desc = "Hide terminal",
 			mode = { "n", "t" },
 		},
 		{
@@ -82,8 +72,8 @@ return {
 		exclusive = true, -- when true, only one terminal can be visible at a time
 		terminals = {
 			-- { id = 1, cmd = 'claude --continue "$@" 2>/dev/null || claude "$@"' }, -- claude
-			{ id = 1, cmd = nil }, -- default shell
-			{ id = 3, cmd = "cr" },
+			{ id = 1, cmd = nil, title = " Terminal " },
+			{ id = 2, cmd = "cr", title = " CodeRabbit " },
 		},
 	},
 	config = function(_, opts)
@@ -150,6 +140,12 @@ return {
 				win_config = get_ivy_taller_layout(config)
 			end
 
+			-- add title if provided
+			if config.title then
+				win_config.title = config.title
+				win_config.title_pos = "center"
+			end
+
 			-- create the floating window
 			local win = vim.api.nvim_open_win(buf, true, win_config)
 
@@ -167,7 +163,21 @@ return {
 		local function hide_sidekick()
 			local ok, sidekick_cli = pcall(require, "sidekick.cli")
 			if ok then
-				sidekick_cli.hide()
+				-- Check if there's a visible sidekick window and toggle it off
+				local has_visible = false
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					if vim.api.nvim_win_is_valid(win) then
+						local buf = vim.api.nvim_win_get_buf(win)
+						local ft = vim.bo[buf].filetype
+						if ft == "sidekick_terminal" then
+							has_visible = true
+							break
+						end
+					end
+				end
+				if has_visible then
+					sidekick_cli.toggle({ name = "claude" })
+				end
 			end
 		end
 
@@ -200,7 +210,7 @@ return {
 				if opts.exclusive then
 					hide_other_terminals(id)
 				end
-				local result = create_floating_window({ buf = term.buf })
+				local result = create_floating_window({ buf = term.buf, title = term.title })
 				term.buf = result.buf
 				term.win = result.win
 
@@ -241,11 +251,12 @@ return {
 		-- Initialize terminals from opts
 		if opts.terminals then
 			for _, terminal in ipairs(opts.terminals) do
-				if terminal.id and terminal.cmd then
+				if terminal.id then
 					state.terminals[terminal.id] = {
 						buf = -1,
 						win = -1,
 						cmd = terminal.cmd,
+						title = terminal.title,
 					}
 				end
 			end
@@ -288,12 +299,5 @@ return {
 				end
 			end,
 		})
-
-		-- vim.api.nvim_create_autocmd("TermEnter", {
-		--   pattern = "*",
-		--   callback = function()
-		--     vim.opt_local.mouse = ""
-		--   end,
-		-- })
 	end,
 }

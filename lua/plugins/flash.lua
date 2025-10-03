@@ -6,9 +6,9 @@ return {
 	opts = {
 		modes = {
 			search = {
-				enabled = true,
+				enabled = false,
 			},
-			char = {
+      char = {
 				jump_labels = true,
 			},
 		},

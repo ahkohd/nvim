@@ -1,8 +1,9 @@
 return {
-	-- "dmtrKovalenko/fff.nvim",
 	"madmaxieee/fff.nvim",
-	build = "cargo build --release",
+  branch = "fix-cpath",
+	lazy = false,
+	build =  "cargo build --release",
 	opts = {
-    prompt = "➜ ",
-  },
+		prompt = "➜ ",
+	},
 }
