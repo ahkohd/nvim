@@ -1,7 +1,7 @@
 return {
 	"LmanTW/themify.nvim",
 	dependencies = {
-		"kyza0d/xeno.nvim",
+		"kyza0d/xeno.nvim"
 	},
 	lazy = false,
 	priority = 999,
@@ -48,6 +48,7 @@ return {
 			"xeno-golden-hour",
 			"projekt0n/github-nvim-theme",
 			"everviolet/nvim",
+      "ahkohd/eldritch.nvim"
 		})
 	end,
 }

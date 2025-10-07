@@ -8,7 +8,7 @@ return {
     },
 		cli = {
 			tools = {
-				claude = { cmd = { "claude", "--continue" }, url = "https://github.com/anthropics/claude-code" },
+				claude = { cmd = { "sh", "-c", 'claude --continue "$@" 2>/dev/null || claude "$@"', "sh" }, url = "https://github.com/anthropics/claude-code" },
 			},
 			win = {
 				layout = "float",
