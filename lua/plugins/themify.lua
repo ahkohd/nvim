@@ -48,7 +48,8 @@ return {
 			"xeno-golden-hour",
 			"projekt0n/github-nvim-theme",
 			"everviolet/nvim",
-      "ahkohd/eldritch.nvim"
+      "vague-theme/vague.nvim",
+      "kyazdani42/blue-moon"
 		})
 	end,
 }
