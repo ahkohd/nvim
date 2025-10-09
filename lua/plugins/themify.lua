@@ -1,7 +1,7 @@
 return {
 	"LmanTW/themify.nvim",
 	dependencies = {
-		"kyza0d/xeno.nvim"
+		"kyza0d/xeno.nvim",
 	},
 	lazy = false,
 	priority = 999,
@@ -11,7 +11,6 @@ return {
 			"<cmd>Themify<CR>",
 			desc = "Theme",
 		},
-
 		{
 			"<leader>T",
 			function()
@@ -48,8 +47,8 @@ return {
 			"xeno-golden-hour",
 			"projekt0n/github-nvim-theme",
 			"everviolet/nvim",
-      "vague-theme/vague.nvim",
-      "kyazdani42/blue-moon"
+			"vague-theme/vague.nvim",
+			"kyazdani42/blue-moon",
 		})
 	end,
 }

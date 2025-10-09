@@ -24,6 +24,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("config.opts")
 
+if vim.g.neovide then
+	require("config.neovide")
+end
+
 require("lazy").setup({
 	spec = { { import = "plugins" } },
 	install = { colorscheme = { "tokyonight-night" } },
