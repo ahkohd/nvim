@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
-		"SmiteshP/nvim-navic",
+		-- "SmiteshP/nvim-navic",
 	},
 	event = "VeryLazy",
 	config = function()
@@ -16,7 +16,7 @@ return {
 		})
 
 		local devicons = require("nvim-web-devicons")
-		local navic = require("nvim-navic")
+		-- local navic = require("nvim-navic")
 
 		require("incline").setup({
 			hide = {
@@ -49,15 +49,16 @@ return {
 						{ filename, gui = modified and "italic" or "" },
 						guibg = "NONE",
 					}
-					if props.focused then
-						for _, item in ipairs(navic.get_data(props.buf) or {}) do
-							table.insert(res, {
-								{ " ➜ ", group = "NavicSeparator" },
-								{ item.icon, group = "NavicIcons" .. item.type },
-								{ item.name, group = "NavicText" },
-							})
-						end
-					end
+					-- Navic breadcrumbs disabled for performance
+					-- if props.focused then
+					-- 	for _, item in ipairs(navic.get_data(props.buf) or {}) do
+					-- 		table.insert(res, {
+					-- 			{ " ➜ ", group = "NavicSeparator" },
+					-- 			{ item.icon, group = "NavicIcons" .. item.type },
+					-- 			{ item.name, group = "NavicText" },
+					-- 		})
+					-- 	end
+					-- end
 					table.insert(res, " ")
 					return res
 				end

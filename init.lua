@@ -33,3 +33,22 @@ require("lazy").setup({
 	install = { colorscheme = { "tokyonight-night" } },
 	checker = { enabled = false },
 })
+
+-- Setup bg.lua
+local bg = require("config.bg")
+bg.setup()
+
+-- Load saved theme from themify state immediately (before VeryLazy plugins load)
+-- This ensures your theme applies instantly while themify loads in background
+local themify_state_path = vim.fn.stdpath("data") .. "/themify/state.json"
+if vim.fn.filereadable(themify_state_path) == 1 then
+	local ok, state = pcall(vim.fn.json_decode, vim.fn.readfile(themify_state_path))
+	if ok and state and state.theme then
+		pcall(vim.cmd.colorscheme, state.theme)
+		-- Apply terminal background (deferred to ensure highlights are loaded)
+		vim.defer_fn(function()
+			bg.update()
+		end, 10)
+	end
+end
+

@@ -6,9 +6,11 @@ return {
 	lazy = false,
 	dependencies = {
 		{
-			"madmaxieee/fff-snacks.nvim",
+			"ahkohd/fff-snacks.nvim",
 			cmd = "FFFSnacks",
-			config = true,
+			opts = {
+        title = "Files"
+      },
 		},
 	},
 	keys = {
@@ -72,25 +74,15 @@ return {
 		{
 			"<leader>r",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({ title = "Search" })
 			end,
 			desc = "Grep",
-		},
-		{
-			"<leader><space>",
-			function()
-				Snacks.picker.buffers({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-				})
-			end,
-			desc = "Buffers",
 		},
 		{
 			"<leader>J",
 			function()
 				Snacks.picker.jumps({
+					title = "Jumplist",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -102,6 +94,7 @@ return {
 			"<leader>m",
 			function()
 				Snacks.picker.marks({
+					title = "Marks",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -110,9 +103,9 @@ return {
 			desc = "Marks",
 		},
 		{
-			"<leader>M",
+			"<leader><leader>",
 			function()
-				Snacks.picker.man()
+				Snacks.picker.man({ title = "Man Pages" })
 			end,
 			desc = "Man Page",
 		},
@@ -120,6 +113,7 @@ return {
 			"<leader>qo",
 			function()
 				Snacks.picker.qflist({
+					title = "Quickfix",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -131,6 +125,7 @@ return {
 			"<leader>lo",
 			function()
 				Snacks.picker.loclist({
+					title = "Location List",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -141,7 +136,7 @@ return {
 		{
 			"<leader>\\",
 			function()
-				Snacks.picker.help()
+				Snacks.picker.help({ title = "Help" })
 			end,
 			desc = "Helptags",
 		},
@@ -150,6 +145,7 @@ return {
 			"gd",
 			function()
 				Snacks.picker.lsp_definitions({
+					title = "Definitions",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -161,6 +157,7 @@ return {
 			"gD",
 			function()
 				Snacks.picker.lsp_declarations({
+					title = "Declarations",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -172,6 +169,7 @@ return {
 			"gr",
 			function()
 				Snacks.picker.lsp_references({
+					title = "References",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -198,6 +196,7 @@ return {
 			"gI",
 			function()
 				Snacks.picker.lsp_implementations({
+					title = "Implementations",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -209,26 +208,13 @@ return {
 			"gy",
 			function()
 				Snacks.picker.lsp_type_definitions({
+					title = "Type Definitions",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
 				})
 			end,
 			desc = "Goto Type Definition",
-		},
-		{
-			"<leader>ss",
-			function()
-				Snacks.picker.lsp_symbols()
-			end,
-			desc = "LSP Symbols",
-		},
-		{
-			"<leader>sS",
-			function()
-				Snacks.picker.lsp_workspace_symbols()
-			end,
-			desc = "LSP Workspace Symbols",
 		},
 		{
 			"<leader>k",
@@ -241,6 +227,7 @@ return {
 			"<leader>R",
 			function()
 				Snacks.picker.registers({
+					title = "Registers",
 					on_show = function()
 						vim.cmd.stopinsert()
 					end,
@@ -260,14 +247,14 @@ return {
 		{
 			"<leader>/",
 			function()
-				Snacks.picker.lines()
+				Snacks.picker.lines({ title = "Lines" })
 			end,
 			desc = "Lines",
 		},
 		{
 			"<leader>?",
 			function()
-				Snacks.picker.keymaps()
+				Snacks.picker.keymaps({ title = "Keymaps" })
 			end,
 			desc = "Keymaps",
 		},

@@ -29,20 +29,43 @@ return {
 			local linters = {}
 
 			-- Check for biome config and if biome exists
-			if root_dir and vim.fn.filereadable(biome_config_path) == 1 and linter_exists("biomejs") then
-				table.insert(linters, "biomejs")
+			if root_dir and vim.fn.filereadable(biome_config_path) == 1 then
+				if linter_exists("biomejs") then
+					table.insert(linters, "biomejs")
+				else
+					-- Notify about missing biomejs (only once per session)
+					if not vim.g.nvim_lint_biomejs_notified then
+						vim.g.nvim_lint_biomejs_notified = true
+						vim.notify("biomejs not found but biome.json exists. Install with: npm i -D @biomejs/biome", vim.log.levels.WARN)
+					end
+				end
 			end
 
 			-- Add eslint if it exists
 			if linter_exists("eslint") then
 				table.insert(linters, "eslint")
+			else
+				-- Notify about missing eslint (only once per session)
+				if not vim.g.nvim_lint_eslint_notified then
+					vim.g.nvim_lint_eslint_notified = true
+					vim.notify("eslint not found. Install globally or in node_modules/.bin/", vim.log.levels.WARN)
+				end
 			end
 
 			return linters
 		end
 
 		local web = get_web_linter()
-		local lua_linters = linter_exists("luacheck") and { "luacheck" } or {}
+		local lua_linters = {}
+		if linter_exists("luacheck") then
+			lua_linters = { "luacheck" }
+		else
+			-- Notify about missing luacheck (only once per session)
+			if not vim.g.nvim_lint_luacheck_notified then
+				vim.g.nvim_lint_luacheck_notified = true
+				vim.notify("luacheck not found. Install with: luarocks install luacheck", vim.log.levels.WARN)
+			end
+		end
 
 		lint.linters_by_ft = {
 			html = web,
@@ -54,7 +77,7 @@ return {
 			lua = lua_linters,
 		}
 
-		vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
+		vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
 			callback = function()
 				-- Use ignore_errors to suppress any errors from missing binaries
 				require("lint").try_lint(nil, { ignore_errors = true })

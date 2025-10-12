@@ -36,7 +36,7 @@ map("n", "ZZ", ":xa<CR>", { noremap = true, silent = true, desc = "Save all and 
 map("n", "zq", ":q!<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Save file
-map("n", "<leader><CR>", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader>s", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
 
 -- Quickfix navigation
 map("n", "<C-S-J>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })

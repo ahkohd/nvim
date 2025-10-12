@@ -38,7 +38,7 @@ return {
 				Struct = "Struct",
 				Event = "Event",
 				Operator = "Operator",
-				TypeParameter = "TypeParameter",
+				TypeParameter = "TypeParameter"
 			},
 		},
 
@@ -76,7 +76,7 @@ return {
 				ripgrep = {
 					module = "blink-ripgrep",
 					name = "Ripgrep",
-					opts = { backend = { use = "gitgrep" } },
+					opts = { backend = { use = "gitgrep", customize_icon_highlight = false } },
 				},
 			},
 			per_filetype = {
