@@ -245,6 +245,59 @@ return {
 			desc = "Registers",
 		},
 		{
+			"<leader>p",
+			function()
+				local items = {}
+				-- Register 0 contains the most recent yank
+				-- Registers 1-9 contain delete history (but also yanks sometimes)
+				for i = 0, 9 do
+					local reg_content = vim.fn.getreg(tostring(i))
+					if reg_content and reg_content ~= "" then
+						local preview = reg_content:gsub("\n", " "):sub(1, 80)
+						table.insert(items, {
+							text = string.format("[%d] %s", i, preview),
+							register = tostring(i),
+							content = reg_content,
+						})
+					end
+				end
+
+				Snacks.picker.pick({
+					title = "Yank",
+					items = items,
+					format = "text",
+					preview = function(ctx)
+						if ctx.item and ctx.item.content then
+							local lines = vim.split(ctx.item.content, "\n", { plain = true })
+							ctx.preview:set_lines(lines)
+						end
+					end,
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+					actions = {
+						paste = function(picker, item)
+							if item and item.content then
+								vim.fn.setreg('"', item.content)
+								picker:close()
+								vim.schedule(function()
+									vim.cmd('normal! ""p')
+								end)
+							end
+						end,
+						copy = function(picker, item)
+							if item and item.content then
+								vim.fn.setreg('"', item.content)
+								picker:close()
+							end
+						end,
+					},
+					confirm = "copy",
+				})
+			end,
+			desc = "Yank History",
+		},
+		{
 			"<leader>/",
 			function()
 				Snacks.picker.lines({ title = "Lines" })

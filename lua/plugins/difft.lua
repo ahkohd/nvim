@@ -67,7 +67,7 @@ return {
 				end,
 				highlight = {
 					link = "FloatTitle",
-					full_width = true,
+					full_width = false,
 				},
 			},
 		})
