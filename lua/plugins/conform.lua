@@ -6,15 +6,16 @@ return {
 	cmd = "Format",
 	keys = {
 		{
-			"<leader>y",
+			"<leader>n",
 			function()
 				-- Check if we're in a JS project (has package.json)
 				if vim.fn.filereadable("package.json") == 1 then
-					-- Check if pnpm is available
-					if vim.fn.executable("pnpm") == 1 then
-						vim.cmd("!pnpm lint --fix")
+          if vim.fn.executable("yarn") == 1 then
+						vim.cmd("!yarn lint --fix --quiet")
+          elseif vim.fn.executable("pnpm") == 1 then
+						vim.cmd("!pnpm lint --fix --quiet")
 					elseif vim.fn.executable("npm") == 1 then
-						vim.cmd("!npm run lint --fix")
+						vim.cmd("!npm run lint --fix --quiet")
 					else
 						vim.notify("No package manager found", vim.log.levels.WARN)
 					end

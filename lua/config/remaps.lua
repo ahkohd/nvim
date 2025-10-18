@@ -38,6 +38,9 @@ map("n", "zq", ":q!<CR>", { noremap = true, silent = true, desc = "Close buffer"
 -- Save file
 map("n", "<leader>s", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
 
+-- Execute Lua file
+map("n", "<leader>x", ":luafile %<CR>:echo 'Sourced ' . expand('%')<CR>", { noremap = true, desc = "Execute Lua file" })
+
 -- Quickfix navigation
 map("n", "<C-S-J>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
 map("n", "<C-S-K>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })

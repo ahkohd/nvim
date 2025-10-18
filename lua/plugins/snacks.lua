@@ -244,8 +244,15 @@ return {
 			end,
 			desc = "Registers",
 		},
+    {
+      "<leader>p",
+      function()
+        Snacks.picker.projects()
+      end,
+      desc = "Projects"
+    },
 		{
-			"<leader>p",
+			"<leader>y",
 			function()
 				local items = {}
 				-- Register 0 contains the most recent yank
