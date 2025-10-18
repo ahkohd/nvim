@@ -210,12 +210,21 @@ local M = {
 			update_in_insert = true,
 		})
 
-		local show_diagnostic = function()
-			vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
+		local show_diagnostic_or_code_action = function()
+			-- Check if there are diagnostics at cursor position
+			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
+
+			if #diagnostics > 0 then
+				-- Show diagnostics if present
+				vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
+			else
+				-- Show code actions
+				vim.lsp.buf.code_action()
+			end
 		end
 
-		keymap_set("n", "<leader>d", show_diagnostic, {
-			desc = "Toggle diagnostics",
+		keymap_set("n", "<leader>k", show_diagnostic_or_code_action, {
+			desc = "Diagnostics or Code Actions",
 		})
 	end,
 }

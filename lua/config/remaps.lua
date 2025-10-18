@@ -2,21 +2,53 @@
 
 local map = vim.api.nvim_set_keymap
 
+-- Helper function to skip terminal buffers
+local function switch_buffer(direction)
+	local start_buf = vim.api.nvim_get_current_buf()
+	local cmd = direction == "next" and "bnext" or "bprev"
+
+	vim.cmd(cmd)
+	local current_buf = vim.api.nvim_get_current_buf()
+	local attempts = 0
+	local max_attempts = vim.fn.bufnr("$")
+
+	-- Keep switching until we find a non-terminal buffer or we've tried all buffers
+	while vim.bo[current_buf].buftype == "terminal" and attempts < max_attempts do
+		vim.cmd(cmd)
+		current_buf = vim.api.nvim_get_current_buf()
+		attempts = attempts + 1
+
+		-- If we've cycled back to start, break
+		if current_buf == start_buf then
+			break
+		end
+	end
+end
+
 map("n", "<C-d>", "<C-d>zz", { noremap = true })
 
 map("n", "<C-u>", "<C-u>zz", { noremap = true })
-
--- map("n", "<C-i>", "<C-i>zz", { noremap = true })
-
--- map("n", "<C-o>", "<C-o>zz", { noremap = true })
 
 map("n", "n", "nzzzv", { noremap = true })
 
 map("n", "N", "Nzzzv", { noremap = true })
 
--- Buffer navigation
-map("n", "<C-S-O>", ":bprev<CR>", { noremap = true, silent = true })
-map("n", "<C-S-I>", ":bnext<CR>", { noremap = true, silent = true })
+-- Buffer navigation (skip terminal buffers)
+vim.keymap.set("n", "<Left>", function()
+	switch_buffer("prev")
+end, { noremap = true, silent = true, desc = "Previous buffer (skip terminal)" })
+
+vim.keymap.set("n", "<Right>", function()
+	switch_buffer("next")
+end, { noremap = true, silent = true, desc = "Next buffer (skip terminal)" })
+
+-- Jumplist navigation
+map("n", "<Up>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
+map("n", "<Down>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to newer position" })
+
+-- Quickfix navigation
+map("n", "<C-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
+map("n", "<C-i>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
 
 -- Terminal mode mappings
 map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
@@ -41,9 +73,7 @@ map("n", "<leader>s", ":w<CR>", { noremap = true, silent = true, desc = "Save" }
 -- Execute Lua file
 map("n", "<leader>x", ":luafile %<CR>:echo 'Sourced ' . expand('%')<CR>", { noremap = true, desc = "Execute Lua file" })
 
--- Quickfix navigation
-map("n", "<C-S-J>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
-map("n", "<C-S-K>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
+-- Quickfix list
 -- map("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 map(
 	"n",

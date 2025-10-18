@@ -217,13 +217,6 @@ return {
 			desc = "Goto Type Definition",
 		},
 		{
-			"<leader>k",
-			function()
-				vim.lsp.buf.code_action()
-			end,
-			desc = "Code actions",
-		},
-		{
 			"<leader>R",
 			function()
 				Snacks.picker.registers({
@@ -305,7 +298,7 @@ return {
 			desc = "Yank History",
 		},
 		{
-			"<leader>/",
+			"/",
 			function()
 				Snacks.picker.lines({ title = "Lines" })
 			end,

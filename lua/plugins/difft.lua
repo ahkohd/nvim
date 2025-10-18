@@ -4,7 +4,7 @@ return {
 	dir = "~/Developer/difft",
 	keys = {
 		{
-			"<leader>o",
+			"<leader>d",
 			function()
 				if Difft.is_visible() then
 					Difft.hide()

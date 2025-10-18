@@ -25,15 +25,15 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			";f",
+			"<leader>o",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(3)
 				end
 			end,
 			desc = "Toggle Yazi",
-		mode = { "n", "t" },
-	},
+			mode = "n",
+		},
 	{
 		";d",
 		function()
