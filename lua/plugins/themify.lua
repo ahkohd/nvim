@@ -24,7 +24,8 @@ return {
 			"projekt0n/github-nvim-theme",
 			"everviolet/nvim",
 			"kyazdani42/blue-moon",
-      "Mofiqul/vscode.nvim"
+      "Mofiqul/vscode.nvim",
+      "marko-cerovac/material.nvim"
 		})
 	end,
 }
