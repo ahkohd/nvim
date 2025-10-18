@@ -81,7 +81,6 @@ return {
 				typescript = web,
 				javascriptreact = web,
 				typescriptreact = web,
-				markdown = web,
 				toml = formatter_exists("taplo") and { "taplo" } or {},
 				lua = formatter_exists("stylua") and { "stylua" } or {},
 				nix = formatter_exists("nixfmt") and { "nixfmt" } or {},
