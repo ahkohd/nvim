@@ -4,6 +4,9 @@
 vim.g.neovide_text_gamma = 0.8
 vim.g.neovide_text_contrast = 0.2
 
+-- Background opacity
+vim.g.neovide_opacity = 0.85
+
 -- Refresh rate
 vim.g.neovide_refresh_rate = 240
 
