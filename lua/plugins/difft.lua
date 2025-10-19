@@ -17,8 +17,14 @@ return {
 	},
 	config = function()
 		require("difft").setup({
+      diff = {
+        highlights = {
+            add = "DevIconBashrc",
+            delete = "DevIconGulpfile",
+        },
+      },
 			layout = "ivy_taller",
-			no_diff_message = "✨ All clean! No changes detected.",
+			no_diff_message = "All clean! No changes.",
 			window = {
 				number = false,
 				relativenumber = false,

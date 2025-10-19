@@ -298,13 +298,6 @@ return {
 			desc = "Yank History",
 		},
 		{
-			"/",
-			function()
-				Snacks.picker.lines({ title = "Lines" })
-			end,
-			desc = "Lines",
-		},
-		{
 			"<leader>?",
 			function()
 				Snacks.picker.keymaps({ title = "Keymaps" })

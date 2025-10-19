@@ -6,13 +6,20 @@ return {
 	cmd = "Format",
 	keys = {
 		{
-			"<leader>n",
+			"<leader>cf",
+			function()
+				require("conform").format({ async = true, lsp_format = "fallback" })
+			end,
+			desc = "Format buffer",
+		},
+		{
+			"<leader>cl",
 			function()
 				-- Check if we're in a JS project (has package.json)
 				if vim.fn.filereadable("package.json") == 1 then
-          if vim.fn.executable("yarn") == 1 then
+					if vim.fn.executable("yarn") == 1 then
 						vim.cmd("!yarn lint --fix --quiet")
-          elseif vim.fn.executable("pnpm") == 1 then
+					elseif vim.fn.executable("pnpm") == 1 then
 						vim.cmd("!pnpm lint --fix --quiet")
 					elseif vim.fn.executable("npm") == 1 then
 						vim.cmd("!npm run lint --fix --quiet")
@@ -24,8 +31,8 @@ return {
 					require("conform").format({ lsp_format = "fallback" })
 				end
 			end,
-      desc = "Format"
-		}
+			desc = "Lint (fix)",
+		},
 	},
 	opts = function()
 		vim.api.nvim_create_user_command("Format", function(args)

@@ -5,6 +5,15 @@ local is_linux = vim.loop.os_uname().sysname == "Linux"
 return {
 	"typicode/bg.nvim",
 	event = "BufEnter",
+  keys = {
+    {
+      "<leader>T",
+      function()
+        require("core.utils.buffer").redir_to_buffer_with_colors("highlight", "Highlight Groups")
+      end,
+      desc = "Highlight Groups",
+    },
+  },
 	dependencies = {
     {
       "RedsXDD/neopywal.nvim",
@@ -33,13 +42,6 @@ return {
 					"<leader>t",
 					"<cmd>Themify<CR>",
 					desc = "Theme",
-				},
-				{
-					"<leader>T",
-					function()
-						require("core.utils.buffer").redir_to_buffer_with_colors("highlight", "Highlight Groups")
-					end,
-					desc = "Highlight Groups",
 				},
 			},
 			config = function()
