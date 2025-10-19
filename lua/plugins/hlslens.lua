@@ -9,7 +9,7 @@ return {
 		{ "#", [[#<Cmd>lua require('hlslens').start()<CR>]] },
 		{ "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]] },
 		{ "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]] },
-		{ "<leader>n", "<Cmd>noh<CR>" },
+		{ "<leader>n", "<Cmd>noh<CR>", "Clear Highlights" },
 	},
 	opts = {
 		override_lens = function(render, posList, nearest, idx)

@@ -43,12 +43,12 @@ vim.keymap.set("n", "<Right>", function()
 end, { noremap = true, silent = true, desc = "Next buffer (skip terminal)" })
 
 -- Jumplist navigation
-map("n", "<Up>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
-map("n", "<Down>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to newer position" })
+map("n", "<Up>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to newer position" })
+map("n", "<Down>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
 
 -- Quickfix navigation
-map("n", "<C-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
 map("n", "<C-i>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
+map("n", "<C-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
 
 -- Terminal mode mappings
 map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
