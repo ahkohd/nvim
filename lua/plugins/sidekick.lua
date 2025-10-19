@@ -24,6 +24,13 @@ return {
 				},
 			},
 			prompts = {
+				yourchanges = [[Review recent git changes for:
+- Logic errors and edge cases
+- Performance issues
+- Readability problems
+- Missing error handling
+
+Be specific with line numbers and actionable fixes.]],
 				commit = [[Describe the current change with `jj diff` for a commit message using `jj desc -m`.
 Be concise and follow conventional commit format.
 If the commit is immutable (error: 'Commit is immutable'), confirm with the user whether to run
