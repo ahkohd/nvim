@@ -25,7 +25,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"<leader>o",
+			";f",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(3)
@@ -42,6 +42,16 @@ return {
 			end
 		end,
 		desc = "Toggle Git Diff",
+			mode = { "n", "t" },
+		},
+		{
+			";t",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(5)
+				end
+			end,
+			desc = "Toggle Btop",
 			mode = { "n", "t" },
 		},
 		{
@@ -68,12 +78,12 @@ return {
 	config = function()
 		require("float-terminal").setup({
 			layout = "ivy_taller",
-			exclusive = true,
 			terminals = {
 				{ id = 1, cmd = "zsh", title = " Terminal " },
 				{ id = 2, cmd = "crab", title = " CodeRabbit " },
 				{ id = 3, cmd = "yazi", title = " Yazi " },
 				{ id = 4, cmd = "jj diff", title = " Diff " },
+				{ id = 5, cmd = "btop", title = " Btop " },
 			},
 		})
 	end,

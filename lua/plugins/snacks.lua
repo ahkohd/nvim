@@ -1,5 +1,7 @@
 --luacheck: globals vim Snacks
 
+local buffer_utils = require("core.utils.buffer")
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -17,6 +19,7 @@ return {
 		{
 			"<leader>go",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.gitbrowse()
 			end,
 			desc = "Git Browse",
@@ -24,6 +27,7 @@ return {
 		{
 			"<leader>gb",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.git.blame_line()
 			end,
 			desc = "Git Blame Line",
@@ -31,6 +35,7 @@ return {
 		{
 			"<leader>gf",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.lazygit.log_file()
 			end,
 			desc = "Lazygit Current File History",
@@ -38,6 +43,7 @@ return {
 		{
 			"<leader>gg",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.lazygit()
 			end,
 			desc = "Lazygit",
@@ -45,6 +51,7 @@ return {
 		{
 			"<leader>gl",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.lazygit.log()
 			end,
 			desc = "Lazygit Log (cwd)",
@@ -52,6 +59,7 @@ return {
 		{
 			"]]",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.words.jump(vim.v.count1)
 			end,
 			desc = "Next Reference",
@@ -60,6 +68,7 @@ return {
 		{
 			"[[",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.words.jump(-vim.v.count1)
 			end,
 			desc = "Prev Reference",
@@ -68,12 +77,16 @@ return {
 		-- pickers
 		{
 			"<leader>f",
-			"<cmd>FFFSnacks<cr>",
+			function()
+				if buffer_utils.in_special_buffer() then return end
+        vim.cmd("FFFSnacks");
+			end,
 			desc = "Files",
 		},
 		{
 			"<leader>r",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.grep({ title = "Search" })
 			end,
 			desc = "Grep",
@@ -81,6 +94,7 @@ return {
 		{
 			"<leader>J",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.jumps({
 					title = "Jumplist",
 					on_show = function()
@@ -93,6 +107,7 @@ return {
 		{
 			"<leader>m",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.marks({
 					title = "Marks",
 					on_show = function()
@@ -103,15 +118,9 @@ return {
 			desc = "Marks",
 		},
 		{
-			"<leader><leader>",
-			function()
-				Snacks.picker.man({ title = "Man Pages" })
-			end,
-			desc = "Man Page",
-		},
-		{
 			"<leader>qo",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.qflist({
 					title = "Quickfix",
 					on_show = function()
@@ -124,6 +133,7 @@ return {
 		{
 			"<leader>lo",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.loclist({
 					title = "Location List",
 					on_show = function()
@@ -136,6 +146,7 @@ return {
 		{
 			"<leader>\\",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.help({ title = "Help" })
 			end,
 			desc = "Helptags",
@@ -144,6 +155,7 @@ return {
 		{
 			"gd",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.lsp_definitions({
 					title = "Definitions",
 					on_show = function()
@@ -156,6 +168,7 @@ return {
 		{
 			"gD",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.lsp_declarations({
 					title = "Declarations",
 					on_show = function()
@@ -168,6 +181,7 @@ return {
 		{
 			"gr",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.lsp_references({
 					title = "References",
 					on_show = function()
@@ -181,6 +195,7 @@ return {
 		{
 			"gR",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				vim.lsp.buf.rename()
 			end,
 			desc = "Rename symbol",
@@ -188,6 +203,7 @@ return {
 		{
 			"gfr",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.rename.rename_file()
 			end,
 			desc = "Rename file",
@@ -195,6 +211,7 @@ return {
 		{
 			"gI",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.lsp_implementations({
 					title = "Implementations",
 					on_show = function()
@@ -207,6 +224,7 @@ return {
 		{
 			"gy",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.lsp_type_definitions({
 					title = "Type Definitions",
 					on_show = function()
@@ -219,6 +237,7 @@ return {
 		{
 			"<leader>R",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.registers({
 					title = "Registers",
 					on_show = function()
@@ -242,11 +261,12 @@ return {
       function()
         Snacks.picker.projects()
       end,
-      desc = "Projects"
+      desc = "Projects",
     },
 		{
 			"<leader>y",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				local items = {}
 				-- Register 0 contains the most recent yank
 				-- Registers 1-9 contain delete history (but also yanks sometimes)
@@ -300,6 +320,7 @@ return {
 		{
 			"<leader>?",
 			function()
+				if buffer_utils.in_special_buffer() then return end
 				Snacks.picker.keymaps({ title = "Keymaps" })
 			end,
 			desc = "Keymaps",

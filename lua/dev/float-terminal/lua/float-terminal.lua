@@ -89,6 +89,33 @@ function M.setup(opts)
 		end
 	end
 
+	-- General function to check if any window has specified buffer type(s)
+	-- @param filetypes string|table Single filetype or list of filetypes to check
+	-- @return boolean true if any window has a matching filetype
+	local function has_buffer_type(filetypes)
+		-- Normalize to table
+		if type(filetypes) == "string" then
+			filetypes = { filetypes }
+		end
+
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_is_valid(win) then
+				local buf = vim.api.nvim_win_get_buf(win)
+				local ft = vim.bo[buf].filetype
+				for _, check_ft in ipairs(filetypes) do
+					if ft == check_ft then
+						return true
+					end
+				end
+			end
+		end
+		return false
+	end
+
+	local function in_special_buffer()
+		return has_buffer_type("difft")
+	end
+
 	local function hide_sidekick()
 		local ok, sidekick_cli = pcall(require, "sidekick.cli")
 		if ok then
@@ -111,22 +138,33 @@ function M.setup(opts)
 	end
 
 	local function show_sidekick()
+		-- Do nothing if in special buffer
+		if in_special_buffer() then
+			return
+		end
+
 		local ok, sidekick_cli = pcall(require, "sidekick.cli")
 		if ok then
 			sidekick_cli.show({ name = "claude", focus = true })
 		end
 	end
 
+	local function is_sidekick_open()
+		return has_buffer_type("sidekick_terminal")
+	end
+
 	local function open_yazi()
+		-- Do nothing if sidekick or special buffer is open
+		if is_sidekick_open() or in_special_buffer() then
+			return
+		end
+
 		-- Check if yazi window is already open - if so, close it
 		if vim.api.nvim_win_is_valid(state.yazi_win) then
 			vim.api.nvim_win_close(state.yazi_win, true)
 			state.yazi_win = -1
 			return
 		end
-
-		-- Hide sidekick before opening yazi
-		hide_sidekick()
 
 		-- Get current file's path
 		local current_file = vim.fn.expand("%:p")
@@ -146,6 +184,10 @@ function M.setup(opts)
 
 		-- Create a new buffer for yazi
 		local buf = vim.api.nvim_create_buf(false, true)
+
+		-- Set filetype for float terminal
+		vim.bo[buf].filetype = "float_terminal"
+
 		local win_config = opts.layout == "float" and get_float_layout({}) or get_ivy_taller_layout({})
 		win_config.title = " Yazi "
 		win_config.title_pos = "center"
@@ -202,26 +244,6 @@ function M.setup(opts)
 			desc = "Close Yazi",
 		})
 
-		vim.keymap.set("t", ";a", function()
-			if vim.api.nvim_win_is_valid(win) then
-				vim.api.nvim_win_close(win, true)
-			end
-			state.yazi_win = -1
-			-- Exit terminal mode first, then toggle sidekick with a small delay
-			vim.cmd("stopinsert")
-			vim.defer_fn(function()
-				local ok, sidekick_cli = pcall(require, "sidekick.cli")
-				if ok then
-					sidekick_cli.show({ name = "claude", focus = true })
-				end
-			end, 10)
-		end, {
-			buffer = buf,
-			noremap = true,
-			silent = true,
-			desc = "Close Yazi and show Sidekick",
-		})
-
 		vim.defer_fn(function()
 			vim.cmd("startinsert")
 		end, 10)
@@ -230,10 +252,23 @@ function M.setup(opts)
 	local function toggle_terminal(id, shell_cmd)
 		id = id or 1
 
+		-- Do nothing if sidekick or special buffer is open
+		if is_sidekick_open() or in_special_buffer() then
+			return
+		end
+
 		-- Special handling for yazi terminal
 		if id == 3 then
 			open_yazi()
 			return
+		end
+
+		-- Check if any OTHER terminal is currently open
+		for term_id, term in pairs(state.terminals) do
+			if term_id ~= id and vim.api.nvim_win_is_valid(term.win) then
+				-- Another terminal is open, do nothing
+				return
+			end
 		end
 
 		-- Initialize terminal state if it doesn't exist
@@ -247,14 +282,8 @@ function M.setup(opts)
 
 		local term = state.terminals[id]
 
-		-- Hide sidekick CLI before showing terminal (always)
-		hide_sidekick()
-
 		if not vim.api.nvim_win_is_valid(term.win) then
-			-- Hide other terminals if exclusive mode is enabled
-			if opts.exclusive then
-				hide_other_terminals(id)
-			end
+			-- Show this terminal
 			local result = create_floating_window({ buf = term.buf, title = term.title })
 			term.buf = result.buf
 			term.win = result.win
@@ -266,24 +295,14 @@ function M.setup(opts)
 					vim.cmd.terminal()
 				end
 
+				-- Set filetype for float terminal
+				vim.bo[term.buf].filetype = "float_terminal"
+
 				vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {
 					buffer = term.buf,
 					noremap = true,
 					silent = true,
 					desc = "Exit terminal mode",
-				})
-
-				vim.keymap.set("t", ";a", function()
-					-- Hide current floating terminal and show sidekick
-					if _G.FloatTerminal then
-						_G.FloatTerminal.hide_current_terminal()
-					end
-					show_sidekick()
-				end, {
-					buffer = term.buf,
-					noremap = true,
-					silent = true,
-					desc = "Show Sidekick Claude",
 				})
 			end
 
@@ -291,6 +310,7 @@ function M.setup(opts)
 				vim.cmd("startinsert")
 			end, 10)
 		else
+			-- This terminal is already open, hide it (toggle off)
 			vim.api.nvim_win_hide(term.win)
 		end
 	end
@@ -328,10 +348,28 @@ function M.setup(opts)
 		end
 	end
 
+	local function is_any_terminal_open()
+		-- Check if yazi is open
+		if vim.api.nvim_win_is_valid(state.yazi_win) then
+			return true
+		end
+
+		-- Check if any regular terminal is open
+		for _, term in pairs(state.terminals) do
+			if vim.api.nvim_win_is_valid(term.win) then
+				return true
+			end
+		end
+
+		return false
+	end
+
 	-- Store the functions globally for access from keybindings
 	_G.FloatTerminal = {
 		toggle_terminal = toggle_terminal,
 		hide_current_terminal = hide_current_terminal,
+		is_any_terminal_open = is_any_terminal_open,
+		has_buffer_type = has_buffer_type,
 	}
 
 	vim.api.nvim_create_user_command("FloatTerminal", function()

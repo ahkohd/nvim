@@ -1,5 +1,7 @@
 --luacheck: globals vim
 
+local buffer_utils = require("core.utils.buffer")
+
 return {
 	"folke/sidekick.nvim",
 	opts = {
@@ -84,10 +86,16 @@ Keep responsive modifiers with their base class (e.g., gap-4 md:gap-2). Each lin
 		{
 			";a",
 			function()
-				-- Hide current floating terminal before toggling CLI
-				if _G.FloatTerminal then
-					_G.FloatTerminal.hide_current_terminal()
+				-- Do nothing if any float terminal is open
+				if _G.FloatTerminal and _G.FloatTerminal.is_any_terminal_open() then
+					return
 				end
+
+				-- Do nothing if in special buffer
+				if buffer_utils.in_special_buffer() then
+					return
+				end
+
 				require("sidekick.cli").toggle({ name = "claude", focus = true })
 			end,
 			desc = "Sidekick Claude Toggle",

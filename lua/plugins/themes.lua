@@ -1,6 +1,7 @@
 --luacheck: globals vim
 
 local is_linux = vim.loop.os_uname().sysname == "Linux"
+local buffer_utils = require("core.utils.buffer")
 
 return {
 	"typicode/bg.nvim",
@@ -9,6 +10,7 @@ return {
     {
       "<leader>T",
       function()
+				if buffer_utils.in_special_buffer() then return end
         require("core.utils.buffer").redir_to_buffer_with_colors("highlight", "Highlight Groups")
       end,
       desc = "Highlight Groups",
@@ -40,7 +42,10 @@ return {
 			keys = {
 				{
 					"<leader>t",
-					"<cmd>Themify<CR>",
+          function()
+				    if buffer_utils.in_special_buffer() then return end
+            vim.cmd("Themify")
+          end,
 					desc = "Theme",
 				},
 			},

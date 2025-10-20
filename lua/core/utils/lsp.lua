@@ -223,8 +223,17 @@ local M = {
 			end
 		end
 
-		keymap_set("n", "<leader>k", show_diagnostic_or_code_action, {
-			desc = "Diagnostics or Code Actions",
+		keymap_set("n", "<leader>k", function() vim.lsp.buf.code_action() end, { desc = "Diagnostics or Code Actions" })
+
+    keymap_set("n", "<leader>K",
+    function()
+			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
+      if #diagnostics > 0 then
+				vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
+      end
+    end,
+    {
+			desc = "Code Actions",
 		})
 	end,
 }
