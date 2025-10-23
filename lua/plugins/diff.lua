@@ -18,12 +18,6 @@ return {
   },
   config = function()
     require("difft").setup({
-      diff = {
-        highlights = {
-          add = { bg = "#d6f5d6", fg = "#1a4d1a" },
-          delete = { bg = "#ffe5e5", fg = "#6b1f1f" },
-        },
-      },
       layout = "ivy_taller",
       loading_message = "Diffing...",
       no_diff_message = "All clean! No changes.",
@@ -39,7 +33,7 @@ return {
           local icon, hl = devicons.get_icon(basename)
 
           -- Get the bg from FloatTitle (what DifftFileHeader links to)
-          local header_hl = vim.api.nvim_get_hl(0, { name = "FloatTitle", link = false })
+          local header_hl = vim.api.nvim_get_hl(0, { link = false })
 
           -- Create custom highlight with devicon fg + header bg
           local icon_hl = hl
@@ -74,7 +68,6 @@ return {
           return result
         end,
         highlight = {
-          link = "FloatTitle",
           full_width = false,
         },
       },

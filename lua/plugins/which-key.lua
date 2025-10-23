@@ -20,6 +20,7 @@ return {
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>;", group = "Surround" },
 			{ "<leader>q", group = "Quickfix" },
+			{ "<leader>th", group = "Highlights" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>l", group = "Locations & Replace" },
 			{ "<M-S-O>", ":bprev<CR>", desc = "Previous buffer" },
