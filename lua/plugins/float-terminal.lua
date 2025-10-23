@@ -55,6 +55,16 @@ return {
 			mode = { "n", "t" },
 		},
 		{
+			";r",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(6)
+				end
+			end,
+			desc = "Toggle Task Runner",
+			mode = { "n", "t" },
+		},
+		{
 			";<esc>",
 			function()
 				if _G.FloatTerminal then
@@ -84,6 +94,7 @@ return {
 				{ id = 3, cmd = "yazi", title = " Yazi " },
 				{ id = 4, cmd = "jj diff", title = " Diff " },
 				{ id = 5, cmd = "btop", title = " Btop " },
+				{ id = 6, cmd = "mprocs", title = " Task Runner " },
 			},
 		})
 	end,

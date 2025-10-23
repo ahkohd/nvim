@@ -232,6 +232,18 @@ function M.setup(opts)
 			desc = "Close Yazi",
 		})
 
+		vim.keymap.set("t", ";f", function()
+			if vim.api.nvim_win_is_valid(win) then
+				vim.api.nvim_win_close(win, true)
+			end
+			state.yazi_win = -1
+		end, {
+			buffer = buf,
+			noremap = true,
+			silent = true,
+			desc = "Close Yazi",
+		})
+
 		vim.keymap.set("t", ";<esc>", function()
 			if vim.api.nvim_win_is_valid(win) then
 				vim.api.nvim_win_close(win, true)
@@ -260,6 +272,11 @@ function M.setup(opts)
 		-- Special handling for yazi terminal
 		if id == 3 then
 			open_yazi()
+			return
+		end
+
+		-- Check if yazi is open
+		if vim.api.nvim_win_is_valid(state.yazi_win) then
 			return
 		end
 
@@ -297,13 +314,6 @@ function M.setup(opts)
 
 				-- Set filetype for float terminal
 				vim.bo[term.buf].filetype = "float_terminal"
-
-				vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {
-					buffer = term.buf,
-					noremap = true,
-					silent = true,
-					desc = "Exit terminal mode",
-				})
 			end
 
 			vim.defer_fn(function()
