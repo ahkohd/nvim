@@ -51,9 +51,9 @@ vim.o.backspace = "start,eol,indent"
 
 vim.o.exrc = true
 
-vim.o.number = false
+vim.o.number = true
 
-vim.o.relativenumber = false
+vim.o.relativenumber = true
 
 vim.o.conceallevel = 2
 
