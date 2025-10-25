@@ -129,6 +129,20 @@ return {
           vim.api.nvim_set_hl(0, group, { bg = "NONE" })
         end
 
+        -- Dim line numbers and end-of-buffer tildes
+        vim.api.nvim_set_hl(0, "LineNr", { fg = colors.color8, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.color8, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "LineNrBelow", { fg = colors.color8, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = colors.color0, bg = "NONE" })
+
+        -- Better contrast for matching parens
+        vim.api.nvim_set_hl(0, "MatchParen", { bg = colors.color8, fg = colors.foreground, bold = true })
+
+        -- Match all borders to line number color
+        vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.color8, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "VertSplit", { fg = colors.color8, bg = "NONE" })
+        vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.color8, bg = "NONE" })
+
         -- Ensure Visual mode has visible background for contrast
         vim.api.nvim_set_hl(0, "Visual", { bg = colors.color8, fg = colors.foreground })
         vim.api.nvim_set_hl(0, "VisualNOS", { bg = colors.color8, fg = colors.foreground })
@@ -169,6 +183,11 @@ return {
         if pmenu_kind_sel.bg then
           vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = string.format("#%06x", pmenu_kind_sel.bg), bg = "NONE" })
         end
+
+        -- Dim LSP reference highlights
+        vim.api.nvim_set_hl(0, "LspReferenceText", { bg = colors.color0, fg = "NONE" })
+        vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = colors.color0, fg = "NONE" })
+        vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = colors.color0, fg = "NONE" })
       end
     },
     {
