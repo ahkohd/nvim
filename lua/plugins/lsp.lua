@@ -23,6 +23,7 @@ return {
 			"nixd",
 			"zls",
 			"vtsls",
+      "marksman"
 		}
 
 		registry.refresh(function()
@@ -46,7 +47,8 @@ return {
 			"nixd",
 			"rust_analyzer",
 			"zls",
-      "vtsls"
+      "vtsls",
+      "marksman"
 		}
 
 		local utils = require("core.utils.lsp")
@@ -71,6 +73,52 @@ return {
 				utils.on_attach(client, args.buf)
 			end,
 		})
+
+		-- Create LspInfo command to show current LSP information in float
+		vim.api.nvim_create_user_command("LspInfo", function()
+			local clients = vim.lsp.get_clients({ bufnr = 0 })
+			local lines = {}
+
+			if #clients == 0 then
+				table.insert(lines, "No LSP clients attached to current buffer")
+			else
+				table.insert(lines, "Attached LSP clients:")
+				table.insert(lines, "")
+				for _, client in ipairs(clients) do
+					local root = client.config.root_dir or "N/A"
+					local filetypes = table.concat(client.config.filetypes or {}, ", ")
+					table.insert(lines, string.format("  • %s", client.name))
+					table.insert(lines, string.format("    Root: %s", root))
+					table.insert(lines, string.format("    Filetypes: %s", filetypes))
+					table.insert(lines, "")
+				end
+			end
+
+			-- Create floating window
+			local buf = vim.api.nvim_create_buf(false, true)
+			vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+			vim.api.nvim_buf_set_option(buf, "modifiable", false)
+			vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+
+			local width = 60
+			local height = #lines
+			local opts = {
+				relative = "editor",
+				width = width,
+				height = height,
+				col = (vim.o.columns - width) / 2,
+				row = (vim.o.lines - height) / 2 - 2,
+				style = "minimal",
+				border = "rounded",
+			}
+
+			local win = vim.api.nvim_open_win(buf, true, opts)
+			vim.api.nvim_win_set_option(win, "winhl", "Normal:Normal,FloatBorder:FloatBorder")
+
+			-- Close on escape or q
+			vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
+			vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, silent = true })
+		end, { desc = "Show LSP info in floating window" })
 
 		local lsp_utils = require("core.utils.lsp")
 

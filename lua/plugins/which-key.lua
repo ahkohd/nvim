@@ -18,7 +18,7 @@ return {
 			{ "<leader>a", group = "AI" },
 			{ "<leader>w", group = "Session" },
 			{ "<leader>q", group = "Quickfix" },
-			{ "<leader>;", group = "Surround" },
+			{ "<leader>s", group = "Surround" },
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>th", group = "Highlights" },
 			{ "<leader>g", group = "Git" },

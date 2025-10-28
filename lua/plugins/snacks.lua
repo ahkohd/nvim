@@ -335,6 +335,34 @@ return {
 			layout = {
 				preset = "ivy_taller",
 			},
+			sources = {
+				explorer = {
+					git_status = false,
+					diagnostics = false,
+					formatters = {
+						file = {
+							git_status_hl = false,
+						},
+					},
+					icons = {
+						files = {
+							enabled = false,
+						},
+						git = {
+							enabled = false,
+						},
+					},
+					layout = {
+						layout = {
+							width = 30,
+							min_width = 30,
+							position = "left",
+							border = "none",
+							backdrop = false,
+						},
+					},
+				},
+			},
 			win = {
 				input = {
 					keys = {

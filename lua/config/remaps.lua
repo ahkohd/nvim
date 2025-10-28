@@ -43,12 +43,12 @@ vim.keymap.set("n", "<Right>", function()
 end, { noremap = true, silent = true, desc = "Next buffer (skip terminal)" })
 
 -- Jumplist navigation
-map("n", "<Up>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to newer position" })
-map("n", "<Down>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
+map("n", "<C-i>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to newer position" })
+map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
 
 -- Quickfix navigation
-map("n", "<C-i>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
-map("n", "<C-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
+map("n", "<C-S-i>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
+map("n", "<C-S-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
 
 -- Terminal mode mappings
 map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
@@ -59,8 +59,8 @@ map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Navigate to
 map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to top split" })
 map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
 
--- Quick file operations
-map("n", "<leader><leader>", ":e!<CR>:redraw!<CR>", { noremap = true, silent = true, desc = "Refresh" })
+-- Refresh
+map("n", "<leader><leader>", ":e!<CR>:redraw<CR>", { noremap = true, silent = true, desc = "Refresh" })
 
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
@@ -91,6 +91,6 @@ map("n", "<leader>qs", ":vimgrep /<C-r>//g %<CR>:copen<CR>", { noremap = true, d
 
 -- Location list commands
 -- map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
-map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
-map("n", "<C-S-I>", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
-map("n", "<C-S-o>", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
+-- map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
+-- map("n", "<C-S-I>", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
+-- map("n", "<C-S-o>", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })

@@ -61,6 +61,9 @@ vim.g["pencil#conceallevel"] = 2
 
 vim.opt.cursorline = false
 
+-- Disable end of buffer tildes
+vim.opt.fillchars = { eob = " " }
+
 -- Reduce key sequence timeout
 vim.opt.timeoutlen = 300 -- for mapped sequences (like jk for escape)
 vim.opt.ttimeoutlen = 30 -- for terminal key codes
