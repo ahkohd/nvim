@@ -60,7 +60,7 @@ map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to
 map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
 
 -- Quick file operations
-map("n", "<leader>h", ":e!<CR>", { noremap = true, silent = true, desc = "Refresh file" })
+map("n", "<leader><leader>", ":e!<CR>:redraw!<CR>", { noremap = true, silent = true, desc = "Refresh" })
 
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
@@ -68,7 +68,7 @@ map("n", "ZZ", ":xa<CR>", { noremap = true, silent = true, desc = "Save all and 
 map("n", "zq", ":q!<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Save file
-map("n", "<leader><leader>", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
+map("n", "<leader><CR>", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
 
 -- Execute Lua file
 map("n", "<leader>x", ":luafile %<CR>:echo 'Sourced ' . expand('%')<CR>", { noremap = true, desc = "Execute Lua file" })
