@@ -1,20 +1,10 @@
 -- luacheck: globals vim
 
 return {
-	"folke/flash.nvim",
-	event = "VeryLazy",
-	opts = {
-		modes = {
-			search = {
-				enabled = false,
-			},
-      char = {
-				jump_labels = true,
-			},
-		},
-	},
-	keys = {
-		{
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  keys = {
+    {
 			"s",
 			mode = { "n", "x", "o" },
 			function()
@@ -22,7 +12,7 @@ return {
 			end,
 			desc = "Flash",
 		},
-		{
+    {
 			"S",
 			mode = { "n", "x", "o" },
 			function()
@@ -30,5 +20,55 @@ return {
 			end,
 			desc = "Flash Treesitter",
 		},
-	},
+  },
+  opts = {
+    highlight = {
+      backdrop = false,
+    },
+    jump = {
+      autojump = true,
+      nohlsearch = true
+    },
+    -- labels = "asdfgqwertzxcvb",
+    labels = "asdfg",
+    modes = {
+      char = {
+        enabled = true,
+        char_actions = function()
+          return {
+            [";"] = "next",
+            [","] = "prev",
+            ["F"] = "left",
+            ["f"] = "right"
+          }
+        end,
+        keys = { "f", "F", "t", "T", ";", "," },
+        highlight = {
+          backdrop = false
+        },
+        jump_labels = true,
+        multi_line = true
+      },
+      search = {
+        enabled = true,
+        forward = true,
+        wrap = true,
+        highlight = {
+          backdrop = false
+        },
+        jump = {
+          autojump = false
+        }
+      },
+      treesitter = {
+        labels = "asdfgqwertzxcvb"
+      }
+    },
+    prompt = {
+      win_config = { border = "none" }
+    },
+    search = {
+      wrap = true
+    }
+  }
 }
