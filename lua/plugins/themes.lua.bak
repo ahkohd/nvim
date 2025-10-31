@@ -1,4 +1,4 @@
---luacheck: globals vim
+-- luacheck: globals vim
 
 local is_linux = vim.loop.os_uname().sysname == "Linux"
 
@@ -6,50 +6,6 @@ return {
 	"typicode/bg.nvim",
   event = "BufEnter",
 	dependencies = {
-    -- {
-    --   "nvim-mini/mini.hues",
-    --   cond = is_linux,
-    --   config = function()
-    --     local color_utils = require("core.utils.colors")
-    --     local colors = color_utils.load_wallust_colors()
-    --     if not colors then
-    --       return
-    --     end
-    --
-    --     require("mini.hues").setup({
-    --       background = colors.background,
-    --       foreground = colors.foreground,
-    --       n_hues = 8,
-    --       saturation = 'medium',
-    --       accent = 'bg',
-    --     })
-    --
-    --     -- Set backgrounds to transparent for terminal opacity
-    --     local transparent_groups = {
-    --       "Normal",
-    --       "NormalFloat",
-    --       "FloatBorder",
-    --       "FloatTitle",
-    --       "Pmenu",
-    --       "PmenuSel",
-    --       "PmenuThumb",
-    --       "StatusLine",
-    --       "TabLine",
-    --       "TabLineSel",
-    --       "WinBar",
-    --       "WinBarNC",
-    --       "SignColumn",
-    --       "DiagnosticFloatingError",
-    --       "DiagnosticFloatingWarn",
-    --       "DiagnosticFloatingInfo",
-    --       "DiagnosticFloatingHint",
-    --     }
-    --
-    --     for _, group in ipairs(transparent_groups) do
-    --       vim.api.nvim_set_hl(0, group, { bg = "NONE" })
-    --     end
-    --   end
-    -- },
     {
       "nvim-mini/mini.base16",
       cond = is_linux,
@@ -216,6 +172,7 @@ return {
           "kyazdani42/blue-moon",
           "Mofiqul/vscode.nvim",
           "marko-cerovac/material.nvim",
+          "ellisonleao/gruvbox.nvim"
         })
       end,
     },

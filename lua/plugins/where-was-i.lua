@@ -1,6 +1,7 @@
 return {
   dir = "~/Developer/where-was-i",
   event = "VeryLazy",
+  enabled = false,
   config = function()
     require("where-was-i").setup({
       trail_length = 20,
