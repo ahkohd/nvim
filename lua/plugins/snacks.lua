@@ -17,46 +17,6 @@ return {
 	},
 	keys = {
 		{
-			"<leader>go",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.gitbrowse()
-			end,
-			desc = "Git Browse",
-		},
-		{
-			"<leader>gb",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.git.blame_line()
-			end,
-			desc = "Git Blame Line",
-		},
-		{
-			"<leader>gf",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.lazygit.log_file()
-			end,
-			desc = "Lazygit Current File History",
-		},
-		{
-			"<leader>gg",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.lazygit()
-			end,
-			desc = "Lazygit",
-		},
-		{
-			"<leader>gl",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.lazygit.log()
-			end,
-			desc = "Lazygit Log (cwd)",
-		},
-		{
 			"]]",
 			function()
 				if buffer_utils.in_special_buffer() then return end

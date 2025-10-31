@@ -59,8 +59,10 @@ map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Navigate to
 map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to top split" })
 map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
 
+-- Clear Highlights
+map("n", "<leader>n", ":noh<CR>", { noremap = true, silent = true, desc = "Clear Highlights" })
 -- Refresh
-map("n", "<leader><leader>", ":e!<CR>:redraw<CR>", { noremap = true, silent = true, desc = "Refresh" })
+map("n", "<leader>N", ":e!<CR>:redraw<CR>", { noremap = true, silent = true, desc = "Refresh" })
 
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
