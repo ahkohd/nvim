@@ -6,6 +6,8 @@ vim.g.maplocalleader = "\\"
 
 vim.o.termguicolors = true
 
+vim.o.mouse = ""
+
 vim.wo.number = true
 
 vim.o.fileencodings = "utf-8,sjis,euc-jp,latin"
