@@ -29,7 +29,7 @@ return {
       autojump = true,
       nohlsearch = true
     },
-    labels = "asdfghjkl",
+    labels = "asdfg",
     modes = {
       char = {
         enabled = true,
@@ -60,7 +60,7 @@ return {
         }
       },
       treesitter = {
-        labels = "asdfghjkl",
+        labels = "asdfgh",
       }
     },
     prompt = {

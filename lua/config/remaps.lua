@@ -58,6 +58,7 @@ map("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Navigate to
 map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Navigate to bottom split" })
 map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to top split" })
 map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
+map("n", "<C-;>", "<C-w>w", { noremap = true, silent = true, desc = "Cycle windows" })
 
 -- Clear Highlights & Refresh
 map("n", "<leader><CR>", ":noh<CR>", { noremap = true, silent = true, desc = "Clear Highlights" })
@@ -70,6 +71,11 @@ map("n", "zq", ":q!<CR>", { noremap = true, silent = true, desc = "Close buffer"
 
 -- Save file
 map("n", "<leader>a", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
+
+-- Copy to clipboard
+map("v", "<leader>y", [["+y]], { noremap = true, silent = true, desc = "Copy selection to clipboard" })
+map("n", "<leader>Y", [["+yy]], { noremap = true, silent = true, desc = "Copy line to clipboard" })
+map("v", "<leader>Y", [["+Y]], { noremap = true, silent = true, desc = "Copy lines to clipboard" })
 
 -- Execute Lua file
 map("n", "<leader>x", ":luafile %<CR>:echo 'Sourced ' . expand('%')<CR>", { noremap = true, desc = "Execute Lua file" })
@@ -91,7 +97,7 @@ map(
 map("n", "<leader>qs", ":vimgrep /<C-r>//g %<CR>:copen<CR>", { noremap = true, desc = "Search results to quickfix" })
 
 -- Location list commands
--- map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
--- map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
--- map("n", "<C-S-I>", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
--- map("n", "<C-S-o>", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
+map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
+map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
+map("n", "<leader>ln", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
+map("n", "<leader>lp", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
