@@ -194,28 +194,6 @@ return {
 			end,
 			desc = "Goto Type Definition",
 		},
-		{
-			"<leader>R",
-			function()
-				if buffer_utils.in_special_buffer() then return end
-				Snacks.picker.registers({
-					title = "Registers",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-					actions = {
-						copy_silent = function(picker, item)
-							if item and item.text then
-								vim.fn.setreg('"', item.text)
-								picker:close()
-							end
-						end,
-					},
-					confirm = "copy_silent",
-				})
-			end,
-			desc = "Registers",
-		},
     {
       "<leader>p",
       function()

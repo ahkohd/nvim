@@ -13,17 +13,18 @@ return {
 		local ensure_installed = {
 			"lua-language-server",
 			"rust-analyzer",
+      "typescript-language-server",
+      "marksman",
 			"html-lsp",
 			"json-lsp",
 			"css-lsp",
 			"tailwindcss-language-server",
 			"taplo",
-			"vim-language-server",
-			"astro-language-server",
 			"nixd",
-			"zls",
-			"vtsls",
-      "marksman"
+			-- "vim-language-server",
+			-- "astro-language-server",
+			-- "zls",
+			-- "vtsls",
 		}
 
 		registry.refresh(function()
@@ -43,12 +44,13 @@ return {
 			"cssls",
 			"tailwindcss",
 			"taplo",
-			"astro",
 			"nixd",
 			"rust_analyzer",
-			"zls",
-      "vtsls",
+      "ts_ls",
       "marksman"
+			-- "astro",
+			-- "zls",
+      -- "vtsls",
 		}
 
 		local utils = require("core.utils.lsp")
