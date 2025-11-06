@@ -85,4 +85,7 @@ vim.cmd("autocmd InsertLeave * set nopaste")
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
 vim.cmd("autocmd TermOpen * stopinsert") -- Stay in normal mode
 
+-- Set quickfix window height
+vim.cmd("autocmd FileType qf wincmd J | resize 30")
+
 require("config.remaps")
