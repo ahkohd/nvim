@@ -77,8 +77,13 @@ map("v", "<leader>y", [["+y]], { noremap = true, silent = true, desc = "Copy sel
 map("n", "<leader>Y", [["+yy]], { noremap = true, silent = true, desc = "Copy line to clipboard" })
 map("v", "<leader>Y", [["+Y]], { noremap = true, silent = true, desc = "Copy lines to clipboard" })
 
--- Execute Lua file
-map("n", "<leader>x", ":luafile %<CR>:echo 'Sourced ' . expand('%')<CR>", { noremap = true, desc = "Execute Lua file" })
+-- Restart and restore session
+map(
+	"n",
+	"<leader><s-esc>",
+	":mksession! /tmp/nvim-session.vim<CR>:restart source /tmp/nvim-session.vim<CR>",
+	{ noremap = true, silent = true, desc = "Save session and quit" }
+)
 
 -- Quickfix list
 -- map("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })

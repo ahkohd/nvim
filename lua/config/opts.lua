@@ -88,4 +88,7 @@ vim.cmd("autocmd TermOpen * stopinsert") -- Stay in normal mode
 -- Set quickfix window height
 vim.cmd("autocmd FileType qf wincmd J | resize 30")
 
+-- Open help windows vertically
+vim.cmd("autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif")
+
 require("config.remaps")

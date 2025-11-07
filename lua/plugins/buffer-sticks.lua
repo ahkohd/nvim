@@ -5,13 +5,6 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>J",
-			function()
-				BufferSticks.toggle()
-			end,
-			desc = "Toggle BufferSticks",
-		},
-		{
 			"<leader>j",
 			function()
 				BufferSticks.jump()
@@ -24,15 +17,15 @@ return {
 
 		sticks.setup({
 			filter = { buftypes = { "terminal" } },
-      preview = {
-        enabled = true,
-        mode = "float",  -- "float", or "current" or "last_window"
-        float = {
-          position = "right",
-          width = 0.5,
-          height = 0.8,
-        },
-      },
+			preview = {
+				enabled = true,
+				mode = "float", -- "float", or "current" or "last_window"
+				float = {
+					position = "right",
+					width = 0.5,
+					height = 0.8,
+				},
+			},
 			highlights = {
 				active = { link = "Statement" },
 				alternate = { link = "StorageClass" },
