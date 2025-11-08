@@ -1,5 +1,3 @@
--- luacheck: globals vim
-
 local M = {}
 
 -- Define special buffer types that should disable certain keybindings

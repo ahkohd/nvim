@@ -1,31 +1,50 @@
--- luacheck: globals vim
-
 return {
 	"williamboman/mason.nvim",
+	dependencies = {
+		"neovim/nvim-lspconfig",
+	},
 	config = function()
+		local ensure_installed = {
+			-- lua
+			"lua-language-server",
+			"luacheck",
+			"stylua",
+			-- webdev
+			"html-lsp",
+			"json-lsp",
+			"css-lsp",
+			-- markup
+			"marksman",
+			"taplo",
+			-- typescript
+			"vtsls",
+			"eslint-lsp",
+			-- rust
+			"rust-analyzer",
+			-- nix
+			"nixd",
+		}
+
+		local enabled_servers = {
+			"html",
+			"jsonls",
+			"lua_ls",
+			"cssls",
+			"tailwindcss",
+			"taplo",
+			"nixd",
+			"rust_analyzer",
+			"vtsls",
+			"marksman",
+			"eslint",
+		}
+
 		require("mason").setup({
 			max_concurrent_installers = 12,
 			PATH = "append",
 		})
 
-		-- Ensure LSP servers are installed
 		local registry = require("mason-registry")
-		local ensure_installed = {
-			"lua-language-server",
-			"rust-analyzer",
-      "typescript-language-server",
-      "marksman",
-			"html-lsp",
-			"json-lsp",
-			"css-lsp",
-			"tailwindcss-language-server",
-			"taplo",
-			"nixd",
-			-- "vim-language-server",
-			-- "astro-language-server",
-			-- "zls",
-			-- "vtsls",
-		}
 
 		registry.refresh(function()
 			for _, pkg_name in ipairs(ensure_installed) do
@@ -36,33 +55,12 @@ return {
 			end
 		end)
 
-		-- List of LSP servers to enable
-		local servers = {
-			"html",
-			"jsonls",
-			"lua_ls",
-			"cssls",
-			"tailwindcss",
-			"taplo",
-			"nixd",
-			"rust_analyzer",
-      "ts_ls",
-      "marksman"
-			-- "astro",
-			-- "zls",
-      -- "vtsls",
-		}
+		local lsp_utils = require("core.utils.lsp")
 
-		local utils = require("core.utils.lsp")
-
-		-- Enable each server
-		for _, name in ipairs(servers) do
-			-- Check if the server config exists
+		for _, name in ipairs(enabled_servers) do
 			if vim.lsp.config[name] then
-				-- Override capabilities
-				vim.lsp.config[name].capabilities = utils.capabilities()
-
-				-- Enable the LSP server
+				vim.lsp.config[name].capabilities =
+					vim.tbl_deep_extend("force", vim.lsp.config[name].capabilities or {}, lsp_utils.capabilities())
 				vim.lsp.enable(name)
 			else
 				vim.notify("LSP config not found for: " .. name, vim.log.levels.WARN)
@@ -72,58 +70,22 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				utils.on_attach(client, args.buf)
+				lsp_utils.on_attach(client, args.buf)
 			end,
 		})
 
-		-- Create LspInfo command to show current LSP information in float
-		vim.api.nvim_create_user_command("LspInfo", function()
-			local clients = vim.lsp.get_clients({ bufnr = 0 })
-			local lines = {}
-
-			if #clients == 0 then
-				table.insert(lines, "No LSP clients attached to current buffer")
-			else
-				table.insert(lines, "Attached LSP clients:")
-				table.insert(lines, "")
-				for _, client in ipairs(clients) do
-					local root = client.config.root_dir or "N/A"
-					local filetypes = table.concat(client.config.filetypes or {}, ", ")
-					table.insert(lines, string.format("  • %s", client.name))
-					table.insert(lines, string.format("    Root: %s", root))
-					table.insert(lines, string.format("    Filetypes: %s", filetypes))
-					table.insert(lines, "")
-				end
-			end
-
-			-- Create floating window
-			local buf = vim.api.nvim_create_buf(false, true)
-			vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-			vim.api.nvim_buf_set_option(buf, "modifiable", false)
-			vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-
-			local width = 60
-			local height = #lines
-			local opts = {
-				relative = "editor",
-				width = width,
-				height = height,
-				col = (vim.o.columns - width) / 2,
-				row = (vim.o.lines - height) / 2 - 2,
-				style = "minimal",
-				border = "rounded",
-			}
-
-			local win = vim.api.nvim_open_win(buf, true, opts)
-			vim.api.nvim_win_set_option(win, "winhl", "Normal:Normal,FloatBorder:FloatBorder")
-
-			-- Close on escape or q
-			vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
-			vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, silent = true })
-		end, { desc = "Show LSP info in floating window" })
-
-		local lsp_utils = require("core.utils.lsp")
-
 		lsp_utils.setup_appearance()
+
+		-- Extend LSP servers configurations
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					workspace = {
+						-- Make Neovim runtime files available to lua_ls for completions and diagnostics
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+				},
+			},
+		})
 	end,
 }

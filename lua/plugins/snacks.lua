@@ -309,6 +309,12 @@ return {
 			layout = {
 				preset = "ivy_taller",
 			},
+			prompt = " ",
+			icons = {
+				files = {
+					enabled = false,
+				},
+			},
 			sources = {
 				explorer = {
 					git_status = false,
@@ -368,6 +374,6 @@ return {
 	},
 	init = function()
 		local layouts = require("snacks.picker.config.layouts")
-		layouts.ivy_taller = vim.tbl_deep_extend("keep", { layout = { height = 0.8 } }, layouts.ivy)
+		layouts.ivy_taller = vim.tbl_deep_extend("keep", { layout = { height = 0.8, title = "{title}" } }, layouts.ivy)
 	end,
 }

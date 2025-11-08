@@ -1,5 +1,3 @@
--- luacheck: globals vim
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -24,12 +22,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("config.opts")
 
-if vim.g.neovide then
-	require("config.neovide")
-end
-
 require("lazy").setup({
 	spec = { { import = "plugins" } },
-	install = { colorscheme = { "tokyonight-night" } },
+	install = { colorscheme = { "gruvbox-material" } },
 	checker = { enabled = false },
 })

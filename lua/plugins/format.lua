@@ -1,19 +1,17 @@
--- luacheck: globals vim
-
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
 	cmd = "Format",
 	keys = {
 		{
-			"<leader>cf",
+			"<leader>lf",
 			function()
 				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
 			desc = "Format buffer",
 		},
 		{
-			"<leader>cl",
+			"<leader>ll",
 			function()
 				-- Check if we're in a JS project (has package.json)
 				if vim.fn.filereadable("package.json") == 1 then

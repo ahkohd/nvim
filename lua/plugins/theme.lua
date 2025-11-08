@@ -37,6 +37,8 @@ return {
 							vim.g.gruvbox_material_float_style = "bright"
 							vim.g.gruvbox_material_statusline_style = "mix"
 							vim.g.gruvbox_material_cursor = "auto"
+							vim.g.gruvbox_material_transparent_background = 1
+							vim.g.gruvbox_material_visual = "blue background"
 						end,
 					},
 				})
@@ -44,4 +46,3 @@ return {
 		},
 	},
 }
-

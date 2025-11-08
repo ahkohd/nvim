@@ -16,7 +16,7 @@ To use this configuration:
 git clone https://github.com/ahkohd/nvim.git ~/.config/nvim
 ```
 
-2. Launch Neovim, and the plugins will be automatically installed (assuming you have a plugin manager, `lazy.nvim`).
+1. Launch Neovim, and the plugins will be automatically installed (assuming you have a plugin manager, `lazy.nvim`).
 
 ## Usage
 

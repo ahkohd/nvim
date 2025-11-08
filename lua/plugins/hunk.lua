@@ -1,5 +1,5 @@
 return {
-	"julienvincent/hunk.nvim",
+	"ahkohd/hunk.nvim",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
@@ -39,20 +39,20 @@ return {
 			},
 
 			icons = {
-				selected = "",
-				deselected = "",
-				partially_selected = "",
+				file_icons = false,
 
-				folder_open = "",
-				folder_closed = "",
+				selected = "●",
+				deselected = "○",
+				partially_selected = "◐",
+
+				folder_open = "",
+				folder_closed = "",
 			},
 
 			-- Called right after each window and buffer are created.
 			hooks = {
-				---@param _context { buf: number, tree: NuiTree, opts: table }
-				on_tree_mount = function(_context) end,
-				---@param _context { buf: number, win: number }
-				on_diff_mount = function(_context) end,
+				on_tree_mount = function() end,
+				on_diff_mount = function() end,
 			},
 		})
 	end,

@@ -38,7 +38,7 @@ return {
 				Struct = "Struct",
 				Event = "Event",
 				Operator = "Operator",
-				TypeParameter = "TypeParameter"
+				TypeParameter = "TypeParameter",
 			},
 		},
 

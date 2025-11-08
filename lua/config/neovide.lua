@@ -39,23 +39,7 @@ vim.g.neovide_cursor_smooth_blink = true
 vim.g.neovide_scroll_animation_length = 0.5
 
 -- Disable window blur on macOS
--- vim.g.neovide_window_blurred = false
+vim.g.neovide_window_blurred = false
 
 -- Hide mouse cursor while typing
 vim.g.neovide_hide_mouse_when_typing = true
-
--- macOS Option key as Meta (both left and right)
--- vim.g.neovide_input_macos_option_key_is_meta = "both"
-
--- macOS keymappings (Cmd+S, Cmd+C, Cmd+V)
--- vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
--- vim.keymap.set("v", "<D-c>", '"+y') -- Copy
--- vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
--- vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
--- vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
--- vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
--- local function pasteFromClipboard()
--- 	local clipboard_content = vim.fn.getreg("+") -- '+' is the system clipboard register
--- 	vim.api.nvim_put({ clipboard_content }, "l", true, true)
--- end
--- vim.keymap.set("t", "<D-v>", pasteFromClipboard, { silent = true, noremap = true })

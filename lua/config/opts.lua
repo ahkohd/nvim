@@ -1,94 +1,51 @@
--- luacheck: globals vim
-
 vim.g.mapleader = " "
-
 vim.g.maplocalleader = "\\"
-
 vim.o.termguicolors = true
-
 vim.o.mouse = ""
-
 vim.wo.number = true
-
-vim.o.fileencodings = "utf-8,sjis,euc-jp,latin"
-
-vim.o.encoding = "utf-8"
-
-vim.o.title = true
-
-vim.o.hlsearch = true
-
-vim.o.showcmd = true
-
-vim.o.cmdheight = 0
-
-vim.o.laststatus = 0
-
-vim.wo.scrolloff = 10
-
-vim.o.expandtab = true
-
-vim.o.shell = "zsh"
-
-vim.o.backupskip = "/tmp/*,/private/tmp/*"
-
-vim.o.showtabline = 0
-
-vim.opt.swapfile = false
-
--- disable intro message
-vim.opt.shortmess:append("I")
-
-vim.g.loaded_netrwPlugin = 0
-
-vim.o.ignorecase = true
-
-vim.o.shiftwidth = 2
-
-vim.o.tabstop = 2
-
-vim.o.wrap = false
-
-vim.o.backspace = "start,eol,indent"
-
-vim.o.exrc = true
-
-vim.o.number = true
-
 vim.o.relativenumber = true
-
+vim.o.fileencodings = "utf-8,sjis,euc-jp,latin"
+vim.o.title = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.showcmd = true
+vim.o.cmdheight = 0
+vim.o.laststatus = 0
+vim.wo.scrolloff = 10
+vim.o.expandtab = true
+vim.o.shell = "zsh"
+vim.o.backupskip = "/tmp/*,/private/tmp/*"
+vim.o.showtabline = 0
+vim.opt.swapfile = false
+vim.opt.shortmess:append("I")
+vim.g.loaded_netrwPlugin = 0
+vim.o.ignorecase = true
+vim.o.signcolumn = "yes"
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.wrap = false
+vim.o.backspace = "start,eol,indent"
+vim.o.exrc = true
+vim.o.number = true
 vim.o.conceallevel = 2
-
 vim.g["pencil#conceallevel"] = 2
+-- finding files - search down into subfolders
+vim.o.path = vim.o.path .. ",**"
+vim.o.wildignore = vim.o.wildignore .. ",*/node_modules/*"
 
 vim.opt.cursorline = false
-
 -- Disable end of buffer tildes
 vim.opt.fillchars = { eob = " " }
-
 -- Reduce key sequence timeout
 vim.opt.timeoutlen = 300 -- for mapped sequences (like jk for escape)
 vim.opt.ttimeoutlen = 30 -- for terminal key codes
-
 -- Faster CursorHold events (for LSP diagnostics, git signs, etc.)
 -- vim.opt.updatetime = 250
+vim.opt.undofile = true
 
--- finding files - search down into subfolders
-vim.o.path = vim.o.path .. ",**"
+-- Folding settings - auto-fold based on nesting level
+vim.opt.foldlevel = 3
+vim.opt.foldlevelstart = 3
 
-vim.o.wildignore = vim.o.wildignore .. ",*/node_modules/*"
-
--- turn off paste mode when leaving insert
-vim.cmd("autocmd InsertLeave * set nopaste")
-
--- Prevent terminal buffers from automatically entering insert mode
-vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
-vim.cmd("autocmd TermOpen * stopinsert") -- Stay in normal mode
-
--- Set quickfix window height
-vim.cmd("autocmd FileType qf wincmd J | resize 30")
-
--- Open help windows vertically
-vim.cmd("autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif")
-
+require("config.autocmds")
 require("config.remaps")

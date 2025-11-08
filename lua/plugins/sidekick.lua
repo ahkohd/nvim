@@ -1,16 +1,15 @@
---luacheck: globals vim
-
-local buffer_utils = require("core.utils.buffer")
-
 return {
 	"folke/sidekick.nvim",
 	opts = {
-    nes = {
-      enabled = false,
-    },
+		nes = {
+			enabled = false,
+		},
 		cli = {
 			tools = {
-				claude = { cmd = { "sh", "-c", 'claude --continue "$@" 2>/dev/null || claude "$@"', "sh" }, url = "https://github.com/anthropics/claude-code" },
+				claude = {
+					cmd = { "sh", "-c", 'claude --continue "$@" 2>/dev/null || claude "$@"', "sh" },
+					url = "https://github.com/anthropics/claude-code",
+				},
 			},
 			win = {
 				layout = "float",
@@ -68,7 +67,8 @@ Before (inline):
   className="max-h-[50vh] md:max-h-auto flex-col gap-4 md:gap-2 pt-2 w-full md:max-w-56 overflow-y-auto scrollbar-hide"
 
 Before (disorganized cn):
-  className=cn('overflow-y-auto max-h-[50vh] w-full flex-col md:gap-2 gap-4 pt-2 md:max-w-56 scrollbar-hide md:max-h-auto')
+  className=cn('overflow-y-auto max-h-[50vh] w-full flex-col md:gap-2
+  gap-4 pt-2 md:max-w-56 scrollbar-hide md:max-h-auto')
 
 After:
   className=cn(
@@ -78,7 +78,8 @@ After:
     'overflow-y-auto scrollbar-hide'
   )
 
-Keep responsive modifiers with their base class (e.g., gap-4 md:gap-2). Each line should be scannable and not exceed ~80 characters.]],
+Keep responsive modifiers with their base class (e.g., gap-4 md:gap-2). Each line should be scannable
+and not exceed ~80 characters.]],
 			},
 		},
 	},
@@ -86,13 +87,11 @@ Keep responsive modifiers with their base class (e.g., gap-4 md:gap-2). Each lin
 		{
 			";a",
 			function()
-				-- Do nothing if any float terminal is open
 				if _G.FloatTerminal and _G.FloatTerminal.is_any_terminal_open() then
 					return
 				end
 
-				-- Do nothing if in special buffer
-				if buffer_utils.in_special_buffer() then
+				if require("core.utils.buffer").in_special_buffer() then
 					return
 				end
 

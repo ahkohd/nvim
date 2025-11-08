@@ -1,5 +1,3 @@
--- luacheck: globals vim
-
 local map = vim.api.nvim_set_keymap
 
 -- Helper function to skip terminal buffers
@@ -47,8 +45,8 @@ map("n", "<C-i>", "<C-i>zz", { noremap = true, silent = true, desc = "Jump to ne
 map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true, desc = "Jump to older position" })
 
 -- Quickfix navigation
-map("n", "<C-S-i>", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item" })
-map("n", "<C-S-o>", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item" })
+map("n", "<C-S-i>", ":cnext<CR>zz", { noremap = true, silent = true, desc = "Next quickfix item" })
+map("n", "<C-S-o>", ":cprev<CR>zz", { noremap = true, silent = true, desc = "Previous quickfix item" })
 
 -- Terminal mode mappings
 map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
@@ -64,6 +62,13 @@ map("n", "<C-;>", "<C-w>w", { noremap = true, silent = true, desc = "Cycle windo
 map("n", "<leader><CR>", ":noh<CR>", { noremap = true, silent = true, desc = "Clear Highlights" })
 map("n", "<leader>n", ":e!<CR>:redraw<CR>", { noremap = true, silent = true, desc = "Refresh" })
 
+-- Command history
+map("n", "<leader><Up>", "q:", { noremap = true, silent = true, desc = "Open command history" })
+
+-- Folding shortcuts
+map("n", "<leader><space>", "za", { noremap = true, desc = "Toggle fold" })
+map("n", "<leader>o", "zR", { noremap = true, desc = "Open all folds" })
+
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
 map("n", "ZZ", ":xa<CR>", { noremap = true, silent = true, desc = "Save all and quit" })
@@ -71,6 +76,9 @@ map("n", "zq", ":q!<CR>", { noremap = true, silent = true, desc = "Close buffer"
 
 -- Save file
 map("n", "<leader>a", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
+
+-- Keep cursor position after yank in visual mode
+map("v", "y", "ygv<Esc>", { noremap = true, silent = true, desc = "Yank and keep cursor at end" })
 
 -- Copy to clipboard
 map("v", "<leader>y", [["+y]], { noremap = true, silent = true, desc = "Copy selection to clipboard" })
@@ -86,7 +94,6 @@ map(
 )
 
 -- Quickfix list
--- map("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 map(
 	"n",
 	"<leader>qq",

@@ -166,7 +166,7 @@ vim.lsp.util.open_floating_preview = float_wrapper(default_opener)
 local M = {
 	lua_globals = lua_globals,
 
-	on_attach = function(client, buf)
+	on_attach = function(_client, buf)
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 	end,
 
@@ -210,29 +210,16 @@ local M = {
 			update_in_insert = true,
 		})
 
-		local show_diagnostic_or_code_action = function()
-			-- Check if there are diagnostics at cursor position
-			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
+		keymap_set("n", "<leader>k", function()
+			vim.lsp.buf.code_action()
+		end, { desc = "Diagnostics or Code Actions" })
 
+		keymap_set("n", "<leader>K", function()
+			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 			if #diagnostics > 0 then
-				-- Show diagnostics if present
 				vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
-			else
-				-- Show code actions
-				vim.lsp.buf.code_action()
 			end
-		end
-
-		keymap_set("n", "<leader>k", function() vim.lsp.buf.code_action() end, { desc = "Diagnostics or Code Actions" })
-
-    keymap_set("n", "<leader>K",
-    function()
-			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 })
-      if #diagnostics > 0 then
-				vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
-      end
-    end,
-    {
+		end, {
 			desc = "Code Actions",
 		})
 	end,
