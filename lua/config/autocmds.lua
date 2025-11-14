@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Set quickfix window to bottom with fixed height",
 	callback = function()
 		vim.cmd("wincmd J")
-		vim.cmd("resize 30")
+		vim.cmd("resize 15")
 	end,
 })
 
@@ -134,7 +134,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.foldlevel = level
 
 		-- Set buffer-local keybind to reset to this buffer's fold level
-		vim.keymap.set("n", "<leader>c", function()
+		vim.keymap.set("n", "<leader>W", function()
 			vim.opt_local.foldlevel = level
 		end, { buffer = args.buf, noremap = true, desc = "Reset to default fold level" })
 	end,

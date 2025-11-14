@@ -32,6 +32,7 @@ vim.g["pencil#conceallevel"] = 2
 -- finding files - search down into subfolders
 vim.o.path = vim.o.path .. ",**"
 vim.o.wildignore = vim.o.wildignore .. ",*/node_modules/*"
+vim.o.winborder = "rounded"
 
 vim.opt.cursorline = false
 -- Disable end of buffer tildes

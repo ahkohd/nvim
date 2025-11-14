@@ -39,7 +39,7 @@ return {
 			},
 
 			icons = {
-				file_icons = false,
+				enable_file_icons = false,
 
 				selected = "●",
 				deselected = "○",
@@ -47,6 +47,9 @@ return {
 
 				folder_open = "",
 				folder_closed = "",
+
+				expanded = "▼",
+				collapsed = "▶",
 			},
 
 			-- Called right after each window and buffer are created.

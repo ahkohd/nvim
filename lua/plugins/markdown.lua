@@ -1,6 +1,4 @@
--- luacheck: globals vim Snacks
-
-local md_path = vim.fn.expand("~") .. "/Documents/md"
+-- local md_path = vim.fn.expand("~") .. "/Documents/md"
 
 return {
 	{
@@ -166,69 +164,5 @@ return {
 				end,
 			})
 		end,
-	},
-	{
-		"hedyhli/outline.nvim",
-		event = {
-			"BufReadPre " .. md_path .. "/*.md",
-			"BufNewFile " .. md_path .. "/*.md",
-		},
-		cmd = { "Outline", "OutlineOpen" },
-		keys = {
-			{ "<leader>O", "<cmd>Outline<cr>", desc = "Toggle outline" },
-			{
-				"<leader>i",
-				function()
-					Snacks.explorer()
-				end,
-				desc = "Explorer",
-			},
-			{
-				"<leader>z",
-				function()
-					local buf = vim.api.nvim_get_current_buf()
-
-					if not vim.g.dim_initialized then
-						Snacks.dim.enable({ animate = { enabled = false } })
-						vim.g.dim_initialized = true
-						vim.b[buf].dim_active = true
-					elseif vim.b[buf].dim_active then
-						Snacks.dim.disable()
-						vim.b[buf].dim_active = false
-					else
-						Snacks.dim()
-						vim.b[buf].dim_active = true
-					end
-				end,
-				desc = "Toggle zen mode",
-			},
-		},
-		opts = {
-			outline_window = {
-				position = "right",
-				width = 35,
-				auto_close = false,
-				focus_on_open = false,
-				wrap = true,
-				no_provider_message = "",
-			},
-			outline_items = {
-				show_symbol_lineno = false,
-				highlight_hovered_item = true,
-				auto_set_cursor = true,
-			},
-			symbols = {
-				icon_fetcher = function()
-					return ""
-				end,
-				filter = { "String", exclude = true },
-			},
-			providers = {
-				priority = { "markdown", "lsp" },
-			},
-			keymaps = {
-				close = { "q" },
-			},
-		},
 	},
 }
