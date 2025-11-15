@@ -105,7 +105,7 @@ return {
 			desc = "Locations",
 		},
 		{
-			"<leader>\\",
+			"<leader><esc>",
 			function()
 				if buffer_utils.in_special_buffer() then
 					return

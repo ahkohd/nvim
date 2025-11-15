@@ -8,7 +8,7 @@ return {
 			debounce_ms = 150,
 			active_buffer_only = false,
 			excluded_buftypes = { "terminal", "prompt" },
-			excluded_filetypes = { "difft", "highlight-info", "lazy", "quicker" },
+			excluded_filetypes = { "difft", "highlight-info", "lazy", "qf" },
 			color = "Comment",
 		})
 	end,
