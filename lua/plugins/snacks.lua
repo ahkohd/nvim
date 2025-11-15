@@ -290,6 +290,7 @@ return {
 		quickfile = { enabled = true },
 		words = { enabled = true },
 		input = { enabled = true },
+		gh = {},
 		picker = {
 			layout = {
 				preset = "ivy_taller_clean",
@@ -327,6 +328,8 @@ return {
 						},
 					},
 				},
+				gh_issue = {},
+				gh_pr = {},
 			},
 			win = {
 				input = {
