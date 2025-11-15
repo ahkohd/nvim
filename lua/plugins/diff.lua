@@ -1,4 +1,4 @@
--- luacheck: globals vim Difft
+--luacheck: globals Difft
 
 return {
 	dir = "~/Developer/difft",

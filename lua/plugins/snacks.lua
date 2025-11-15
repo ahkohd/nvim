@@ -1,4 +1,4 @@
--- luacheck: globals vim Snacks
+-- luacheck: globals Snacks
 
 local buffer_utils = require("core.utils.buffer")
 
@@ -292,7 +292,7 @@ return {
 		input = { enabled = true },
 		picker = {
 			layout = {
-				preset = "ivy_taller",
+				preset = "ivy_taller_clean",
 			},
 			prompt = " ",
 			icons = {
@@ -360,5 +360,23 @@ return {
 	init = function()
 		local layouts = require("snacks.picker.config.layouts")
 		layouts.ivy_taller = vim.tbl_deep_extend("keep", { layout = { height = 0.8, title = "{title}" } }, layouts.ivy)
+		layouts.ivy_taller_clean = vim.tbl_deep_extend("keep", {
+			layout = {
+				box = "vertical",
+				backdrop = false,
+				row = -1,
+				width = 0,
+				height = 0.8,
+				border = "none",
+				title = " {title} {live} {flags}",
+				title_pos = "left",
+				{ win = "input", height = 1, border = "none" },
+				{
+					box = "horizontal",
+					{ win = "list", border = "rounded" },
+					{ win = "preview", title = "{preview}", width = 0.6, border = "rounded" },
+				},
+			},
+		}, layouts.ivy)
 	end,
 }
