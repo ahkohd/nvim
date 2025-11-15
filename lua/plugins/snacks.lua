@@ -90,21 +90,6 @@ return {
 			desc = "Marks",
 		},
 		{
-			"<leader>qo",
-			function()
-				if buffer_utils.in_special_buffer() then
-					return
-				end
-				Snacks.picker.qflist({
-					title = "Quickfix",
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-				})
-			end,
-			desc = "Quickfix",
-		},
-		{
 			"<leader>lo",
 			function()
 				if buffer_utils.in_special_buffer() then
