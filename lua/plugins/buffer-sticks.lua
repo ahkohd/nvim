@@ -24,6 +24,7 @@ return {
 					position = "right",
 					width = 0.5,
 					height = 0.8,
+					border = "rounded",
 				},
 			},
 			highlights = {
