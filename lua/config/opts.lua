@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.o.termguicolors = true
-vim.o.mouse = ""
+vim.o.mouse = "a"
 vim.wo.number = true
 vim.o.relativenumber = true
 vim.o.fileencodings = "utf-8,sjis,euc-jp,latin"

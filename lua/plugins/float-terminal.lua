@@ -15,13 +15,13 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			";c",
+			";g",
 			function()
 				if _G.FloatTerminal then
 					_G.FloatTerminal.toggle_terminal(2)
 				end
 			end,
-			desc = "Toggle Coderabbit",
+			desc = "Toggle JJUI",
 			mode = { "n", "t" },
 		},
 		{
@@ -34,14 +34,14 @@ return {
 			desc = "Toggle Yazi",
 			mode = "n",
 		},
-	{
-		";d",
-		function()
-			if _G.FloatTerminal then
-				_G.FloatTerminal.toggle_terminal(4)
-			end
-		end,
-		desc = "Toggle Git Diff",
+		{
+			";d",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(4)
+				end
+			end,
+			desc = "Toggle Git Diff",
 			mode = { "n", "t" },
 		},
 		{
@@ -90,7 +90,7 @@ return {
 			layout = "ivy_taller",
 			terminals = {
 				{ id = 1, cmd = "zsh", title = " Terminal " },
-				{ id = 2, cmd = "crab", title = " CodeRabbit " },
+				{ id = 2, cmd = "jjui", title = " JJUI " },
 				{ id = 3, cmd = "yazi", title = " Yazi " },
 				{ id = 4, cmd = "jj diff", title = " Diff " },
 				{ id = 5, cmd = "btop", title = " Btop " },
