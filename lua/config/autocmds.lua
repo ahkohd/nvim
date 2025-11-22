@@ -130,7 +130,7 @@ vim.api.nvim_create_autocmd("FileType", {
 			yaml = 2,
 			xml = 2,
 		}
-		local level = foldlevels[vim.bo.filetype] or 3 -- default to 3
+		local level = foldlevels[vim.bo.filetype] or 6 -- default to 6
 		vim.opt_local.foldlevel = level
 
 		-- Set buffer-local keybind to reset to this buffer's fold level
