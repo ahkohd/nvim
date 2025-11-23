@@ -102,40 +102,40 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("self/treesitter_folding", { clear = true }),
-	desc = "Enable Treesitter folding",
-	callback = function(args)
-		local bufnr = args.buf
-
-		-- Enable Treesitter folding when not in huge files and when Treesitter
-		-- is working.
-		if vim.bo[bufnr].filetype ~= "bigfile" and pcall(vim.treesitter.start, bufnr) then
-			vim.api.nvim_buf_call(bufnr, function()
-				vim.wo[0][0].foldmethod = "expr"
-				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				vim.cmd.normal("zx")
-			end)
-		end
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("self/treesitter_folding", { clear = true }),
+-- 	desc = "Enable Treesitter folding",
+-- 	callback = function(args)
+-- 		local bufnr = args.buf
+--
+-- 		-- Enable Treesitter folding when not in huge files and when Treesitter
+-- 		-- is working.
+-- 		if vim.bo[bufnr].filetype ~= "bigfile" and pcall(vim.treesitter.start, bufnr) then
+-- 			vim.api.nvim_buf_call(bufnr, function()
+-- 				vim.wo[0][0].foldmethod = "expr"
+-- 				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- 				vim.cmd.normal("zx")
+-- 			end)
+-- 		end
+-- 	end,
+-- })
 
 -- Set filetype-specific fold levels
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("self/filetype_foldlevel", { clear = true }),
-	desc = "Set fold level based on filetype",
-	callback = function(args)
-		local foldlevels = {
-			json = 2,
-			yaml = 2,
-			xml = 2,
-		}
-		local level = foldlevels[vim.bo.filetype] or 6 -- default to 6
-		vim.opt_local.foldlevel = level
-
-		-- Set buffer-local keybind to reset to this buffer's fold level
-		vim.keymap.set("n", "<leader>W", function()
-			vim.opt_local.foldlevel = level
-		end, { buffer = args.buf, noremap = true, desc = "Reset to default fold level" })
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("self/filetype_foldlevel", { clear = true }),
+-- 	desc = "Set fold level based on filetype",
+-- 	callback = function(args)
+-- 		local foldlevels = {
+-- 			json = 2,
+-- 			yaml = 2,
+-- 			xml = 2,
+-- 		}
+-- 		local level = foldlevels[vim.bo.filetype] or 3 -- default to 3
+-- 		vim.opt_local.foldlevel = level
+--
+-- 		-- Set buffer-local keybind to reset to this buffer's fold level
+-- 		vim.keymap.set("n", "<leader>W", function()
+-- 			vim.opt_local.foldlevel = level
+-- 		end, { buffer = args.buf, noremap = true, desc = "Reset to default fold level" })
+-- 	end,
+-- })

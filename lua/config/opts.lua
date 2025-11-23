@@ -45,8 +45,8 @@ vim.opt.ttimeoutlen = 30 -- for terminal key codes
 vim.opt.undofile = true
 
 -- Folding settings - auto-fold based on nesting level
-vim.opt.foldlevel = 5
-vim.opt.foldlevelstart = 5
+-- vim.opt.foldlevel = 3
+-- vim.opt.foldlevelstart = 3
 
 require("config.autocmds")
 require("config.remaps")

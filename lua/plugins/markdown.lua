@@ -140,29 +140,4 @@ return {
 			return config
 		end,
 	},
-	{
-		"preservim/vim-pencil",
-		ft = "markdown",
-		keys = {
-			{
-				"<leader>'",
-				function()
-					vim.cmd("PencilToggle")
-				end,
-				desc = "Toggle Pencil",
-			},
-		},
-		init = function()
-			vim.g["pencil#wrapModeDefault"] = "soft"
-			vim.g["pencil#autoformat"] = 1
-		end,
-		config = function()
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "markdown",
-				callback = function()
-					vim.cmd("PencilSoft")
-				end,
-			})
-		end,
-	},
 }
