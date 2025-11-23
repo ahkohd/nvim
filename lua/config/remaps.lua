@@ -67,7 +67,7 @@ map("n", "<leader><Up>", "q:", { noremap = true, silent = true, desc = "Open com
 
 -- Folding shortcuts
 map("n", "<leader><space>", "za", { noremap = true, desc = "Toggle fold" })
-map("n", "<leader>w", "zR", { noremap = true, desc = "Open all folds" })
+-- map("n", "<leader>w", "zR", { noremap = true, desc = "Open all folds" })
 
 -- Quick quit commands (like vim's ZZ and ZQ)
 map("n", "ZQ", ":qa!<CR>", { noremap = true, silent = true, desc = "Force quit all (no save)" })
