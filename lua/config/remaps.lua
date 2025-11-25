@@ -52,10 +52,10 @@ map("n", "<C-S-o>", ":cprev<CR>zz", { noremap = true, silent = true, desc = "Pre
 map("t", ";;", "<C-\\><C-n>", { noremap = true, silent = true })
 
 -- Split navigation
-map("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Navigate to left split" })
-map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Navigate to bottom split" })
-map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to top split" })
-map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
+map("n", "<Left>", "<C-w>h", { noremap = true, silent = true, desc = "Navigate to left split" })
+map("n", "<Down>", "<C-w>j", { noremap = true, silent = true, desc = "Navigate to bottom split" })
+map("n", "<Up>", "<C-w>k", { noremap = true, silent = true, desc = "Navigate to top split" })
+map("n", "<Right>", "<C-w>l", { noremap = true, silent = true, desc = "Navigate to right split" })
 map("n", "<C-;>", "<C-w>w", { noremap = true, silent = true, desc = "Cycle windows" })
 
 -- Clear Highlights & Refresh
