@@ -6,18 +6,22 @@ return {
 		},
 		cli = {
 			tools = {
-				claude = {
-					cmd = { "sh", "-c", 'claude --continue "$@" 2>/dev/null || claude "$@"', "sh" },
-					url = "https://github.com/anthropics/claude-code",
+				-- claude = {
+				-- 	cmd = { "sh", "-c", 'claude --continue "$@" 2>/dev/null || claude "$@"', "sh" },
+				-- 	url = "https://github.com/anthropics/claude-code",
+				-- },
+				opencode = {
+					cmd = { "sh", "-c", 'opencode --continue "$@" 2>/dev/null || opencode "$@"', "sh" },
+					env = { OPENCODE_THEME = "system" },
 				},
 			},
 			win = {
 				layout = "float",
 				float = {
 					width = 1.0,
-					height = 0.8,
-					border = "rounded",
-					row = 1.0,
+					height = 1.0,
+					border = "none",
+					row = 0.0,
 				},
 				keys = {
 					-- hide from terminal mode
@@ -95,9 +99,9 @@ and not exceed ~80 characters.]],
 					return
 				end
 
-				require("sidekick.cli").toggle({ name = "claude", focus = true })
+				require("sidekick.cli").toggle({ name = "opencode", focus = true })
 			end,
-			desc = "Sidekick Claude Toggle",
+			desc = "Sidekick Opencode Toggle",
 			mode = { "n", "v" },
 		},
 		{

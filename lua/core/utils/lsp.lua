@@ -166,8 +166,15 @@ vim.lsp.util.open_floating_preview = float_wrapper(default_opener)
 local M = {
 	lua_globals = lua_globals,
 
-	on_attach = function(_client, buf)
+	on_attach = function(client, buf)
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+		if client.supports_method("textDocument/inlayHint") then
+			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+			keymap_set("n", "<leader>li", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buf }), { bufnr = buf })
+			end, { buffer = buf, desc = "Toggle inlay hints" })
+		end
 	end,
 
 	capabilities = function()
