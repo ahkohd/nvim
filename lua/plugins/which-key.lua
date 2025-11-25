@@ -45,7 +45,6 @@ return {
 
 		wk.add({
 			{ "<leader>a", group = "AI" },
-			{ "<leader>w", group = "Session" },
 			{ "<leader>q", group = "Quickfix" },
 			{ "<leader>s", group = "Surround" },
 			{ "<leader>q", group = "Quickfix" },
