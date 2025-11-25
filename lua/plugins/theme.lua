@@ -36,7 +36,7 @@ return {
 						end,
 						after = function()
 							-- Color palette
-							local bg = "NONE" -- #101114, NONE
+							local bg = "#101114" -- #101114, NONE
 							local surface = "#252529"
 							local border = "#303034"
 
