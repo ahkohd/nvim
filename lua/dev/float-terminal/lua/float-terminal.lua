@@ -46,7 +46,20 @@ function M.setup(opts)
 			col = col,
 			row = row,
 			style = "minimal",
-			border = "rounded",
+			border = config.border or "rounded",
+		}
+	end
+
+	local function get_fullscreen_layout(config)
+		config = config or {}
+		return {
+			relative = "editor",
+			width = vim.o.columns,
+			height = vim.o.lines,
+			col = 0,
+			row = 0,
+			style = "minimal",
+			border = config.border or "none",
 		}
 	end
 
@@ -62,15 +75,20 @@ function M.setup(opts)
 		end
 
 		-- get window configuration based on layout
+		-- per-terminal layout overrides global opts.layout
+		local layout = (config.layout and config.layout.type) or opts.layout
+		local layout_opts = config.layout or {}
 		local win_config
-		if opts.layout == "float" then
-			win_config = get_float_layout(config)
+		if layout == "fullscreen" then
+			win_config = get_fullscreen_layout(layout_opts)
+		elseif layout == "float" then
+			win_config = get_float_layout(layout_opts)
 		else -- default to ivy_taller
-			win_config = get_ivy_taller_layout(config)
+			win_config = get_ivy_taller_layout(layout_opts)
 		end
 
-		-- add title if provided
-		if config.title then
+		-- add title if provided (only when border exists)
+		if config.title and win_config.border ~= "none" then
 			win_config.title = config.title
 			win_config.title_pos = "center"
 		end
@@ -116,46 +134,9 @@ function M.setup(opts)
 		return has_buffer_type("difft")
 	end
 
-	local function hide_sidekick()
-		local ok, sidekick_cli = pcall(require, "sidekick.cli")
-		if ok then
-			-- Check if there's a visible sidekick window and toggle it off
-			local has_visible = false
-			for _, win in ipairs(vim.api.nvim_list_wins()) do
-				if vim.api.nvim_win_is_valid(win) then
-					local buf = vim.api.nvim_win_get_buf(win)
-					local ft = vim.bo[buf].filetype
-					if ft == "sidekick_terminal" then
-						has_visible = true
-						break
-					end
-				end
-			end
-			if has_visible then
-				sidekick_cli.toggle({ name = "claude" })
-			end
-		end
-	end
-
-	local function show_sidekick()
+	local function open_yazi()
 		-- Do nothing if in special buffer
 		if in_special_buffer() then
-			return
-		end
-
-		local ok, sidekick_cli = pcall(require, "sidekick.cli")
-		if ok then
-			sidekick_cli.show({ name = "claude", focus = true })
-		end
-	end
-
-	local function is_sidekick_open()
-		return has_buffer_type("sidekick_terminal")
-	end
-
-	local function open_yazi()
-		-- Do nothing if sidekick or special buffer is open
-		if is_sidekick_open() or in_special_buffer() then
 			return
 		end
 
@@ -261,11 +242,57 @@ function M.setup(opts)
 		end, 10)
 	end
 
+	local function show_terminal(id)
+		if not state.terminals[id] then
+			return false
+		end
+
+		local term = state.terminals[id]
+
+		-- Already visible
+		if vim.api.nvim_win_is_valid(term.win) then
+			return true
+		end
+
+		-- Hide other terminals first
+		for term_id, t in pairs(state.terminals) do
+			if term_id ~= id and vim.api.nvim_win_is_valid(t.win) then
+				vim.api.nvim_win_hide(t.win)
+			end
+		end
+
+		-- Hide yazi if open
+		if vim.api.nvim_win_is_valid(state.yazi_win) then
+			vim.api.nvim_win_close(state.yazi_win, true)
+			state.yazi_win = -1
+		end
+
+		-- Show this terminal
+		local result = create_floating_window({ buf = term.buf, title = term.title, layout = term.layout })
+		term.buf = result.buf
+		term.win = result.win
+
+		if vim.bo[term.buf].buftype ~= "terminal" then
+			if term.cmd then
+				vim.cmd("terminal " .. term.cmd)
+			else
+				vim.cmd.terminal()
+			end
+			vim.bo[term.buf].filetype = "float_terminal"
+		end
+
+		vim.defer_fn(function()
+			vim.cmd("startinsert")
+		end, 10)
+
+		return true
+	end
+
 	local function toggle_terminal(id, shell_cmd)
 		id = id or 1
 
-		-- Do nothing if sidekick or special buffer is open
-		if is_sidekick_open() or in_special_buffer() then
+		-- Do nothing if in special buffer
+		if in_special_buffer() then
 			return
 		end
 
@@ -300,25 +327,7 @@ function M.setup(opts)
 		local term = state.terminals[id]
 
 		if not vim.api.nvim_win_is_valid(term.win) then
-			-- Show this terminal
-			local result = create_floating_window({ buf = term.buf, title = term.title })
-			term.buf = result.buf
-			term.win = result.win
-
-			if vim.bo[term.buf].buftype ~= "terminal" then
-				if term.cmd then
-					vim.cmd("terminal " .. term.cmd)
-				else
-					vim.cmd.terminal()
-				end
-
-				-- Set filetype for float terminal
-				vim.bo[term.buf].filetype = "float_terminal"
-			end
-
-			vim.defer_fn(function()
-				vim.cmd("startinsert")
-			end, 10)
+			show_terminal(id)
 		else
 			-- This terminal is already open, hide it (toggle off)
 			vim.api.nvim_win_hide(term.win)
@@ -334,6 +343,7 @@ function M.setup(opts)
 					win = -1,
 					cmd = terminal.cmd,
 					title = terminal.title,
+					layout = terminal.layout,
 				}
 			end
 		end
@@ -374,12 +384,48 @@ function M.setup(opts)
 		return false
 	end
 
+	local function send_to_terminal(id, text)
+		id = id or 1
+		if not state.terminals[id] then
+			return false
+		end
+
+		local function send_text()
+			local term = state.terminals[id]
+			if term and vim.api.nvim_buf_is_valid(term.buf) then
+				local chan = vim.bo[term.buf].channel
+				if chan and chan > 0 then
+					vim.api.nvim_chan_send(chan, text)
+					return true
+				end
+			end
+			return false
+		end
+
+		-- Show terminal (creates if needed, hides others)
+		show_terminal(id)
+
+		-- Wait for terminal to be ready, retry a few times
+		local attempts = 0
+		local max_attempts = 20
+		local function try_send()
+			attempts = attempts + 1
+			if not send_text() and attempts < max_attempts then
+				vim.defer_fn(try_send, 100)
+			end
+		end
+		vim.defer_fn(try_send, 300)
+
+		return true
+	end
+
 	-- Store the functions globally for access from keybindings
 	_G.FloatTerminal = {
 		toggle_terminal = toggle_terminal,
 		hide_current_terminal = hide_current_terminal,
 		is_any_terminal_open = is_any_terminal_open,
 		has_buffer_type = has_buffer_type,
+		send_to_terminal = send_to_terminal,
 	}
 
 	vim.api.nvim_create_user_command("FloatTerminal", function()
@@ -392,11 +438,15 @@ function M.setup(opts)
 		callback = function()
 			for _, term in pairs(state.terminals) do
 				if vim.api.nvim_win_is_valid(term.win) then
+					local layout = (term.layout and term.layout.type) or opts.layout
+					local layout_opts = term.layout or {}
 					local win_config
-					if opts.layout == "float" then
-						win_config = get_float_layout({})
+					if layout == "fullscreen" then
+						win_config = get_fullscreen_layout(layout_opts)
+					elseif layout == "float" then
+						win_config = get_float_layout(layout_opts)
 					else -- default to ivy_taller
-						win_config = get_ivy_taller_layout({})
+						win_config = get_ivy_taller_layout(layout_opts)
 					end
 					vim.api.nvim_win_set_config(term.win, win_config)
 				end

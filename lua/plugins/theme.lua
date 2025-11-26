@@ -41,7 +41,8 @@ return {
 							local border = "#303034"
 
 							-- Editor backgrounds
-							vim.api.nvim_set_hl(0, "Normal", { bg = bg })
+							local normal_hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+							vim.api.nvim_set_hl(0, "Normal", { fg = normal_hl.fg, bg = bg })
 							vim.api.nvim_set_hl(0, "NormalFloat", { bg = bg })
 							vim.api.nvim_set_hl(0, "NormalNC", { bg = bg })
 							vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = bg })

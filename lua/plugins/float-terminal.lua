@@ -65,6 +65,16 @@ return {
 			mode = { "n", "t" },
 		},
 		{
+			";a",
+			function()
+				if _G.FloatTerminal then
+					_G.FloatTerminal.toggle_terminal(7)
+				end
+			end,
+			desc = "Toggle Claude Code",
+			mode = { "n", "t" },
+		},
+		{
 			";<esc>",
 			function()
 				if _G.FloatTerminal then
@@ -95,6 +105,11 @@ return {
 				{ id = 4, cmd = "jj diff", title = " Diff " },
 				{ id = 5, cmd = "btop", title = " Btop " },
 				{ id = 6, cmd = "mprocs", title = " Task Runner " },
+				{
+					id = 7,
+					cmd = "sh -c 'opencode --continue 2>/dev/null || opencode'",
+					layout = { type = "fullscreen", border = "none" },
+				},
 			},
 		})
 	end,

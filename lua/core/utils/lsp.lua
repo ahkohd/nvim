@@ -170,7 +170,6 @@ local M = {
 		vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		if client.supports_method("textDocument/inlayHint") then
-			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 			keymap_set("n", "<leader>li", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buf }), { bufnr = buf })
 			end, { buffer = buf, desc = "Toggle inlay hints" })
