@@ -1,6 +1,5 @@
 return {
-	dir = "~/.config/nvim/lua/dev/context",
-	name = "context",
+	dir = "~/Developer/context.nvim/",
 	config = function()
 		local context = require("context")
 		context.setup({

@@ -5,7 +5,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>d",
+			"<leader>gd",
 			function()
 				if Difft.is_visible() then
 					Difft.hide()

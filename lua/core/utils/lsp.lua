@@ -211,22 +211,22 @@ local M = {
 				texthl = highlights,
 				numhl = highlights,
 			},
-			underline = false,
+			underline = true,
 			virtual_lines = false,
 			update_in_insert = true,
 		})
 
 		keymap_set("n", "<leader>k", function()
 			vim.lsp.buf.code_action()
-		end, { desc = "Diagnostics or Code Actions" })
+		end, { desc = "Code Actions" })
 
-		keymap_set("n", "<leader>K", function()
+		keymap_set("n", "<leader>d", function()
 			local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 			if #diagnostics > 0 then
 				vim.diagnostic.open_float(nil, { focusable = true, source = "if_many" })
 			end
 		end, {
-			desc = "Code Actions",
+			desc = "Diagnostics",
 		})
 	end,
 }
