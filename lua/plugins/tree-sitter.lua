@@ -1,5 +1,3 @@
--- luacheck: globals vim
-
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",

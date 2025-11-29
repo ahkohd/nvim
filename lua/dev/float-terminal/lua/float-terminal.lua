@@ -169,9 +169,32 @@ function M.setup(opts)
 		-- Set filetype for float terminal
 		vim.bo[buf].filetype = "float_terminal"
 
-		local win_config = opts.layout == "float" and get_float_layout({}) or get_ivy_taller_layout({})
-		win_config.title = " Yazi "
-		win_config.title_pos = "center"
+		-- Find yazi terminal config to get its layout
+		local yazi_config = nil
+		if opts.terminals then
+			for _, terminal in ipairs(opts.terminals) do
+				if terminal.id == 3 then
+					yazi_config = terminal
+					break
+				end
+			end
+		end
+
+		local layout = (yazi_config and yazi_config.layout and yazi_config.layout.type) or opts.layout
+		local layout_opts = (yazi_config and yazi_config.layout) or {}
+		local win_config
+		if layout == "fullscreen" then
+			win_config = get_fullscreen_layout(layout_opts)
+		elseif layout == "float" then
+			win_config = get_float_layout(layout_opts)
+		else
+			win_config = get_ivy_taller_layout(layout_opts)
+		end
+
+		if win_config.border ~= "none" then
+			win_config.title = " Yazi "
+			win_config.title_pos = "center"
+		end
 
 		local win = vim.api.nvim_open_win(buf, true, win_config)
 		state.yazi_win = win

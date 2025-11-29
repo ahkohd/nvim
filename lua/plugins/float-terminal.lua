@@ -1,5 +1,3 @@
--- luacheck: globals vim
-
 return {
 	dir = "~/.config/nvim/lua/dev/float-terminal",
 	cmd = "FloatTerminal",
@@ -45,20 +43,10 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			";t",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(5)
-				end
-			end,
-			desc = "Toggle Btop",
-			mode = { "n", "t" },
-		},
-		{
 			";r",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(6)
+					_G.FloatTerminal.toggle_terminal(5)
 				end
 			end,
 			desc = "Toggle Task Runner",
@@ -68,7 +56,7 @@ return {
 			";a",
 			function()
 				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(7)
+					_G.FloatTerminal.toggle_terminal(6)
 				end
 			end,
 			desc = "Toggle Claude Code",
@@ -100,13 +88,12 @@ return {
 			layout = "ivy_taller",
 			terminals = {
 				{ id = 1, cmd = "zsh", title = " Terminal " },
-				{ id = 2, cmd = "jjui", title = " JJUI " },
-				{ id = 3, cmd = "yazi", title = " Yazi " },
+				{ id = 2, cmd = "jjui", title = " JJUI ", layout = { type = "fullscreen", border = "none" } },
+				{ id = 3, cmd = "yazi", title = " Yazi ", layout = { type = "fullscreen", border = "none" } },
 				{ id = 4, cmd = "jj diff", title = " Diff " },
-				{ id = 5, cmd = "btop", title = " Btop " },
-				{ id = 6, cmd = "mprocs", title = " Task Runner " },
+				{ id = 5, cmd = "mprocs", title = " Task Runner ", layout = { type = "fullscreen", border = "none" } },
 				{
-					id = 7,
+					id = 6,
 					cmd = "sh -c 'opencode --continue 2>/dev/null || opencode'",
 					layout = { type = "fullscreen", border = "none" },
 				},

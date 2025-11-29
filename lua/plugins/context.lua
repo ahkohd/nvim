@@ -48,7 +48,7 @@ return {
 						if not _G.FloatTerminal then
 							require("lazy").load({ plugins = { "float-terminal" } })
 						end
-						_G.FloatTerminal.send_to_terminal(7, item.value .. " ")
+						_G.FloatTerminal.send_to_terminal(6, item.value .. " ")
 					end
 				end)
 			end,
