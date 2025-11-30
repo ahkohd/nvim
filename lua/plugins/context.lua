@@ -2,14 +2,13 @@ return {
 	dir = "~/Developer/context.nvim/",
 	config = function()
 		local context = require("context")
+		local extras = require("context.extras")
 		context.setup({
 			picker = context.pickers.snacks,
-			-- picker = context.pickers.telescope,
-			-- picker = context.pickers.fzf_lua,
-			-- picker = context.pickers.vim_ui,
-			-- on_select = function(item)
-			-- 	vim.fn.setreg("+", item.value)
-			-- end,
+			getters = {
+				python_path = extras.python_path,
+				rust_path = extras.rust_path,
+			},
 			prompts = {
 				-- explain = "Explain {this}",
 				-- fix = "Fix the issue at {position}",

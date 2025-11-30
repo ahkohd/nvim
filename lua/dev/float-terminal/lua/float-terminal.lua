@@ -8,6 +8,7 @@ function M.setup(opts)
 	local state = {
 		terminals = {},
 		yazi_win = -1,
+		prev_win = nil,
 	}
 
 	local function get_float_layout(config)
@@ -144,8 +145,14 @@ function M.setup(opts)
 		if vim.api.nvim_win_is_valid(state.yazi_win) then
 			vim.api.nvim_win_close(state.yazi_win, true)
 			state.yazi_win = -1
+			if state.prev_win and vim.api.nvim_win_is_valid(state.prev_win) then
+				vim.api.nvim_set_current_win(state.prev_win)
+			end
 			return
 		end
+
+		-- Save current window before opening
+		state.prev_win = vim.api.nvim_get_current_win()
 
 		-- Get current file's path
 		local current_file = vim.fn.expand("%:p")
@@ -350,10 +357,15 @@ function M.setup(opts)
 		local term = state.terminals[id]
 
 		if not vim.api.nvim_win_is_valid(term.win) then
+			-- Save current window before opening
+			state.prev_win = vim.api.nvim_get_current_win()
 			show_terminal(id)
 		else
 			-- This terminal is already open, hide it (toggle off)
 			vim.api.nvim_win_hide(term.win)
+			if state.prev_win and vim.api.nvim_win_is_valid(state.prev_win) then
+				vim.api.nvim_set_current_win(state.prev_win)
+			end
 		end
 	end
 
@@ -375,10 +387,17 @@ function M.setup(opts)
 	local function hide_current_terminal()
 		local current_win = vim.api.nvim_get_current_win()
 
+		local function restore_prev_win()
+			if state.prev_win and vim.api.nvim_win_is_valid(state.prev_win) then
+				vim.api.nvim_set_current_win(state.prev_win)
+			end
+		end
+
 		-- Check if current window is yazi
 		if current_win == state.yazi_win and vim.api.nvim_win_is_valid(state.yazi_win) then
 			vim.api.nvim_win_close(state.yazi_win, true)
 			state.yazi_win = -1
+			restore_prev_win()
 			return
 		end
 
@@ -386,6 +405,7 @@ function M.setup(opts)
 		for _, term in pairs(state.terminals) do
 			if term.win == current_win and vim.api.nvim_win_is_valid(term.win) then
 				vim.api.nvim_win_hide(term.win)
+				restore_prev_win()
 				break
 			end
 		end

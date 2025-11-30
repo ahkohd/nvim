@@ -20,6 +20,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+if vim.g.neovide then
+	require("config.neovide")
+end
+
 require("config.opts")
 
 require("lazy").setup({
