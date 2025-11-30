@@ -17,13 +17,13 @@ vim.g.neovide_floating_blur_amount_x = 0
 vim.g.neovide_floating_blur_amount_y = 0
 
 -- Very small cursor trail/smear
-vim.g.neovide_cursor_trail_size = 0.15
+vim.g.neovide_cursor_trail_size = 0.1
 vim.g.neovide_cursor_vfx_mode = ""
 
 -- Faster cursor long animation (default: 0.13)
-vim.g.neovide_cursor_animation_length = 0.13
+vim.g.neovide_cursor_animation_length = 0.1
 -- Faster cursor short animation (default: 0.04)
-vim.g.neovide_cursor_short_animation_length = 0.04
+vim.g.neovide_cursor_short_animation_length = 0.01
 
 -- Enable cursor blink (slower)
 vim.opt.guicursor = {
@@ -34,7 +34,7 @@ vim.opt.guicursor = {
 vim.g.neovide_cursor_smooth_blink = true
 
 -- Scroll animation (default: 0.3)
-vim.g.neovide_scroll_animation_length = 0.2
+vim.g.neovide_scroll_animation_length = 0.05
 
 -- Disable window blur on macOS
 vim.g.neovide_window_blurred = false
@@ -43,15 +43,15 @@ vim.g.neovide_window_blurred = false
 vim.g.neovide_hide_mouse_when_typing = true
 
 -- Scale factor keybinds (Cmd+= to zoom in, Cmd+- to zoom out, Cmd+0 to reset)
-vim.keymap.set("n", "<D-=>", function()
+vim.keymap.set({ "n", "v", "i", "t", "c" }, "<D-o>", function()
 	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.1
 end, { desc = "Neovide scale up" })
 
-vim.keymap.set("n", "<D-->", function()
+vim.keymap.set({ "n", "v", "i", "t", "c" }, "<D-i>", function()
 	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor / 1.1
 end, { desc = "Neovide scale down" })
 
-vim.keymap.set("n", "<D-0>", function()
+vim.keymap.set({ "n", "v", "i", "t", "c" }, "<D-r>", function()
 	vim.g.neovide_scale_factor = 1.0
 end, { desc = "Neovide scale reset" })
 
