@@ -6,13 +6,10 @@ return {
 		context.setup({
 			picker = context.pickers.snacks,
 			getters = {
-				python_path = extras.python_path,
-				rust_path = extras.rust_path,
+				definition = extras.lsp.definition,
+				references = extras.lsp.references,
 			},
 			prompts = {
-				-- explain = "Explain {this}",
-				-- fix = "Fix the issue at {position}",
-				-- review = "Review {file} for issues",
 				yourchanges = "Review recent git changes for: logic errors, edge cases, "
 					.. "performance issues, readability problems, missing error handling. "
 					.. "Be specific with line numbers and actionable fixes.",
@@ -26,6 +23,9 @@ return {
 					.. "semantically (layout/flexbox, spacing, sizing, positioning, display, "
 					.. "typography, colors, borders, effects, overflow, transitions). "
 					.. "Keep responsive modifiers with base class.",
+			},
+			lsp = {
+				enabled = true,
 			},
 		})
 	end,
