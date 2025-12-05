@@ -290,7 +290,7 @@ return {
 		quickfile = { enabled = true },
 		words = { enabled = true },
 		input = { enabled = true },
-		dim = { animate = { enabled = false } },
+		-- dim = { animate = { enabled = false } },
 		gh = {},
 		picker = {
 			layout = {
@@ -383,6 +383,6 @@ return {
 			},
 		}, layouts.ivy)
 
-		Snacks.dim()
+		-- Snacks.dim()
 	end,
 }
