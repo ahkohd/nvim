@@ -1,6 +1,16 @@
+local function is_diff_editor()
+	for _, arg in ipairs(vim.v.argv) do
+		if arg:match("DiffEditor") then
+			return true
+		end
+	end
+	return false
+end
+
 return {
 	"Shatur/neovim-session-manager",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	enabled = not is_diff_editor(),
 	lazy = false,
 	keys = {
 		{ "<leader>zl", "<cmd>SessionManager load_session<cr>", desc = "Load session" },
