@@ -13,16 +13,6 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			";g",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(2)
-				end
-			end,
-			desc = "Toggle JJUI",
-			mode = { "n", "t" },
-		},
-		{
 			";f",
 			function()
 				if _G.FloatTerminal then
