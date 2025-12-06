@@ -19,6 +19,7 @@ return {
 					desc = "Theme",
 				},
 			},
+			enabled = false,
 			config = function()
 				require("themify").setup({
 					"monochrome",
@@ -81,6 +82,37 @@ return {
 						end,
 					},
 				})
+			end,
+		},
+		{
+			"scottmckendry/cyberdream.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {
+				transparent = true,
+				borderless_pickers = false,
+				overrides = function(colors)
+					return {
+						FloatBorder = { fg = colors.bg_alt },
+						WinSeparator = { fg = colors.bg_alt },
+						SnacksPickerTree = { fg = colors.bg_alt },
+					}
+				end,
+			},
+			config = function(_, opts)
+				local theme_file = vim.fn.expand("~/.dotfiles/.theme")
+				if vim.fn.filereadable(theme_file) == 1 then
+					local content = vim.fn.readfile(theme_file)[1] or ""
+					if content:match("dark") then
+						opts.variant = "default"
+					else
+						opts.variant = "light"
+					end
+				else
+					opts.variant = "auto"
+				end
+				require("cyberdream").setup(opts)
+				vim.cmd("colorscheme cyberdream")
 			end,
 		},
 	},

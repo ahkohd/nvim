@@ -24,6 +24,7 @@ return {
 			autosave_last_session = true,
 			autosave_only_in_session = true,
 			autosave_ignore_buftypes = { "terminal" },
+			autosave_ignore_filetypes = { "snacks_picker_list", "snacks_picker_input" },
 		})
 	end,
 }

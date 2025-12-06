@@ -50,6 +50,16 @@ return {
 			desc = "Files",
 		},
 		{
+			"<leader><leader>",
+			function()
+				if buffer_utils.in_special_buffer() then
+					return
+				end
+				Snacks.explorer.reveal()
+			end,
+			desc = "File tree",
+		},
+		{
 			"<leader>r",
 			function()
 				if buffer_utils.in_special_buffer() then
@@ -320,12 +330,17 @@ return {
 						},
 					},
 					layout = {
+						preview = "main",
 						layout = {
+							backdrop = false,
 							width = 30,
 							min_width = 30,
+							height = 0,
 							position = "left",
 							border = "none",
-							backdrop = false,
+							box = "vertical",
+							{ win = "input", height = 1, border = "none" },
+							{ win = "list", border = "none" },
 						},
 					},
 				},
@@ -382,7 +397,5 @@ return {
 				},
 			},
 		}, layouts.ivy)
-
-		-- Snacks.dim()
 	end,
 }
