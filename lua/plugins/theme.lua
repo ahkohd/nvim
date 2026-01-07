@@ -89,7 +89,7 @@ return {
 			lazy = false,
 			priority = 1000,
 			opts = {
-				transparent = true,
+				transparent = not vim.g.neovide,
 				borderless_pickers = false,
 				overrides = function(colors)
 					return {
