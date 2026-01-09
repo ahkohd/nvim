@@ -84,7 +84,7 @@ return {
 				{ id = 5, cmd = "mprocs", title = " Task Runner ", layout = { type = "fullscreen", border = "none" } },
 				{
 					id = 6,
-					cmd = "sh -c 'opencode --continue 2>/dev/null || opencode'",
+					cmd = "sh -c 'claude --resume 2>/dev/null || claude'",
 					layout = { type = "fullscreen", border = "none" },
 				},
 			},
