@@ -1,5 +1,5 @@
 return {
-	dir = "~/Developer/context.nvim/",
+	"ahkohd/context.nvim",
 	config = function()
 		local context = require("context")
 		local extras = require("context.extras")
@@ -36,21 +36,6 @@ return {
 				require("context").pick()
 			end,
 			desc = "Context",
-			mode = { "n", "v" },
-		},
-		{
-			";p",
-			function()
-				require("context").pick(function(item)
-					if item and item.value then
-						if not _G.FloatTerminal then
-							require("lazy").load({ plugins = { "float-terminal" } })
-						end
-						_G.FloatTerminal.send_to_terminal(6, item.value .. " ")
-					end
-				end)
-			end,
-			desc = "Context to Claude",
 			mode = { "n", "v" },
 		},
 	},

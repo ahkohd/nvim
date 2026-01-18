@@ -1,5 +1,5 @@
 return {
-	dir = "~/Developer/namu.nvim/",
+	"bassamsdata/namu.nvim",
 	event = "VeryLazy",
 	keys = {
 		{

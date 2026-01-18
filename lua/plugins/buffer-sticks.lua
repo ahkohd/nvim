@@ -1,7 +1,7 @@
 -- luacheck: globals BufferSticks
 
 return {
-	dir = "~/Developer/buffer-sticks",
+	"ahkohd/buffer-sticks.nvim",
 	event = "VeryLazy",
 	keys = {
 		{
@@ -19,7 +19,7 @@ return {
 			filter = { buftypes = { "terminal" } },
 			preview = {
 				enabled = true,
-				mode = "float", -- "float", or "current" or "last_window"
+				mode = "float",
 				float = {
 					position = "right",
 					width = 0.5,
