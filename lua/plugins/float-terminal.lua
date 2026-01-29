@@ -2,16 +2,16 @@ return {
 	dir = "~/.config/nvim/lua/dev/float-terminal",
 	cmd = "FloatTerminal",
 	keys = {
-		{
-			";j",
-			function()
-				if _G.FloatTerminal then
-					_G.FloatTerminal.toggle_terminal(1)
-				end
-			end,
-			desc = "Toggle terminal",
-			mode = { "n", "t" },
-		},
+		-- {
+		-- 	";j",
+		-- 	function()
+		-- 		if _G.FloatTerminal then
+		-- 			_G.FloatTerminal.toggle_terminal(1)
+		-- 		end
+		-- 	end,
+		-- 	desc = "Toggle terminal",
+		-- 	mode = { "n", "t" },
+		-- },
 		{
 			";r",
 			function()
@@ -57,7 +57,7 @@ return {
 		require("float-terminal").setup({
 			layout = "ivy_taller",
 			terminals = {
-				{ id = 1, cmd = "zsh", title = " Terminal " },
+				-- { id = 1, cmd = "zsh", title = " Terminal " },
 				{ id = 2, cmd = "mprocs", title = " Task Runner ", layout = { type = "fullscreen", border = "none" } },
 				{ id = 3, cmd = "yazi", title = " Yazi ", layout = { type = "fullscreen", border = "none" } },
 			},
