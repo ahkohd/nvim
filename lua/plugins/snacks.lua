@@ -6,15 +6,7 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	dependencies = {
-		{
-			"ahkohd/fff-snacks.nvim",
-			cmd = "FFFSnacks",
-			opts = {
-				title = "Files",
-			},
-		},
-	},
+	dependencies = {},
 	keys = {
 		{
 			"]]",
@@ -38,17 +30,6 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		-- pickers
-		{
-			"<leader>f",
-			function()
-				if buffer_utils.in_special_buffer() then
-					return
-				end
-				vim.cmd("FFFSnacks")
-			end,
-			desc = "Files",
-		},
 		{
 			"<leader><leader>",
 			function()
@@ -58,16 +39,6 @@ return {
 				Snacks.explorer.reveal()
 			end,
 			desc = "File tree",
-		},
-		{
-			"<leader>r",
-			function()
-				if buffer_utils.in_special_buffer() then
-					return
-				end
-				Snacks.picker.grep({ title = "Search" })
-			end,
-			desc = "Grep",
 		},
 		{
 			"<leader>J",
