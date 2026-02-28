@@ -1,13 +1,8 @@
--- local md_path = vim.fn.expand("~") .. "/Documents/md"
-
 return {
 	{
-		"yousefhadder/markdown-plus.nvim",
+		"OXY2DEV/markview.nvim",
 		ft = "markdown",
-		opts = {},
-		config = function(_, opts)
-			require("markdown-plus").setup(opts)
-
+		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "markdown",
 				callback = function()
@@ -16,10 +11,6 @@ return {
 				end,
 			})
 		end,
-	},
-	{
-		"OXY2DEV/markview.nvim",
-		ft = "markdown",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},

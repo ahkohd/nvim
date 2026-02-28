@@ -55,11 +55,12 @@ return {
 			{
 				"<leader>.",
 				function()
-					vim.o.number = not vim.o.number
-
-					vim.o.relativenumber = not vim.o.relativenumber
+					local hide = vim.wo.number or vim.wo.signcolumn == "yes"
+					vim.wo.number = not hide
+					vim.wo.relativenumber = not hide
+					vim.wo.signcolumn = hide and "no" or "yes"
 				end,
-				desc = "Toggle line number",
+				desc = "Toggle gutter",
 			},
 			{
 				"<leader>,",

@@ -3,14 +3,7 @@
 return {
 	"trevorhauter/gitportal.nvim",
 	event = "VeryLazy",
-	deps = {
-		{
-			dir = "~/.config/nvim/lua/dev/git-blame",
-			config = function()
-				require("git-blame").setup()
-			end,
-		},
-	},
+	dependencies = {},
 	keys = {
 		{
 			"<leader>go",
