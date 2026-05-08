@@ -9,7 +9,7 @@ return {
 			version = "*",
 		},
 	},
-	version = "v0.*",
+	version = "1.*",
 	opts = {
 		appearance = {
 			nerd_font_variant = "mono",
@@ -52,10 +52,14 @@ return {
 				},
 				cycle = { from_bottom = true, from_top = false },
 			},
+			menu = {
+				border = "rounded",
+			},
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 0,
 				window = {
+					border = "rounded",
 					min_width = 15,
 					max_width = 50,
 					max_height = 15,
@@ -68,7 +72,10 @@ return {
 			ghost_text = { enabled = true },
 		},
 
-		signature = { enabled = true },
+		signature = {
+			enabled = true,
+			window = { border = "rounded" },
+		},
 
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
@@ -78,9 +85,6 @@ return {
 					name = "Ripgrep",
 					opts = { backend = { use = "gitgrep", customize_icon_highlight = false } },
 				},
-			},
-			per_filetype = {
-				codecompanion = { "codecompanion" },
 			},
 		},
 

@@ -16,6 +16,8 @@ vim.o.expandtab = true
 vim.o.shell = "zsh"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"
 vim.o.showtabline = 0
+
+vim.o.winbar = "%m %t"
 vim.opt.swapfile = false
 vim.opt.shortmess:append("I")
 vim.g.loaded_netrwPlugin = 0

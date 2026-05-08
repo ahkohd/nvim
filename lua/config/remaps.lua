@@ -113,3 +113,11 @@ map("n", "<leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Op
 map("n", "<leader>lq", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
 map("n", "<leader>ln", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location item" })
 map("n", "<leader>lp", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location item" })
+
+-- Undo tree (builtin in nvim 0.12+)
+map(
+	"n",
+	"<leader>u",
+	"<cmd>packadd nvim.undotree<bar>Undotree<CR>",
+	{ noremap = true, silent = true, desc = "Undo tree" }
+)

@@ -1,48 +1,41 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
 	build = ":TSUpdate",
-	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
 	config = function()
-		if not vim.g.loaded_nvim_treesitter then
-			vim.cmd([[echom "Not loaded treesitter"]])
-			return
-		end
+		local parsers = {
+			"tsx",
+			"typescript",
+			"javascript",
+			"toml",
+			"json",
+			"yaml",
+			"html",
+			"css",
+			"scss",
+			"rust",
+			"lua",
+			"gitignore",
+			"markdown",
+			"markdown_inline",
+			"nix",
+			"astro",
+			"zig",
+		}
 
-		require("nvim-treesitter.configs").setup({
-			modules = {},
-			auto_install = true,
-			sync_install = false,
-			ignore_install = {},
-			ensure_installed = {
-				"tsx",
-				"typescript",
-				"javascript",
-				"toml",
-				"json",
-				"yaml",
-				"html",
-				"css",
-				"scss",
-				"rust",
-				"lua",
-				"gitignore",
-				"markdown",
-				"markdown_inline",
-				"nix",
-				"astro",
-				"zig",
-			},
-			highlight = {
-				enable = true,
-			},
-		})
+		require("nvim-treesitter").install(parsers)
 
 		vim.filetype.add({ extension = { mdx = "markdown.mdx" } })
-
 		vim.treesitter.language.register("markdown", "markdown.mdx")
 
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-		parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				local lang = vim.treesitter.language.get_lang(vim.bo[ev.buf].filetype)
+				if lang and pcall(vim.treesitter.start, ev.buf, lang) then
+					vim.bo[ev.buf].syntax = "ON"
+				end
+			end,
+		})
 	end,
 }
