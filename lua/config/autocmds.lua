@@ -91,7 +91,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("self/disable_markdown_conceal", { clear = true }),
 	desc = "Disable conceal in markdown files",
