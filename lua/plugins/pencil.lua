@@ -13,6 +13,7 @@ return {
 	init = function()
 		vim.g["pencil#wrapModeDefault"] = "soft"
 		vim.g["pencil#autoformat"] = 1
+		vim.g["pencil#conceallevel"] = 0
 		vim.g["pencil#cursorwrap"] = 0 -- Disable j/k/arrow remapping
 	end,
 	config = function()
@@ -31,6 +32,9 @@ return {
 					return
 				end
 				vim.cmd("PencilSoft")
+				if vim.tbl_contains({ "markdown", "markdown.mdx" }, vim.bo.filetype) then
+					vim.wo[win].conceallevel = 0
+				end
 			end,
 		})
 	end,
