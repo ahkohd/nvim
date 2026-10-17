@@ -2,7 +2,6 @@ local web = { "prettier" }
 
 return {
 	"stevearc/conform.nvim",
-	event = "BufWritePre",
 	cmd = "Format",
 	keys = {
 		{
@@ -59,10 +58,6 @@ return {
 				zig = { "zig fmt" },
 				rust = { "rustfmt" },
 				["_"] = { "trim_whitespace" },
-			},
-			format_on_save = {
-				timeout_ms = 1000,
-				lsp_format = "fallback",
 			},
 			notify_on_error = false,
 		}

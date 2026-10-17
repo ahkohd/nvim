@@ -53,13 +53,11 @@ return {
 					"cssls",
 					"tailwindcss",
 					"taplo",
-					"nixd",
 					"rust_analyzer",
 					"vtsls",
 					"marksman",
-					"eslint",
 				},
-				automatic_enable = true,
+				automatic_enable = { exclude = { "eslint" } },
 			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -77,7 +75,6 @@ return {
 		dependencies = { "mason-org/mason.nvim" },
 		opts = {
 			ensure_installed = {
-				"luacheck",
 				"stylua",
 				"prettier",
 			},
